@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>101 דייטים ואף נשיכה | הספר הכי מצחיק על דייטים</title>
+    <meta name="description" content="101 סיפורי דייטים מטורפים שיגרמו לך לצחוק עד דמעות. הספר שכל מי שיצא לדייט חייב לקרוא.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Secular+One&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --accent-red: #dc2626;
+            --accent-crimson: #b91c1c;
+            --accent-rose: #f87171;
+            --accent-pink: #fca5a5;
+            --accent-gold: #d4af37;
+            --accent-cream: #f5f0e1;
+            --gradient-red: linear-gradient(135deg, #b91c1c 0%, #dc2626 50%, #ef4444 100%);
+            --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+            --gradient-romantic: linear-gradient(135deg, #dc2626 0%, #f87171 100%);
+            --shadow-glow: 0 0 40px rgba(220, 38, 38, 0.3);
+            --shadow-gold: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Floating Hearts Animation */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: floatHeart 20s linear infinite;
+            opacity: 0;
+        }
+
+        .heart:nth-child(1) { left: 5%; animation-delay: 0s; font-size: 16px; }
+        .heart:nth-child(2) { left: 15%; animation-delay: 4s; font-size: 22px; }
+        .heart:nth-child(3) { left: 25%; animation-delay: 8s; font-size: 18px; }
+        .heart:nth-child(4) { left: 35%; animation-delay: 12s; font-size: 24px; }
+        .heart:nth-child(5) { left: 55%; animation-delay: 2s; font-size: 20px; }
+        .heart:nth-child(6) { left: 65%; animation-delay: 6s; font-size: 16px; }
+        .heart:nth-child(7) { left: 75%; animation-delay: 10s; font-size: 22px; }
+        .heart:nth-child(8) { left: 85%; animation-delay: 14s; font-size: 18px; }
+        .heart:nth-child(9) { left: 95%; animation-delay: 16s; font-size: 20px; }
+        .heart:nth-child(10) { left: 45%; animation-delay: 18s; font-size: 24px; }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.2;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Floating Quotes - Elegant Fade */
+        .floating-quotes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .quote-bubble {
+            position: absolute;
+            background: rgba(20, 20, 20, 0.95);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 16px;
+            padding: 14px 20px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 260px;
+            opacity: 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: thoughtBubble 8s ease-in-out infinite;
+        }
+
+        /* Position quotes around the screen edges */
+        .quote-bubble:nth-child(1) { top: 15%; right: 5%; animation-delay: 3s; }
+        .quote-bubble:nth-child(2) { top: 35%; left: 3%; animation-delay: 8s; }
+        .quote-bubble:nth-child(3) { top: 55%; right: 8%; animation-delay: 13s; }
+        .quote-bubble:nth-child(4) { top: 25%; left: 5%; animation-delay: 18s; }
+        .quote-bubble:nth-child(5) { top: 70%; right: 4%; animation-delay: 23s; }
+        .quote-bubble:nth-child(6) { top: 45%; left: 4%; animation-delay: 28s; }
+        .quote-bubble:nth-child(7) { top: 60%; left: 6%; animation-delay: 33s; }
+        .quote-bubble:nth-child(8) { top: 20%; right: 6%; animation-delay: 38s; }
+        .quote-bubble:nth-child(9) { top: 80%; right: 10%; animation-delay: 43s; }
+
+        @keyframes thoughtBubble {
+            0% {
+                opacity: 0;
+                transform: translateY(8px) scale(0.95);
+            }
+            10% {
+                opacity: 0.9;
+                transform: translateY(0) scale(1);
+            }
+            15% {
+                transform: translateY(-2px) scale(1);
+            }
+            20% {
+                transform: translateY(2px) scale(1);
+            }
+            25% {
+                transform: translateY(-1px) scale(1);
+            }
+            30% {
+                opacity: 0.9;
+                transform: translateY(0) scale(1);
+            }
+            40% {
+                opacity: 0;
+                transform: translateY(-4px) scale(0.98);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-4px) scale(0.98);
+            }
+        }
+
+        /* Hide quotes on mobile - too distracting */
+        @media (max-width: 768px) {
+            .floating-quotes {
+                display: none;
+            }
+        }
+
+        /* Notification Toast */
+        .notification-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--bg-card);
+            border: 1px solid var(--accent-gold);
+            border-radius: 16px;
+            padding: 16px 24px;
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out, pulse 2s ease-in-out infinite 1s;
+            box-shadow: var(--shadow-gold);
+            max-width: 320px;
+        }
+
+        .notification-toast .toast-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .notification-toast .toast-icon {
+            font-size: 24px;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        .notification-toast .toast-title {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .notification-toast .toast-message {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .notification-toast .toast-price {
+            color: var(--accent-red);
+            font-weight: 900;
+            font-size: 24px;
+            margin-top: 8px;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: var(--shadow-gold);
+            }
+            50% {
+                box-shadow: 0 0 50px rgba(212, 175, 55, 0.4);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Main Content */
+        .main-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center top, rgba(220, 38, 38, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 2px solid var(--accent-gold);
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-size: 14px;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease-out;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .hero-badge .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: clamp(48px, 10vw, 90px);
+            line-height: 1.1;
+            margin-bottom: 10px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-title .highlight {
+            background: var(--gradient-red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(20px, 4vw, 32px);
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-tagline {
+            font-size: 18px;
+            color: var(--accent-rose);
+            margin-bottom: 40px;
+            max-width: 500px;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* CTA Button */
+        .cta-container {
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gradient-red);
+            color: #000;
+            font-size: 22px;
+            font-weight: 700;
+            padding: 20px 50px;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(220, 38, 38, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(220, 38, 38, 0.5);
+        }
+
+        .cta-button .price {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 18px;
+        }
+
+        .cta-subtext {
+            margin-top: 15px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Countdown */
+        .countdown-container {
+            margin-top: 30px;
+            animation: fadeInUp 0.8s ease-out 1s both;
+        }
+
+        .countdown-label {
+            color: var(--accent-rose);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .countdown-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: 15px 20px;
+            min-width: 70px;
+        }
+
+        .countdown-number {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--accent-rose);
+        }
+
+        .countdown-unit {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Why Section */
+        .why-section {
+            padding: 100px 20px;
+            background: var(--bg-secondary);
+            position: relative;
+        }
+
+        .why-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+
+        .section-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: clamp(32px, 6vw, 48px);
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .why-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .why-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent-cream);
+        }
+
+        .why-text {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* Teaser Section */
+        .teaser-section {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .teaser-quote {
+            font-size: clamp(24px, 5vw, 36px);
+            font-style: italic;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .teaser-quote::before,
+        .teaser-quote::after {
+            content: '"';
+            font-size: 80px;
+            color: var(--accent-gold);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .teaser-quote::before {
+            top: -40px;
+            right: -20px;
+        }
+
+        .teaser-quote::after {
+            bottom: -60px;
+            left: -20px;
+        }
+
+        .teaser-cta {
+            display: inline-block;
+            color: var(--accent-gold);
+            font-size: 18px;
+            text-decoration: none;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .teaser-cta:hover {
+            color: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        /* Social Section */
+        .social-section {
+            padding: 80px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .social-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 15px 30px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .social-link .icon {
+            font-size: 24px;
+        }
+
+        .social-link .label {
+            font-weight: 500;
+        }
+
+        .social-link .handle {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: 80px 20px;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            border-color: var(--accent-gold);
+        }
+
+        .review-stars {
+            color: var(--accent-gold);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .review-text {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .review-author {
+            color: var(--accent-rose);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 100px 20px;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(220, 38, 38, 0.1) 0%, transparent 70%);
+        }
+
+        .final-cta .cta-button {
+            font-size: 26px;
+            padding: 25px 60px;
+        }
+
+        /* Story Form Section - Hollywood Style */
+        .story-section {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, #0f0808 50%, var(--bg-primary) 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .story-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+        }
+
+        .story-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--accent-red) 0%, #ef4444 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 30px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .story-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: clamp(28px, 5vw, 40px);
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .story-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .story-reward {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--accent-gold);
+            padding: 12px 24px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            color: var(--accent-gold);
+            font-size: 15px;
+        }
+
+        .story-form {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: right;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(26, 26, 26, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-family: 'Heebo', sans-serif;
+            transition: all 0.3s ease;
+            direction: rtl;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-red);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.2);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 18px 30px;
+            background: var(--gradient-red);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Heebo', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .form-submit:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .form-note {
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        /* Buy Section - 3 Options */
+        .buy-section {
+            padding: 100px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .buy-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 18px;
+            margin-bottom: 50px;
+            margin-top: -40px;
+        }
+
+        .buy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .buy-card {
+            background: var(--bg-card);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 35px 30px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .buy-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        .buy-card.featured {
+            border-color: var(--accent-red);
+            background: linear-gradient(180deg, rgba(220, 38, 38, 0.1) 0%, var(--bg-card) 100%);
+        }
+
+        .buy-card-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-red);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .buy-card-badge.intl {
+            background: var(--gradient-gold);
+            color: #000;
+        }
+
+        .buy-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .buy-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .buy-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .buy-price {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--accent-red);
+            margin-bottom: 5px;
+        }
+
+        .buy-card.featured .buy-price {
+            color: var(--accent-rose);
+        }
+
+        .buy-note {
+            font-size: 13px;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .buy-button {
+            display: block;
+            background: var(--gradient-red);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .buy-button:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .buy-button.secondary {
+            background: transparent;
+            border: 2px solid var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        .buy-button.secondary:hover {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        .buy-button.amazon {
+            background: #ff9900;
+            color: #000;
+        }
+
+        .buy-button.amazon:hover {
+            background: #ffad33;
+        }
+
+        .buy-delivery {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .footer-author {
+            color: var(--accent-red);
+            margin-top: 10px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .notification-toast {
+                left: 15px;
+                right: 15px;
+                bottom: 15px;
+                max-width: none;
+            }
+
+            .quote-bubble {
+                font-size: 12px;
+                padding: 10px 14px;
+                max-width: 150px;
+            }
+
+            .cta-button {
+                flex-direction: column;
+                padding: 20px 40px;
+            }
+
+            .countdown {
+                gap: 10px;
+            }
+
+            .countdown-item {
+                padding: 12px 15px;
+                min-width: 60px;
+            }
+
+            .countdown-number {
+                font-size: 22px;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-link {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        /* Professional Review Section */
+        .pro-review-section {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, #0f0f0f 50%, var(--bg-primary) 100%);
+            text-align: center;
+        }
+
+        .pro-review-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient-gold);
+            color: #000;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+
+        .pro-review-badge .badge-icon {
+            font-size: 18px;
+        }
+
+        .pro-review-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1a1a1a 0%, #222222 100%);
+            border: 2px solid var(--accent-gold);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .pro-review-card::before {
+            content: '✦';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-primary);
+            color: var(--accent-gold);
+            padding: 5px 15px;
+            font-size: 24px;
+        }
+
+        .pro-review-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .publisher-logo {
+            font-family: 'Secular One', sans-serif;
+            font-size: 36px;
+            color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.1);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            border: 2px solid var(--accent-gold);
+        }
+
+        .publisher-info {
+            text-align: right;
+        }
+
+        .publisher-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        .publisher-dept {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .pro-review-quote {
+            font-size: clamp(20px, 4vw, 26px);
+            line-height: 1.6;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .pro-review-quote .highlight-text {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .pro-review-details {
+            margin-bottom: 30px;
+        }
+
+        .pro-review-details .detail-line {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 8px;
+            border-right: 3px solid var(--accent-gold);
+        }
+
+        .pro-review-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .review-divider {
+            color: var(--accent-gold);
+        }
+
+        /* Scroll animations */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts">
+        <span class="heart">💔</span>
+        <span class="heart">❤️</span>
+        <span class="heart">💕</span>
+        <span class="heart">💔</span>
+        <span class="heart">❤️</span>
+        <span class="heart">💕</span>
+        <span class="heart">💔</span>
+        <span class="heart">❤️</span>
+        <span class="heart">💕</span>
+        <span class="heart">💔</span>
+    </div>
+
+    <!-- Floating Quote Bubbles -->
+    <div class="floating-quotes">
+        <div class="quote-bubble">"עלתה לאוטו עם שלושה סלים – הבנתי שאני לא בדייט, אני בשליחות" 🧺</div>
+        <div class="quote-bubble">"שבע כוסות יין ופתאום אנחנו זוג ותיק" 🍷</div>
+        <div class="quote-bubble">"לפעמים צריך לבלוע את הצפרדע – עניתי: אני בולע רק סטייקים" 🐸</div>
+        <div class="quote-bubble">"יש לך שיניים יפות. וזהו. זה כל מה שנשאר מהדייט" 😬</div>
+        <div class="quote-bubble">"היא התחילה לדבר על ילדים – קצת גבוה בשביל מישהו שכרגע ירד מכרית" 🏢</div>
+        <div class="quote-bubble">"קובעים לסרט – מגיעים כשכבר מתחיל הסרט הבא" 🎬</div>
+        <div class="quote-bubble">"בדיוק כשהתחיל השיר של הטיטאניק – נכנסה לאוטו. לא רוז." 🚢</div>
+        <div class="quote-bubble">"היא נעלמה כמו עשן של סיגריה – ריח חזק, בלי סימן לאן הלכה" 💨</div>
+        <div class="quote-bubble">"בדייטים, כמו באפליקציות – תמיד יש באג שלא סיפרו לך עליו" 🐛</div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="notification-toast">
+        <div class="toast-header">
+            <span class="toast-icon">🔥</span>
+            <span class="toast-title">מחיר השקה מיוחד!</span>
+        </div>
+        <div class="toast-message">לזמן מוגבל בלבד</div>
+        <div class="toast-price">₪75 בלבד</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                הספר שכולם מדברים עליו
+            </div>
+            
+            <h1 class="hero-title">
+                <span class="highlight">101 דייטים</span><br>
+                ואף נשיכה
+            </h1>
+            
+            <p class="hero-subtitle">סיפורי דייטים מטורפים שקרו באמת</p>
+            
+            <p class="hero-tagline">
+                כי לפעמים הדרך הכי טובה להתמודד עם דייט נורא<br>
+                היא לקרוא על דייטים של אחרים ולהרגיש טוב עם עצמך
+            </p>
+
+            <div class="cta-container">
+                <a href="https://bookpod.co.il/product/101-%d7%93%d7%99%d7%99%d7%98%d7%99%d7%9d-%d7%95%d7%90%d7%a3-%d7%a0%d7%a9%d7%99%d7%9b%d7%94/" class="cta-button" target="_blank">
+                    🛒 רוצה לקרוא!
+                    <span class="price">₪75</span>
+                </a>
+                <p class="cta-subtext">משלוח עד הבית | תוך 5 ימי עסקים</p>
+            </div>
+
+            <div class="countdown-container">
+                <p class="countdown-label">⏰ מחיר ההשקה נגמר בעוד:</p>
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">3</div>
+                        <div class="countdown-unit">ימים</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">12</div>
+                        <div class="countdown-unit">שעות</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">45</div>
+                        <div class="countdown-unit">דקות</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Section -->
+        <section class="why-section fade-in-section">
+            <h2 class="section-title">למה לקרוא את הספר?</h2>
+            
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">😂</div>
+                    <h3 class="why-title">צחוק עד דמעות</h3>
+                    <p class="why-text">101 סיפורים שיגרמו לך לצחוק בקול, להתבייש במקומם, ולהודות שגם לך קרו דברים כאלה</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">💔</div>
+                    <h3 class="why-title">תרגיש פחות לבד</h3>
+                    <p class="why-text">אחרי שתקרא על הדייטים האלה, תבין שאתה לא היחיד. כולנו שם. כולנו סבלנו.</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">🍷</div>
+                    <h3 class="why-title">בלי פילטרים</h3>
+                    <p class="why-text">סיפורים אמיתיים, כתובים בגובה העיניים, עם הומור ישראלי בלתי מתנצל</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teaser Section -->
+        <section class="teaser-section fade-in-section">
+            <p class="teaser-quote">
+                הספר הזה הוא כמו לשבת עם חבר טוב על בירה ולשמוע אותו מספר על כל הדייטים הכושלים שלו. רק שפה יש 101 כאלה. וזה הרבה יותר מצחיק כשזה לא קורה לך.
+            </p>
+            <a href="#buy" class="teaser-cta">רוצה טעימה? →</a>
+        </section>
+
+        <!-- Professional Review Section -->
+        <section class="pro-review-section fade-in-section">
+            <div class="pro-review-badge">
+                <span class="badge-icon">📚</span>
+                <span class="badge-text">ביקורת מקצועית</span>
+            </div>
+            
+            <div class="pro-review-card">
+                <div class="pro-review-header">
+                    <div class="publisher-logo">ניב</div>
+                    <div class="publisher-info">
+                        <div class="publisher-name">ספרי ניב</div>
+                        <div class="publisher-dept">מחלקת לקטורה</div>
+                    </div>
+                </div>
+                
+                <blockquote class="pro-review-quote">
+                    "חווית קריאה קלילה, קצבית ומצחיקה מאוד.<br>
+                    <span class="highlight-text">בסוף כל פרק ישנו פאנצ' מתוכנן היטב ומבריק.</span>"
+                </blockquote>
+                
+                <div class="pro-review-details">
+                    <p class="detail-line">"תחושה של שיחה בין חברים בבר"</p>
+                    <p class="detail-line">"מבט חברתי-תרבותי על עולם הדייטינג המודרני בישראל"</p>
+                    <p class="detail-line">"תחושה של מסע על רקע הצורך האנושי הבסיסי בחיבור ובהבנה"</p>
+                </div>
+                
+                <div class="pro-review-footer">
+                    <span class="review-date">אוגוסט 2025</span>
+                    <span class="review-divider">•</span>
+                    <span class="review-source">ביקורת רשמית</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews-section fade-in-section">
+            <h2 class="section-title">מה הקוראים אומרים?</h2>
+            
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"קראתי בנשימה אחת. צחקתי כל כך חזק שהשכנים דפקו בקיר"</p>
+                    <p class="review-author">— מיכל, תל אביב</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"סוף סוף ספר שמדבר על דייטינג בלי להתחנף. אמיתי ומצחיק"</p>
+                    <p class="review-author">— יוסי, חיפה</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"המתנה המושלמת לכל חבר/ה רווק/ה. פשוט גאוני"</p>
+                    <p class="review-author">— שירה, ירושלים</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Section -->
+        <section class="social-section fade-in-section">
+            <h2 class="social-title">📱 עוד תוכן מצחיק בערוצים</h2>
+            
+            <div class="social-links">
+                <a href="https://www.youtube.com/@funnydates101" class="social-link" target="_blank">
+                    <span class="icon">▶️</span>
+                    <div>
+                        <div class="label">YouTube</div>
+                        <div class="handle">@funnydates101</div>
+                    </div>
+                </a>
+                
+                <a href="https://www.tiktok.com/@funnydates101" class="social-link" target="_blank">
+                    <span class="icon">🎵</span>
+                    <div>
+                        <div class="label">TikTok</div>
+                        <div class="handle">@funnydates101</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Story Submission Section -->
+        <section class="story-section fade-in-section" id="share">
+            <div class="story-badge">
+                <span>🎬</span>
+                <span>יש לך סיפור?</span>
+            </div>
+            
+            <h2 class="story-title">הסיפור שלך יכול להפוך לסרטון!</h2>
+            
+            <p class="story-subtitle">
+                היה לך דייט מטורף? הזוי? מצחיק עד דמעות?
+                <br>שלח לנו ואולי הסיפור שלך יעלה לערוץ!
+            </p>
+            
+            <div class="story-reward">
+                <span>🌟</span>
+                <span>הסיפור שלך יפורסם עם אזכור שלך בסרטון</span>
+            </div>
+            
+            <form class="story-form" action="https://api.web3forms.com/submit" method="POST">
+                <!-- Web3Forms Access Key - החלף במפתח שלך -->
+                <input type="hidden" name="access_key" value="c3307ded-69c5-4654-9615-0be668c334d4">
+                <input type="hidden" name="subject" value="סיפור דייט חדש מהאתר!">
+                <input type="hidden" name="from_name" value="FunnyDates Website">
+                
+                <div class="form-group">
+                    <label class="form-label">השם שלך (או כינוי)</label>
+                    <input type="text" name="name" class="form-input" placeholder="איך לקרוא לך?" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">אימייל</label>
+                    <input type="email" name="email" class="form-input" placeholder="כדי שנוכל לעדכן אותך" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">הסיפור שלך</label>
+                    <textarea name="story" class="form-input form-textarea" placeholder="ספר/י לנו מה קרה... ככל שיותר פרטים, יותר כיף!" required></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit">
+                    🚀 שלח את הסיפור
+                </button>
+                
+                <p class="form-note">
+                    * הסיפור ישמר בסודיות ויפורסם רק באישורך
+                </p>
+            </form>
+        </section>
+
+        <!-- Buy Section - 3 Options -->
+        <section class="buy-section fade-in-section" id="buy">
+            <h2 class="section-title">איפה לקנות?</h2>
+            <p class="buy-subtitle">בחרו את הפורמט המתאים לכם</p>
+            
+            <div class="buy-grid">
+                <!-- Print Book - Israel -->
+                <div class="buy-card featured">
+                    <div class="buy-card-badge">🇮🇱 הכי נמכר</div>
+                    <div class="buy-icon">📚</div>
+                    <h3 class="buy-title">ספר מודפס</h3>
+                    <p class="buy-desc">משלוח עד הבית בישראל</p>
+                    <div class="buy-price">₪75</div>
+                    <div class="buy-note">מחיר השקה מיוחד!</div>
+                    <a href="https://bookpod.co.il/product/101-%d7%93%d7%99%d7%99%d7%98%d7%99%d7%9d-%d7%95%d7%90%d7%a3-%d7%a0%d7%a9%d7%99%d7%9b%d7%94/" class="buy-button" target="_blank">
+                        להזמנה ב-BookPod
+                    </a>
+                    <p class="buy-delivery">🚚 תוך 5 ימי עסקים</p>
+                </div>
+
+                <!-- E-Book - E-Vrit -->
+                <div class="buy-card">
+                    <div class="buy-icon">📱</div>
+                    <h3 class="buy-title">ספר דיגיטלי</h3>
+                    <p class="buy-desc">קריאה מיידית בכל מכשיר</p>
+                    <div class="buy-price">₪44</div>
+                    <div class="buy-note">הורדה מיידית!</div>
+                    <a href="https://www.e-vrit.co.il/Product/37846" class="buy-button secondary" target="_blank">
+                        להורדה ב-E-Vrit
+                    </a>
+                    <p class="buy-delivery">⚡ קבלה מיידית</p>
+                </div>
+
+                <!-- Amazon - Hebrew Print for US -->
+                <div class="buy-card">
+                    <div class="buy-card-badge intl">🇺🇸 משלוח לארה"ב</div>
+                    <div class="buy-icon">📦</div>
+                    <h3 class="buy-title">Amazon</h3>
+                    <p class="buy-desc">ספר מודפס בעברית</p>
+                    <div class="buy-price">$13.90</div>
+                    <div class="buy-note">לישראלים בחו"ל</div>
+                    <a href="https://www.amazon.com/dp/B0FY7DJFJ9" class="buy-button amazon" target="_blank">
+                        Buy on Amazon
+                    </a>
+                    <p class="buy-delivery">🌐 משלוח בינלאומי</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-text">© 2024 כל הזכויות שמורות</p>
+            <p class="footer-author">📚 מאת ניר רם</p>
+        </footer>
+    </div>
+
+    <script>
+        // Countdown Timer - מחיר השקה עד 31.01.2026
+        function updateCountdown() {
+            // Fixed end date: January 31, 2026
+            const endDate = new Date('2026-01-31T23:59:59');
+
+            const now = new Date();
+            const diff = endDate - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Scroll animations
+        const fadeInSections = document.querySelectorAll('.fade-in-section');
+        
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        fadeInSections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Hide notification after 10 seconds
+        setTimeout(() => {
+            const toast = document.querySelector('.notification-toast');
+            toast.style.animation = 'slideOut 0.5s ease-out forwards';
+        }, 15000);
+
+        // Add slideOut animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideOut {
+                to {
+                    transform: translateX(-100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
