@@ -394,41 +394,79 @@
             font-size: 14px;
         }
 
-        /* Countdown */
-        .countdown-container {
+        /* Launch Offer - Hollywood Style */
+        .launch-offer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
             margin-top: 30px;
             animation: fadeInUp 0.8s ease-out 1s both;
         }
 
-        .countdown-label {
-            color: var(--accent-rose);
-            font-size: 14px;
-            margin-bottom: 10px;
+        .offer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%);
+            border: 2px solid var(--accent-gold);
+            border-radius: 50px;
+            padding: 12px 28px;
+            animation: shimmer 3s ease-in-out infinite;
         }
 
-        .countdown {
+        @keyframes shimmer {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.5); }
+        }
+
+        .offer-icon {
+            font-size: 24px;
+        }
+
+        .offer-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+        }
+
+        .offer-date {
             display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .countdown-item {
+            align-items: center;
+            gap: 12px;
             background: var(--bg-card);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 15px 20px;
-            min-width: 70px;
+            padding: 15px 30px;
         }
 
-        .countdown-number {
-            font-size: 28px;
-            font-weight: 900;
-            color: var(--accent-rose);
-        }
-
-        .countdown-unit {
-            font-size: 12px;
+        .date-label {
             color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .date-value {
+            font-family: 'Secular One', sans-serif;
+            font-size: 28px;
+            color: var(--accent-rose);
+            letter-spacing: 2px;
+        }
+
+        .offer-urgency {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .urgency-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
         }
 
         /* Why Section */
@@ -960,17 +998,20 @@
                 padding: 20px 40px;
             }
 
-            .countdown {
-                gap: 10px;
+            .launch-offer {
+                gap: 12px;
             }
 
-            .countdown-item {
-                padding: 12px 15px;
-                min-width: 60px;
+            .offer-badge {
+                padding: 10px 20px;
             }
 
-            .countdown-number {
-                font-size: 22px;
+            .offer-text {
+                font-size: 15px;
+            }
+
+            .date-value {
+                font-size: 24px;
             }
 
             .social-links {
@@ -1112,6 +1153,41 @@
             color: var(--accent-gold);
         }
 
+        .pro-review-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .highlight-icon {
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .pro-review-highlights {
+                flex-direction: column;
+                align-items: center;
+            }
+            .highlight-item {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
         /* Scroll animations */
         .fade-in-section {
             opacity: 0;
@@ -1139,6 +1215,154 @@
         <span class="heart">💕</span>
         <span class="heart">💔</span>
     </div>
+
+    <!-- Accessibility Widget -->
+    <div id="accessibility-widget">
+        <button class="accessibility-btn" onclick="toggleAccessibilityMenu()" aria-label="תפריט נגישות">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9H15V22H13V16H11V22H9V9H3V7H21V9Z"/>
+            </svg>
+        </button>
+        <div class="accessibility-menu" id="accessibility-menu">
+            <div class="accessibility-header">
+                <span>נגישות</span>
+                <button onclick="toggleAccessibilityMenu()" aria-label="סגור">✕</button>
+            </div>
+            <button onclick="changeFontSize(1)">הגדל טקסט +</button>
+            <button onclick="changeFontSize(-1)">הקטן טקסט -</button>
+            <button onclick="toggleHighContrast()">ניגודיות גבוהה</button>
+            <button onclick="toggleGrayscale()">גווני אפור</button>
+            <button onclick="toggleUnderlineLinks()">הדגש קישורים</button>
+            <button onclick="resetAccessibility()">איפוס</button>
+        </div>
+    </div>
+
+    <style>
+        #accessibility-widget {
+            position: fixed;
+            bottom: 100px;
+            left: 20px;
+            z-index: 9999;
+        }
+        .accessibility-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+        }
+        .accessibility-btn:hover {
+            transform: scale(1.1);
+            background: #f4d03f;
+        }
+        .accessibility-menu {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            background: #1a1a1a;
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: 15px;
+            min-width: 200px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .accessibility-menu.active {
+            display: flex;
+        }
+        .accessibility-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+        .accessibility-header button {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .accessibility-menu button:not(.accessibility-header button) {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: right;
+            transition: all 0.2s ease;
+        }
+        .accessibility-menu button:not(.accessibility-header button):hover {
+            background: var(--accent-gold);
+            color: #000;
+        }
+        body.high-contrast {
+            filter: contrast(1.5);
+        }
+        body.grayscale {
+            filter: grayscale(100%);
+        }
+        body.underline-links a {
+            text-decoration: underline !important;
+        }
+        @media (max-width: 768px) {
+            #accessibility-widget {
+                bottom: 80px;
+                left: 10px;
+            }
+            .accessibility-btn {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+
+    <script>
+        let fontSize = 100;
+        
+        function toggleAccessibilityMenu() {
+            document.getElementById('accessibility-menu').classList.toggle('active');
+        }
+        
+        function changeFontSize(delta) {
+            fontSize += delta * 10;
+            fontSize = Math.max(80, Math.min(150, fontSize));
+            document.body.style.fontSize = fontSize + '%';
+        }
+        
+        function toggleHighContrast() {
+            document.body.classList.toggle('high-contrast');
+            document.body.classList.remove('grayscale');
+        }
+        
+        function toggleGrayscale() {
+            document.body.classList.toggle('grayscale');
+            document.body.classList.remove('high-contrast');
+        }
+        
+        function toggleUnderlineLinks() {
+            document.body.classList.toggle('underline-links');
+        }
+        
+        function resetAccessibility() {
+            fontSize = 100;
+            document.body.style.fontSize = '100%';
+            document.body.classList.remove('high-contrast', 'grayscale', 'underline-links');
+        }
+    </script>
 
     <!-- Floating Quote Bubbles -->
     <div class="floating-quotes">
@@ -1192,21 +1416,18 @@
                 <p class="cta-subtext">משלוח עד הבית | תוך 5 ימי עסקים</p>
             </div>
 
-            <div class="countdown-container">
-                <p class="countdown-label">⏰ מחיר ההשקה נגמר בעוד:</p>
-                <div class="countdown">
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="days">3</div>
-                        <div class="countdown-unit">ימים</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="hours">12</div>
-                        <div class="countdown-unit">שעות</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="minutes">45</div>
-                        <div class="countdown-unit">דקות</div>
-                    </div>
+            <div class="launch-offer">
+                <div class="offer-badge">
+                    <span class="offer-icon">🎁</span>
+                    <span class="offer-text">מחיר השקה מיוחד</span>
+                </div>
+                <div class="offer-date">
+                    <span class="date-label">בתוקף עד</span>
+                    <span class="date-value">31.01.2026</span>
+                </div>
+                <div class="offer-urgency">
+                    <span class="urgency-dot"></span>
+                    <span>מהדורה מוגבלת</span>
                 </div>
             </div>
         </section>
@@ -1261,14 +1482,29 @@
                 </div>
                 
                 <blockquote class="pro-review-quote">
-                    "חווית קריאה קלילה, קצבית ומצחיקה מאוד.<br>
-                    <span class="highlight-text">בסוף כל פרק ישנו פאנצ' מתוכנן היטב ומבריק.</span>"
+                    עולם מטורלל, לא צפוי, מרגש ומורכב —<br>
+                    <span class="highlight-text">אבל תמיד מצחיק.</span>
                 </blockquote>
                 
+                <div class="pro-review-highlights">
+                    <div class="highlight-item">
+                        <span class="highlight-icon">⚡</span>
+                        <span>קצב מהיר ושפה עכשווית</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-icon">💥</span>
+                        <span>בסוף כל פרק — פאנץ' מבריק</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-icon">🎯</span>
+                        <span>תיאורים מלאי חיים ומיומנות</span>
+                    </div>
+                </div>
+                
                 <div class="pro-review-details">
-                    <p class="detail-line">"תחושה של שיחה בין חברים בבר"</p>
-                    <p class="detail-line">"מבט חברתי-תרבותי על עולם הדייטינג המודרני בישראל"</p>
-                    <p class="detail-line">"תחושה של מסע על רקע הצורך האנושי הבסיסי בחיבור ובהבנה"</p>
+                    <p class="detail-line">מבט חברתי-תרבותי על עולם הדייטינג המודרני בישראל</p>
+                    <p class="detail-line">השפעת האפליקציות, פערים תרבותיים, ציפיות לא ריאליות</p>
+                    <p class="detail-line">המחבר, איש ההייטק, מגלה מיומנות רבה בתיאורים</p>
                 </div>
                 
                 <div class="pro-review-footer">
@@ -1434,28 +1670,6 @@
     </div>
 
     <script>
-        // Countdown Timer - מחיר השקה עד 31.01.2026
-        function updateCountdown() {
-            // Fixed end date: January 31, 2026
-            const endDate = new Date('2026-01-31T23:59:59');
-
-            const now = new Date();
-            const diff = endDate - now;
-
-            if (diff > 0) {
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-                document.getElementById('days').textContent = days;
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            }
-        }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
         // Scroll animations
         const fadeInSections = document.querySelectorAll('.fade-in-section');
         
