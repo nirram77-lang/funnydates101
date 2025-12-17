@@ -358,108 +358,117 @@
         .why-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--accent-cream); }
         .why-text { color: var(--text-secondary); font-size: 15px; }
 
-        /* TEASER SECTION - NEW DESIGN */
+        /* TEASER SECTION - STANDARDIZED DESIGN */
         .teaser-section {
-            padding: 80px 20px;
+            padding: 100px 20px;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, #0f0f0f 50%, var(--bg-primary) 100%);
             text-align: center;
         }
         
-        .teaser-header {
+        .teaser-badge {
             display: inline-flex;
             align-items: center;
-            gap: 15px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%);
-            border: 2px solid var(--accent-gold);
-            border-radius: 60px;
-            padding: 20px 40px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
+            gap: 10px;
+            background: var(--gradient-red);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 20px;
         }
         
-        .teaser-header:hover {
-            background: rgba(212, 175, 55, 0.3);
-            transform: scale(1.02);
-            box-shadow: var(--shadow-gold);
-        }
-        
-        .teaser-icon {
-            font-size: 32px;
-        }
-        
-        .teaser-title {
+        .teaser-main-title {
             font-family: 'Secular One', sans-serif;
-            font-size: clamp(24px, 5vw, 36px);
-            color: var(--accent-gold);
-            margin: 0;
+            font-size: clamp(28px, 5vw, 40px);
+            margin-bottom: 15px;
+            color: var(--text-primary);
         }
         
-        .teaser-arrow {
-            font-size: 28px;
-            color: var(--accent-gold);
-            transition: transform 0.3s ease;
+        .teaser-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
         }
         
-        .teaser-arrow.open {
-            transform: rotate(180deg);
-        }
-        
-        .teaser-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease, opacity 0.3s ease;
-            opacity: 0;
-        }
-        
-        .teaser-content.open {
-            max-height: 800px;
-            opacity: 1;
+        .teaser-quotes-container {
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .teaser-quote-card {
             background: linear-gradient(135deg, var(--bg-card) 0%, #222 100%);
             border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 20px;
-            padding: 30px 40px;
-            margin: 20px auto;
-            max-width: 700px;
+            padding: 25px 30px;
+            margin: 15px 0;
             position: relative;
+            text-align: right;
+            transition: all 0.3s ease;
+        }
+        
+        .teaser-quote-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateX(-5px);
         }
         
         .teaser-quote-card::before {
             content: '"';
             position: absolute;
             top: 10px;
-            right: 20px;
-            font-size: 60px;
+            right: 15px;
+            font-size: 50px;
             color: var(--accent-gold);
-            opacity: 0.3;
+            opacity: 0.2;
             font-family: Georgia, serif;
         }
         
         .teaser-quote-text {
-            font-size: clamp(18px, 3vw, 24px);
+            font-size: 18px;
             color: var(--text-primary);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             line-height: 1.6;
+            padding-right: 30px;
         }
         
         .teaser-quote-source {
             color: var(--accent-gold);
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 500;
         }
         
-        .teaser-footer {
+        .teaser-footer-text {
+            margin-top: 40px;
+            font-size: 18px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        .teaser-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient-gold);
+            color: #000;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
             margin-top: 30px;
-            font-size: 20px;
-            color: var(--text-primary);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-gold);
+        }
+        
+        .teaser-cta:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
         }
 
         /* Professional Review */
         .pro-review-section {
             padding: 100px 20px;
-            background: linear-gradient(180deg, var(--bg-primary) 0%, #0f0f0f 50%, var(--bg-primary) 100%);
+            background: var(--bg-secondary);
             text-align: center;
         }
         .pro-review-badge {
@@ -489,7 +498,7 @@
             position: absolute;
             top: -15px; left: 50%;
             transform: translateX(-50%);
-            background: var(--bg-primary);
+            background: var(--bg-secondary);
             color: var(--accent-gold);
             padding: 5px 15px;
             font-size: 24px;
@@ -642,6 +651,9 @@
             color: var(--accent-rose);
             font-style: italic;
             font-size: 18px;
+            border-right: 3px solid var(--accent-gold);
+            padding-right: 15px;
+            margin-top: 20px;
         }
 
         /* Social */
@@ -969,13 +981,13 @@
             .notification-toast { left: 15px; right: 15px; bottom: 15px; max-width: none; }
             .cta-button { flex-direction: column; padding: 20px 40px; }
             .about-container { flex-direction: column; text-align: center; }
+            .about-signature { border-right: none; padding-right: 0; text-align: center; }
             .social-links { flex-direction: column; align-items: center; }
             .social-link { width: 100%; max-width: 300px; justify-content: center; }
             #accessibility-widget { bottom: 80px; left: 10px; }
             .lang-switch { top: 10px; left: 10px; }
             .lang-switch a { padding: 8px 15px; font-size: 12px; }
             .highlight-item { width: 100%; justify-content: center; }
-            .teaser-header { padding: 15px 25px; }
             .teaser-quote-card { padding: 20px; }
         }
     </style>
@@ -1102,32 +1114,41 @@
             </div>
         </section>
 
-        <!-- Teaser Section - Clickable -->
+        <!-- Teaser Section - Hollywood Style -->
         <section class="teaser-section">
-            <div class="teaser-header" onclick="toggleTeaser()">
-                <span class="teaser-icon">🎬</span>
-                <h2 class="teaser-title">רוצה טעימה?</h2>
-                <span class="teaser-arrow" id="teaserArrow">↓</span>
+            <div class="teaser-badge">
+                <span>🎬</span>
+                <span>רוצה להציץ לבלגן?</span>
             </div>
             
-            <div class="teaser-content" id="teaserContent">
+            <h2 class="teaser-main-title">טעימה מדייטים אמיתיים. בלי פילטרים.</h2>
+            <p class="teaser-subtitle">כי בדייטים — זה תמיד מצחיק, עד שזה קורה לך.</p>
+            
+            <div class="teaser-quotes-container">
                 <div class="teaser-quote-card">
-                    <p class="teaser-quote-text">שבע כוסות יין. ופתאום אנחנו זוג ותיק.</p>
-                    <p class="teaser-quote-source">— דייט #12</p>
+                    <p class="teaser-quote-text">היא עלתה לאוטו עם שלושה סלים. רק אז הבנתי — זה לא דייט. זה משלוח.</p>
+                    <p class="teaser-quote-source">— דייט עם סבתא… ועם שלושה סלים</p>
                 </div>
                 
                 <div class="teaser-quote-card">
-                    <p class="teaser-quote-text">"יש לך שיניים יפות." וזהו. זה כל מה שנשאר מהדייט.</p>
-                    <p class="teaser-quote-source">— דייט #34</p>
+                    <p class="teaser-quote-text">"ברור שאנחנו ביחד כבר חודשיים." הכרתי אותה לפני עשר דקות.</p>
+                    <p class="teaser-quote-source">— נפגשנו לפני רבע שעה</p>
                 </div>
                 
                 <div class="teaser-quote-card">
-                    <p class="teaser-quote-text">היא התחילה לדבר על ילדים. קצת גבוה בשביל מישהו שכרגע ירד מכרית.</p>
-                    <p class="teaser-quote-source">— דייט #67</p>
+                    <p class="teaser-quote-text">היא התחילה לדבר על ילדים. אני עוד לא סיימתי את המשקה.</p>
+                    <p class="teaser-quote-source">— אהבה בקומה 42</p>
                 </div>
                 
-                <p class="teaser-footer">וכן. <strong>כל זה קרה באמת.</strong> 🎬</p>
+                <div class="teaser-quote-card">
+                    <p class="teaser-quote-text">יש דייטים שנגמרים בנשיקה. ויש כאלה שנגמרים בהודעת ויתור.</p>
+                    <p class="teaser-quote-source">— יש לך שיניים יפות (וזהו)</p>
+                </div>
             </div>
+            
+            <p class="teaser-footer-text">וכן. זה סיפור אמיתי. כי בדייטים — זה תמיד מצחיק, עד שזה קורה לך. 🎬</p>
+            
+            <a href="#buy" class="teaser-cta">😂 אני מוכן לצחוק על זה קצת</a>
         </section>
 
         <!-- Pro Review -->
@@ -1201,10 +1222,10 @@
                         מנהל מערכות מידע עם רקע עשיר בעולם המקצועי, שחייו האישיים הפכו אותו גם <strong>לחוקר סקרן של עולם הדייטים</strong>.
                     </p>
                     <p class="about-text">
-                        גרוש ואב לשלושה ילדים בוגרים — אלון, דותן ומיכאלה — הוא מביא שילוב ייחודי של <strong>חדות מחשבה, סקרנות אנושית ויכולת למצוא את הצד המצחיק</strong> גם ברגעים הכי מביכים.
+                        גרוש ואב לשלושה ילדים בוגרים — אלון, דון ומיכאלה — הוא מביא שילוב ייחודי של <strong>חדות מחשבה, סקרנות אנושית ויכולת נדירה למצוא את הצד המצחיק</strong> גם ברגעים הכי מביכים.
                     </p>
                     <p class="about-signature">
-                        "כי בסוף, אם כבר עברת דייט נורא — לפחות שיהיה סיפור טוב לספר" 😅
+                        "בקיצור: אם כבר עברתי את זה — לפחות שיצא מזה סיפור טוב לספר."
                     </p>
                 </div>
             </div>
@@ -1333,14 +1354,6 @@
             fontSize = 100;
             document.body.style.fontSize = '100%';
             document.body.classList.remove('high-contrast', 'grayscale', 'underline-links');
-        }
-
-        // Teaser Toggle
-        function toggleTeaser() {
-            const content = document.getElementById('teaserContent');
-            const arrow = document.getElementById('teaserArrow');
-            content.classList.toggle('open');
-            arrow.classList.toggle('open');
         }
 
         // Hide toast after 15 seconds
