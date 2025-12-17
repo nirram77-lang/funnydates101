@@ -146,15 +146,38 @@
         /* Notification Toast */
         .notification-toast {
             position: fixed;
-            bottom: 30px; left: 30px;
+            bottom: 20px; right: 20px;
             background: var(--bg-card);
             border: 1px solid var(--accent-gold);
-            border-radius: 16px;
-            padding: 16px 24px;
+            border-radius: 12px;
+            padding: 12px 18px;
             z-index: 1000;
-            animation: slideIn 0.5s ease-out;
+            animation: slideInRight 0.5s ease-out;
             box-shadow: var(--shadow-gold);
-            max-width: 320px;
+            max-width: 240px;
+        }
+        .notification-toast.hidden {
+            display: none;
+        }
+        .toast-close {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+        .toast-close:hover {
+            color: var(--accent-gold);
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
         .toast-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
         .toast-icon { font-size: 24px; }
@@ -969,7 +992,7 @@
         /* Accessibility Widget */
         #accessibility-widget {
             position: fixed;
-            bottom: 100px; left: 20px;
+            top: 70px; left: 20px;
             z-index: 9999;
         }
         .accessibility-btn {
@@ -1035,13 +1058,13 @@
         body.underline-links a { text-decoration: underline !important; }
 
         @media (max-width: 768px) {
-            .notification-toast { left: 15px; right: 15px; bottom: 15px; max-width: none; }
+            .notification-toast { left: auto; right: 10px; bottom: 10px; max-width: 200px; }
             .cta-button { flex-direction: column; padding: 20px 40px; }
             .about-container { flex-direction: column; text-align: center; }
             .about-signature { border-right: none; padding-right: 0; text-align: center; }
             .social-links { flex-direction: column; align-items: center; }
             .social-link { width: 100%; max-width: 300px; justify-content: center; }
-            #accessibility-widget { bottom: 80px; left: 10px; }
+            #accessibility-widget { top: 60px; left: 10px; }
             .lang-switch { top: 10px; left: 10px; }
             .lang-switch a { padding: 8px 15px; font-size: 12px; }
             .highlight-item { width: 100%; justify-content: center; }
@@ -1104,13 +1127,13 @@
     </div>
 
     <!-- Notification Toast -->
-    <div class="notification-toast">
+    <div class="notification-toast" id="priceToast">
+        <button class="toast-close" onclick="closeToast()" aria-label="סגור">✕</button>
         <div class="toast-header">
             <span class="toast-icon">🔥</span>
-            <span class="toast-title">מחיר השקה מיוחד!</span>
+            <span class="toast-title">מחיר השקה!</span>
         </div>
-        <div class="toast-message">לזמן מוגבל בלבד</div>
-        <div class="toast-price">₪75 בלבד</div>
+        <div class="toast-price">₪75</div>
     </div>
 
     <!-- Main Content -->
@@ -1431,11 +1454,11 @@
             document.body.classList.remove('high-contrast', 'grayscale', 'underline-links');
         }
 
-        // Hide toast after 15 seconds
-        setTimeout(() => {
-            const toast = document.querySelector('.notification-toast');
-            if (toast) toast.style.display = 'none';
-        }, 15000);
+        // Close toast function
+        function closeToast() {
+            const toast = document.getElementById('priceToast');
+            if (toast) toast.classList.add('hidden');
+        }
 
         // Form submit
         document.getElementById('storyForm').addEventListener('submit', async function(e) {
