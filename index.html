@@ -357,29 +357,112 @@
             margin-bottom: 60px;
         }
 
-        /* Why Grid */
+        /* Why Grid - HOLLYWOOD EDITION */
+        .why-section-hollywood {
+            padding: 120px 20px;
+            background: linear-gradient(180deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .why-section-hollywood::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .why-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .why-main-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: clamp(32px, 6vw, 50px);
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+        .why-subtitle {
+            color: var(--accent-gold);
+            font-size: 18px;
+        }
         .why-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
             margin: 0 auto;
+            perspective: 1000px;
         }
         .why-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 40px 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .why-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
         }
         .why-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-gold);
-            box-shadow: var(--shadow-gold);
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(212, 175, 55, 0.15);
         }
-        .why-icon { font-size: 40px; margin-bottom: 15px; }
-        .why-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--accent-cream); }
-        .why-text { color: var(--text-secondary); font-size: 15px; }
+        .why-card:hover::before {
+            opacity: 1;
+        }
+        .why-card:hover::after {
+            opacity: 1;
+        }
+        .why-icon {
+            font-size: 55px;
+            margin-bottom: 20px;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .why-card:hover .why-icon {
+            transform: scale(1.15) rotate(-5deg);
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.4));
+        }
+        .why-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--accent-gold);
+            transition: color 0.3s ease;
+        }
+        .why-text {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.7;
+        }
 
         /* TEASER SECTION - STANDARDIZED DESIGN */
         .teaser-section {
@@ -1172,24 +1255,27 @@
             </div>
         </section>
 
-        <!-- Why Section -->
-        <section class="section alt-bg">
-            <h2 class="section-title">למה לקרוא את הספר?</h2>
+        <!-- Why Section - HOLLYWOOD EDITION -->
+        <section class="why-section-hollywood">
+            <div class="why-header">
+                <h2 class="why-main-title">למה לקרוא את הספר?</h2>
+                <p class="why-subtitle">שלוש סיבות שיגרמו לך להתחיל עוד הלילה</p>
+            </div>
             <div class="why-grid">
                 <div class="why-card">
-                    <div class="why-icon">😂</div>
+                    <span class="why-icon">🤣</span>
                     <h3 class="why-title">צחוק עד דמעות</h3>
-                    <p class="why-text">101 סיפורים שיגרמו לך לצחוק בקול, להתבייש במקומם, ולהודות שגם לך קרו דברים כאלה</p>
+                    <p class="why-text">101 סיפורים שיגרמו לך להתגלגל מצחוק. תצחק, תתבייש במקומם, ותודה שזה לא רק לך קורה.</p>
                 </div>
                 <div class="why-card">
-                    <div class="why-icon">💔</div>
-                    <h3 class="why-title">תרגיש פחות לבד</h3>
-                    <p class="why-text">אחרי שתקרא על הדייטים האלה, תבין שאתה לא היחיד. כולנו שם. כולנו סבלנו.</p>
+                    <span class="why-icon">💔</span>
+                    <h3 class="why-title">תתכונן להרגיש פחות לבד</h3>
+                    <p class="why-text">כולנו מרגישים לפעמים לבד בעולם הדייטים המטורף. הספר הזה מראה לך שאתה ממש לא היחיד.</p>
                 </div>
                 <div class="why-card">
-                    <div class="why-icon">🍷</div>
-                    <h3 class="why-title">בלי פילטרים</h3>
-                    <p class="why-text">סיפורים אמיתיים, כתובים בגובה העיניים, עם הומור ישראלי בלתי מתנצל</p>
+                    <span class="why-icon">🍷</span>
+                    <h3 class="why-title">סודות בלי פילטרים</h3>
+                    <p class="why-text">סיפורים אמיתיים, עם הומור ישראלי חסר מעצורים שייקח אותך למחוזות שלא ידעת שקיימים.</p>
                 </div>
             </div>
         </section>
