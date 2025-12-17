@@ -6,11 +6,9 @@
     <title>101 דייטים ואף נשיכה | הספר הכי מצחיק על דייטים</title>
     <meta name="description" content="101 סיפורי דייטים מטורפים שיגרמו לך לצחוק עד דמעות. הספר שכל מי שיצא לדייט חייב לקרוא.">
     
-    <!-- Language Switch -->
     <link rel="alternate" hreflang="en" href="https://funnydates101.com">
     <link rel="alternate" hreflang="he" href="https://funnydates101.co.il">
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Secular+One&display=swap" rel="stylesheet">
@@ -23,9 +21,7 @@
             --text-primary: #ffffff;
             --text-secondary: #b0b0b0;
             --accent-red: #dc2626;
-            --accent-crimson: #b91c1c;
             --accent-rose: #f87171;
-            --accent-pink: #fca5a5;
             --accent-gold: #d4af37;
             --accent-cream: #f5f0e1;
             --gradient-red: linear-gradient(135deg, #b91c1c 0%, #dc2626 50%, #ef4444 100%);
@@ -45,7 +41,7 @@
             line-height: 1.6;
         }
 
-        /* Language Switch Button */
+        /* Language Switch */
         .lang-switch {
             position: fixed;
             top: 20px;
@@ -103,7 +99,7 @@
             100% { transform: translateY(-100px) rotate(360deg) scale(1); opacity: 0; }
         }
 
-        /* Floating Quotes - FIXED: Lower z-index */
+        /* Floating Quotes */
         .floating-quotes {
             position: fixed;
             top: 0; left: 0;
@@ -171,11 +167,10 @@
             to { transform: translateX(0); opacity: 1; }
         }
 
-        /* Main Content - CRITICAL FIX */
+        /* Main Content */
         .main-content {
             position: relative;
             z-index: 10;
-            background: transparent;
         }
 
         /* Hero Section */
@@ -317,7 +312,7 @@
             animation: blink 1.5s ease-in-out infinite;
         }
 
-        /* SECTIONS - FIXED: No more opacity:0 issues */
+        /* Sections */
         .section {
             padding: 100px 20px;
             position: relative;
@@ -363,38 +358,103 @@
         .why-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--accent-cream); }
         .why-text { color: var(--text-secondary); font-size: 15px; }
 
-        /* Teaser */
+        /* TEASER SECTION - NEW DESIGN */
         .teaser-section {
-            padding: 100px 20px;
+            padding: 80px 20px;
             text-align: center;
         }
-        .teaser-quote {
+        
+        .teaser-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%);
+            border: 2px solid var(--accent-gold);
+            border-radius: 60px;
+            padding: 20px 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+        
+        .teaser-header:hover {
+            background: rgba(212, 175, 55, 0.3);
+            transform: scale(1.02);
+            box-shadow: var(--shadow-gold);
+        }
+        
+        .teaser-icon {
+            font-size: 32px;
+        }
+        
+        .teaser-title {
+            font-family: 'Secular One', sans-serif;
             font-size: clamp(24px, 5vw, 36px);
-            font-style: italic;
-            color: var(--text-secondary);
-            max-width: 800px;
-            margin: 0 auto 40px;
+            color: var(--accent-gold);
+            margin: 0;
+        }
+        
+        .teaser-arrow {
+            font-size: 28px;
+            color: var(--accent-gold);
+            transition: transform 0.3s ease;
+        }
+        
+        .teaser-arrow.open {
+            transform: rotate(180deg);
+        }
+        
+        .teaser-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .teaser-content.open {
+            max-height: 800px;
+            opacity: 1;
+        }
+        
+        .teaser-quote-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #222 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 30px 40px;
+            margin: 20px auto;
+            max-width: 700px;
             position: relative;
         }
-        .teaser-quote::before, .teaser-quote::after {
+        
+        .teaser-quote-card::before {
             content: '"';
-            font-size: 80px;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 60px;
             color: var(--accent-gold);
             opacity: 0.3;
-            position: absolute;
+            font-family: Georgia, serif;
         }
-        .teaser-quote::before { top: -40px; right: -20px; }
-        .teaser-quote::after { bottom: -60px; left: -20px; }
-        .teaser-cta {
-            display: inline-block;
+        
+        .teaser-quote-text {
+            font-size: clamp(18px, 3vw, 24px);
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .teaser-quote-source {
             color: var(--accent-gold);
-            font-size: 18px;
-            text-decoration: none;
-            border-bottom: 2px solid var(--accent-gold);
-            padding-bottom: 5px;
-            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: 500;
         }
-        .teaser-cta:hover { color: var(--accent-red); border-color: var(--accent-red); }
+        
+        .teaser-footer {
+            margin-top: 30px;
+            font-size: 20px;
+            color: var(--text-primary);
+        }
 
         /* Professional Review */
         .pro-review-section {
@@ -549,7 +609,8 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            object-fit: cover; object-position: top;
+            object-fit: cover;
+            object-position: top;
             border: 4px solid var(--accent-gold);
             box-shadow: var(--shadow-gold);
         }
@@ -815,16 +876,14 @@
         }
         .buy-delivery { font-size: 13px; color: var(--text-secondary); }
 
-        /* Footer - FIXED */
+        /* Footer */
         .footer {
             padding: 40px 20px;
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             background: var(--bg-primary);
         }
-        .footer-links {
-            margin-bottom: 20px;
-        }
+        .footer-links { margin-bottom: 20px; }
         .footer-links a {
             color: var(--text-secondary);
             text-decoration: none;
@@ -916,6 +975,8 @@
             .lang-switch { top: 10px; left: 10px; }
             .lang-switch a { padding: 8px 15px; font-size: 12px; }
             .highlight-item { width: 100%; justify-content: center; }
+            .teaser-header { padding: 15px 25px; }
+            .teaser-quote-card { padding: 20px; }
         }
     </style>
 </head>
@@ -1041,27 +1102,32 @@
             </div>
         </section>
 
-        <!-- Teaser -->
+        <!-- Teaser Section - Clickable -->
         <section class="teaser-section">
-            <p class="teaser-quote">
-                🎬 רוצה טעימה?<br>↓
-            </p>
-            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-                <p style="font-size: 20px; color: var(--text-secondary); margin-bottom: 20px;">שבע כוסות יין. ופתאום אנחנו זוג ותיק.</p>
-                <p style="color: var(--accent-gold);">— דייט #12</p>
+            <div class="teaser-header" onclick="toggleTeaser()">
+                <span class="teaser-icon">🎬</span>
+                <h2 class="teaser-title">רוצה טעימה?</h2>
+                <span class="teaser-arrow" id="teaserArrow">↓</span>
             </div>
-            <br><br>
-            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-                <p style="font-size: 20px; color: var(--text-secondary); margin-bottom: 20px;">"יש לך שיניים יפות." וזהו. זה כל מה שנשאר מהדייט.</p>
-                <p style="color: var(--accent-gold);">— דייט #34</p>
+            
+            <div class="teaser-content" id="teaserContent">
+                <div class="teaser-quote-card">
+                    <p class="teaser-quote-text">שבע כוסות יין. ופתאום אנחנו זוג ותיק.</p>
+                    <p class="teaser-quote-source">— דייט #12</p>
+                </div>
+                
+                <div class="teaser-quote-card">
+                    <p class="teaser-quote-text">"יש לך שיניים יפות." וזהו. זה כל מה שנשאר מהדייט.</p>
+                    <p class="teaser-quote-source">— דייט #34</p>
+                </div>
+                
+                <div class="teaser-quote-card">
+                    <p class="teaser-quote-text">היא התחילה לדבר על ילדים. קצת גבוה בשביל מישהו שכרגע ירד מכרית.</p>
+                    <p class="teaser-quote-source">— דייט #67</p>
+                </div>
+                
+                <p class="teaser-footer">וכן. <strong>כל זה קרה באמת.</strong> 🎬</p>
             </div>
-            <br><br>
-            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-                <p style="font-size: 20px; color: var(--text-secondary); margin-bottom: 20px;">היא התחילה לדבר על ילדים. קצת גבוה בשביל מישהו שכרגע ירד מכרית.</p>
-                <p style="color: var(--accent-gold);">— דייט #67</p>
-            </div>
-            <br>
-            <p style="text-align: center; color: var(--text-primary); font-size: 18px;">וכן. <strong>כל זה קרה באמת.</strong> 🎬</p>
         </section>
 
         <!-- Pro Review -->
@@ -1242,6 +1308,7 @@
     </div>
 
     <script>
+        // Accessibility
         let fontSize = 100;
         function toggleAccessibilityMenu() {
             document.getElementById('accessibility-menu').classList.toggle('active');
@@ -1266,6 +1333,14 @@
             fontSize = 100;
             document.body.style.fontSize = '100%';
             document.body.classList.remove('high-contrast', 'grayscale', 'underline-links');
+        }
+
+        // Teaser Toggle
+        function toggleTeaser() {
+            const content = document.getElementById('teaserContent');
+            const arrow = document.getElementById('teaserArrow');
+            content.classList.toggle('open');
+            arrow.classList.toggle('open');
         }
 
         // Hide toast after 15 seconds
