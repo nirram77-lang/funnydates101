@@ -503,6 +503,34 @@
             font-weight: 700;
             font-size: 14px;
             margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .teaser-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(220, 38, 38, 0.4);
+        }
+        
+        .teaser-badge .arrow {
+            transition: transform 0.3s ease;
+        }
+        
+        .teaser-badge.open .arrow {
+            transform: scale(1.2);
+        }
+        
+        .teaser-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s ease, opacity 0.3s ease;
+        }
+        
+        .teaser-content.open {
+            max-height: 2000px;
+            opacity: 1;
         }
         
         .teaser-main-title {
@@ -1305,39 +1333,42 @@
 
         <!-- Teaser Section - Hollywood Style -->
         <section class="teaser-section">
-            <div class="teaser-badge">
+            <button class="teaser-badge" id="teaserToggle" onclick="toggleTeaser()">
                 <span>🎬</span>
                 <span>רוצה להציץ לבלגן?</span>
+                <span class="arrow">👀</span>
+            </button>
+            
+            <div class="teaser-content" id="teaserContent">
+                <h2 class="teaser-main-title">טעימה מדייטים אמיתיים. בלי פילטרים.</h2>
+                <p class="teaser-subtitle">כי בדייטים — זה תמיד מצחיק, עד שזה קורה לך.</p>
+                
+                <div class="teaser-quotes-container">
+                    <div class="teaser-quote-card">
+                        <p class="teaser-quote-text">היא עלתה לאוטו עם שלושה סלים. רק אז הבנתי — זה לא דייט. זה משלוח.</p>
+                        <p class="teaser-quote-source">— דייט עם סבתא… ועם שלושה סלים</p>
+                    </div>
+                    
+                    <div class="teaser-quote-card">
+                        <p class="teaser-quote-text">"ברור שאנחנו ביחד כבר חודשיים." הכרתי אותה לפני עשר דקות.</p>
+                        <p class="teaser-quote-source">— נפגשנו לפני רבע שעה</p>
+                    </div>
+                    
+                    <div class="teaser-quote-card">
+                        <p class="teaser-quote-text">היא התחילה לדבר על ילדים. אני עוד לא סיימתי את המשקה.</p>
+                        <p class="teaser-quote-source">— אהבה בקומה 42</p>
+                    </div>
+                    
+                    <div class="teaser-quote-card">
+                        <p class="teaser-quote-text">יש דייטים שנגמרים בנשיקה. ויש כאלה שנגמרים בהודעת ויתור.</p>
+                        <p class="teaser-quote-source">— יש לך שיניים יפות (וזהו)</p>
+                    </div>
+                </div>
+                
+                <p class="teaser-footer-text">וכן. זה סיפור אמיתי. כי בדייטים — זה תמיד מצחיק, עד שזה קורה לך. 🎬</p>
+                
+                <a href="#buy" class="teaser-cta">😂 אני מוכן לצחוק על זה קצת</a>
             </div>
-            
-            <h2 class="teaser-main-title">טעימה מדייטים אמיתיים. בלי פילטרים.</h2>
-            <p class="teaser-subtitle">כי בדייטים — זה תמיד מצחיק, עד שזה קורה לך.</p>
-            
-            <div class="teaser-quotes-container">
-                <div class="teaser-quote-card">
-                    <p class="teaser-quote-text">היא עלתה לאוטו עם שלושה סלים. רק אז הבנתי — זה לא דייט. זה משלוח.</p>
-                    <p class="teaser-quote-source">— דייט עם סבתא… ועם שלושה סלים</p>
-                </div>
-                
-                <div class="teaser-quote-card">
-                    <p class="teaser-quote-text">"ברור שאנחנו ביחד כבר חודשיים." הכרתי אותה לפני עשר דקות.</p>
-                    <p class="teaser-quote-source">— נפגשנו לפני רבע שעה</p>
-                </div>
-                
-                <div class="teaser-quote-card">
-                    <p class="teaser-quote-text">היא התחילה לדבר על ילדים. אני עוד לא סיימתי את המשקה.</p>
-                    <p class="teaser-quote-source">— אהבה בקומה 42</p>
-                </div>
-                
-                <div class="teaser-quote-card">
-                    <p class="teaser-quote-text">יש דייטים שנגמרים בנשיקה. ויש כאלה שנגמרים בהודעת ויתור.</p>
-                    <p class="teaser-quote-source">— יש לך שיניים יפות (וזהו)</p>
-                </div>
-            </div>
-            
-            <p class="teaser-footer-text">וכן. זה סיפור אמיתי. כי בדייטים — זה תמיד מצחיק, עד שזה קורה לך. 🎬</p>
-            
-            <a href="#buy" class="teaser-cta">😂 אני מוכן לצחוק על זה קצת</a>
         </section>
 
         <!-- Pro Review -->
@@ -1567,6 +1598,14 @@
         function closeToast() {
             const toast = document.getElementById('priceToast');
             if (toast) toast.classList.add('hidden');
+        }
+
+        // Toggle teaser section
+        function toggleTeaser() {
+            const toggle = document.getElementById('teaserToggle');
+            const content = document.getElementById('teaserContent');
+            toggle.classList.toggle('open');
+            content.classList.toggle('open');
         }
 
         // Form submit
