@@ -194,6 +194,8 @@
         .toast-close:hover {
             color: var(--accent-gold);
         }
+        .toast-link { display: flex; flex-direction: column; text-decoration: none; color: inherit; cursor: pointer; }
+        .toast-link:hover { opacity: 0.9; }
         @keyframes slideInRight {
             from { transform: translateX(100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
@@ -1160,8 +1162,8 @@
         body.underline-links a { text-decoration: underline !important; }
 
         @media (max-width: 768px) {
-            .notification-toast { left: auto; right: 10px; bottom: 10px; max-width: 200px; }
-            .cta-button { flex-direction: column; padding: 20px 40px; }
+            .notification-toast { left: auto; right: 10px; bottom: 10px; max-width: 180px; padding: 10px 14px; }
+            .cta-button { padding: 14px 28px; font-size: 16px; }
             .about-container { flex-direction: column; text-align: center; }
             .about-signature { border-right: none; padding-right: 0; text-align: center; }
             .social-links { flex-direction: column; align-items: center; }
@@ -1230,12 +1232,14 @@
 
     <!-- Notification Toast -->
     <div class="notification-toast" id="priceToast">
-        <button class="toast-close" onclick="closeToast()" aria-label="סגור">✕</button>
-        <div class="toast-header">
-            <span class="toast-icon">🔥</span>
-            <span class="toast-title">מחיר השקה!</span>
-        </div>
-        <div class="toast-price">₪75</div>
+        <button class="toast-close" onclick="event.stopPropagation(); closeToast()" aria-label="סגור">✕</button>
+        <a href="#buy" class="toast-link" onclick="closeToast()">
+            <div class="toast-header">
+                <span class="toast-icon">🔥</span>
+                <span class="toast-title">מחיר השקה!</span>
+            </div>
+            <div class="toast-price">₪75</div>
+        </a>
     </div>
 
     <!-- Main Content -->
@@ -1523,15 +1527,15 @@
                 <span class="footer-divider">|</span>
                 <a href="/accessibility.html">הצהרת נגישות</a>
                 <span class="footer-divider">|</span>
-                <a href="mailto:info@funnydates101.co.il">צור קשר</a>
+                <a href="/cdn-cgi/l/email-protection#7d14131b123d1b08131304191c09180e4c4d4c531e12531411">צור קשר</a>
             </div>
             <p class="footer-text">Ⓒ כל הזכויות שמורות לניר רם 2025</p>
             <p class="footer-author">📚 101 דייטים ואף נשיכה</p>
-            <p class="footer-contact">📧 <a href="mailto:info@funnydates101.co.il">info@funnydates101.co.il</a></p>
+            <p class="footer-contact">📧 <a href="/cdn-cgi/l/email-protection#a6cfc8c0c9e6c0d3c8c8dfc2c7d2c3d597969788c5c988cfca"><span class="__cf_email__" data-cfemail="89e0e7efe6c9effce7e7f0ede8fdecfab8b9b8a7eae6a7e0e5">[email&#160;protected]</span></a></p>
         </footer>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Accessibility
         let fontSize = 100;
         function toggleAccessibilityMenu() {
@@ -1572,14 +1576,4 @@
             try {
                 await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
-                    body: formData
-                });
-                this.style.display = 'none';
-                document.getElementById('formSuccess').classList.add('show');
-            } catch (err) {
-                alert('שגיאה בשליחה. נסה שוב.');
-            }
-        });
-    </script>
-</body>
-</html>
+                    body: fo
