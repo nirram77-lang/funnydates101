@@ -576,7 +576,64 @@
         }
         .review-divider { color: var(--accent-gold); }
 
-        /* Reviews */
+        /* Reviews - Hollywood Style */
+        .reviews-hollywood {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, #0d0d0d 50%, var(--bg-primary) 100%);
+            text-align: center;
+        }
+        .reviews-header {
+            margin-bottom: 50px;
+        }
+        .reviews-star {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 15px;
+        }
+        .reviews-main-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: clamp(28px, 5vw, 42px);
+            color: var(--accent-gold);
+        }
+        .reviews-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .review-hollywood-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #222 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 35px 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .review-hollywood-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+        }
+        .review-rating {
+            margin-bottom: 20px;
+            font-size: 20px;
+            letter-spacing: 3px;
+        }
+        .review-quote {
+            font-size: 18px;
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: normal;
+        }
+        .review-author-line {
+            color: var(--accent-gold);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Reviews grid old
         .reviews-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1187,24 +1244,42 @@
             </div>
         </section>
 
-        <!-- Reviews -->
-        <section class="section">
-            <h2 class="section-title">מה הקוראים אומרים?</h2>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="review-text">"קראתי בנשימה אחת. צחקתי כל כך חזק שהשכנים דפקו בקיר"</p>
-                    <p class="review-author">— מיכל, תל אביב</p>
+        <!-- Reviews Section - HOLLYWOOD STYLE -->
+        <section class="reviews-hollywood">
+            <div class="reviews-header">
+                <span class="reviews-star">⭐</span>
+                <h2 class="reviews-main-title">אנשים שקראו — ולא יכלו להתעלם</h2>
+            </div>
+            
+            <div class="reviews-showcase">
+                <div class="review-hollywood-card">
+                    <div class="review-rating">
+                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                    </div>
+                    <blockquote class="review-quote">
+                        "הבעיה בספר הזה —<br>שאתה מזהה את עצמך."
+                    </blockquote>
+                    <div class="review-author-line">— שרית</div>
                 </div>
-                <div class="review-card">
-                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="review-text">"סוף סוף ספר שמדבר על דייטינג בלי להתחנף. אמיתי ומצחיק"</p>
-                    <p class="review-author">— יוסי, חיפה</p>
+                
+                <div class="review-hollywood-card">
+                    <div class="review-rating">
+                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                    </div>
+                    <blockquote class="review-quote">
+                        "מישהו היה צריך לכתוב את זה.<br>טוב שהוא עשה את זה לפניי."
+                    </blockquote>
+                    <div class="review-author-line">— יוסי</div>
                 </div>
-                <div class="review-card">
-                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="review-text">"המתנה המושלמת לכל חבר/ה רווק/ה. פשוט גאוני"</p>
-                    <p class="review-author">— שירה, ירושלים</p>
+                
+                <div class="review-hollywood-card">
+                    <div class="review-rating">
+                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                    </div>
+                    <blockquote class="review-quote">
+                        "סיימתי.<br>ואז שלחתי הודעה לאקס."
+                    </blockquote>
+                    <div class="review-author-line">— מיכל</div>
                 </div>
             </div>
         </section>
