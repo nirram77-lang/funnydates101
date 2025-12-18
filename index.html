@@ -1590,15 +1590,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="footer-divider">|</span>
                 <a href="/accessibility.html">הצהרת נגישות</a>
                 <span class="footer-divider">|</span>
-                <a href="/cdn-cgi/l/email-protection#bad3d4dcd5fadccfd4d4c3dedbcedfc98b8a8b94d9d594d3d6">צור קשר</a>
+                <a href="#contact-section" onclick="document.getElementById('contact-section')?.scrollIntoView({behavior:'smooth'});return false;">צור קשר</a>
             </div>
             <p class="footer-text">Ⓒ כל הזכויות שמורות לניר רם 2025</p>
             <p class="footer-author">📚 101 דייטים ואף נשיכה</p>
-            <p class="footer-contact">📧 <a href="/cdn-cgi/l/email-protection#cca5a2aaa38caab9a2a2b5a8adb8a9bffdfcfde2afa3e2a5a0"><span class="__cf_email__" data-cfemail="a3cacdc5cce3c5d6cdcddac7c2d7c6d09293928dc0cc8dcacf">[email&#160;protected]</span></a></p>
+            <p class="footer-contact">📧 <a id="footer-email-link" href="#"></a></p>
+            <script>
+                (function(){
+                    var u='nir.ram77';var d='gmail.com';
+                    var e=u+'@'+d;
+                    var a=document.getElementById('footer-email-link');
+                    if(a){a.href='mai'+'lto:'+e;a.textContent=e;}
+                })();
+            </script>
         </footer>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Accessibility
         let fontSize = 100;
         function toggleAccessibilityMenu() {
