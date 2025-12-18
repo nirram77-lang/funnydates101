@@ -88,18 +88,26 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            background: rgba(26, 26, 26, 0.9);
+            background: rgba(26, 26, 26, 0.95);
             border: 1px solid var(--accent-gold);
             color: var(--text-primary);
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: 50px;
             text-decoration: none;
             font-size: 14px;
+            font-weight: 500;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
         .lang-switch a:hover {
             background: var(--accent-gold);
             color: #000;
+        }
+        .lang-switch .flag-icon {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+            object-fit: cover;
         }
 
         /* Floating Hearts */
@@ -1228,7 +1236,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     <!-- Language Switch -->
     <div class="lang-switch">
-        <a href="https://funnydates101.com">🌍 English</a>
+        <a href="https://funnydates101.com">
+            <img src="https://flagcdn.com/w40/us.png" alt="USA" class="flag-icon">
+            <span>English</span>
+        </a>
     </div>
 
     <!-- Floating Hearts -->
@@ -1637,4 +1648,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
                     body: formData
-           
+                           });
+                document.getElementById('storyForm').style.display = 'none';
+                document.getElementById('formSuccess').style.display = 'block';
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
