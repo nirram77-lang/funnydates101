@@ -3,757 +3,1635 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FunnyDates Video Factory V6.1 🎬</title>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>101 דייטים ואף נשיכה | הספר הכי מצחיק על דייטים</title>
+    <meta name="description" content="101 סיפורי דייטים מטורפים שיגרמו לך לצחוק עד דמעות. הספר שכל מי שיצא לדייט חייב לקרוא.">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QT8SJB608"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1QT8SJB608');
+    </script>
+    
+    
+    <!-- Open Graph / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.funnydates101.co.il/">
+    <meta property="og:title" content="💔 דייטים אמיתיים. צחוק אמיתי.">
+    <meta property="og:description" content="מבוסס על דייטים אמיתיים. חלקם שרדו. הקשר לא. 🎬">
+    <meta property="og:image" content="https://www.funnydates101.co.il/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="💔 דייטים אמיתיים. צחוק אמיתי.">
+    <meta name="twitter:description" content="מבוסס על דייטים אמיתיים. חלקם שרדו. הקשר לא. 🎬">
+    <meta name="twitter:image" content="https://www.funnydates101.co.il/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💔</text></svg>">
+    
+    <link rel="alternate" hreflang="en" href="https://funnydates101.com">
+    <link rel="alternate" hreflang="he" href="https://funnydates101.co.il">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Secular+One&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-dark: #0a0a0f;
-            --bg-card: #1a1a2e;
-            --bg-card-hover: #252540;
-            --accent-purple: #9b59b6;
-            --accent-pink: #e91e63;
-            --accent-orange: #ff6b35;
-            --accent-gold: #ffd700;
-            --accent-green: #4ade80;
-            --accent-blue: #3b82f6;
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #1a1a1a;
             --text-primary: #ffffff;
-            --text-secondary: #a0a0b0;
-            --border-color: #333355;
+            --text-secondary: #b0b0b0;
+            --accent-red: #dc2626;
+            --accent-rose: #f87171;
+            --accent-gold: #d4af37;
+            --accent-cream: #f5f0e1;
+            --gradient-red: linear-gradient(135deg, #b91c1c 0%, #dc2626 50%, #ef4444 100%);
+            --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+            --shadow-glow: 0 0 40px rgba(220, 38, 38, 0.3);
+            --shadow-gold: 0 0 30px rgba(212, 175, 55, 0.3);
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Heebo', sans-serif;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a0a2e 50%, #0a1a2e 100%);
+            background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
-            padding: 20px;
+            overflow-x: hidden;
+            line-height: 1.6;
         }
-        .container { max-width: 1400px; margin: 0 auto; }
-        .header { text-align: center; margin-bottom: 30px; }
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink), var(--accent-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .badges { margin-top: 15px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-        .badge { padding: 6px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; }
-        .badge-free { background: linear-gradient(135deg, #4ade80, #22c55e); color: #000; }
-        .badge-gold { background: linear-gradient(135deg, #ffd700, #ff6b35); color: #000; }
-        .badge-chapters { background: linear-gradient(135deg, #3b82f6, #9b59b6); color: #fff; }
 
-        .tabs-container { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
-        .tab-btn {
-            padding: 15px 30px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border: 2px solid var(--border-color);
-            border-radius: 15px;
-            background: var(--bg-card);
-            color: var(--text-secondary);
-            cursor: pointer;
+        /* Language Switch */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        .lang-switch a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(26, 26, 26, 0.9);
+            border: 1px solid var(--accent-gold);
+            color: var(--text-primary);
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 14px;
             transition: all 0.3s ease;
         }
-        .tab-btn:hover { border-color: var(--accent-purple); }
-        .tab-btn.active {
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-            border-color: transparent;
-            color: white;
-        }
-
-        .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 20px;
-        }
-        .card-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; }
-
-        .btn {
-            padding: 12px 25px;
-            font-size: 1rem;
-            font-weight: 700;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-        .btn:hover { transform: translateY(-2px); }
-        .btn-primary { background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink)); color: white; }
-        .btn-success { background: linear-gradient(135deg, var(--accent-green), #22c55e); color: #000; }
-        .btn-warning { background: linear-gradient(135deg, var(--accent-orange), var(--accent-gold)); color: #000; }
-        .btn-large { padding: 18px 40px; font-size: 1.2rem; width: 100%; }
-
-        .chapter-display {
-            background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(233, 30, 99, 0.1));
-            border: 2px solid var(--accent-purple);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .chapter-number { font-size: 1.5rem; font-weight: 900; color: var(--accent-pink); }
-        .chapter-title { font-size: 1.3rem; font-weight: 700; margin: 10px 0; }
-        .chapter-subtitle { color: var(--accent-gold); }
-
-        /* Prompt Selection */
-        .prompt-options { display: flex; flex-direction: column; gap: 15px; margin: 20px 0; }
-        .prompt-option {
-            background: rgba(255,255,255,0.05);
-            border: 2px solid var(--border-color);
-            border-radius: 15px;
-            padding: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .prompt-option:hover { border-color: var(--accent-purple); background: rgba(155, 89, 182, 0.1); }
-        .prompt-option.selected { border-color: var(--accent-green); background: rgba(74, 222, 128, 0.1); }
-        .prompt-option-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .prompt-number {
-            width: 30px; height: 30px;
-            background: var(--accent-purple);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 900;
-        }
-        .prompt-style { color: var(--accent-gold); font-weight: 700; }
-        .prompt-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; direction: ltr; text-align: left; }
-
-        /* Images Grid */
-        .images-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        .image-option {
-            position: relative;
-            border: 3px solid var(--border-color);
-            border-radius: 15px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .image-option:hover { border-color: var(--accent-purple); }
-        .image-option.selected { border-color: var(--accent-green); box-shadow: 0 0 20px rgba(74, 222, 128, 0.5); }
-        .image-option img { width: 100%; height: 250px; object-fit: cover; }
-        .image-option .num {
-            position: absolute; top: 10px; right: 10px;
-            width: 35px; height: 35px;
-            background: var(--accent-purple);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 900;
-        }
-        .image-option .dl-btn {
-            position: absolute; bottom: 10px; left: 10px;
-            background: var(--accent-green);
+        .lang-switch a:hover {
+            background: var(--accent-gold);
             color: #000;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 700;
         }
 
-        .loading-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        .loading-box {
-            height: 250px;
-            background: linear-gradient(135deg, #1a1a2e, #252540);
-            border-radius: 15px;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center; gap: 10px;
+        /* Floating Hearts */
+        .floating-hearts {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
         }
-        .spinner {
-            width: 40px; height: 40px;
-            border: 4px solid rgba(255,255,255,0.2);
-            border-top-color: var(--accent-purple);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: floatHeart 20s linear infinite;
+            opacity: 0;
         }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        .heart:nth-child(1) { left: 5%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 15%; animation-delay: 4s; }
+        .heart:nth-child(3) { left: 25%; animation-delay: 8s; }
+        .heart:nth-child(4) { left: 35%; animation-delay: 12s; }
+        .heart:nth-child(5) { left: 55%; animation-delay: 2s; }
+        .heart:nth-child(6) { left: 65%; animation-delay: 6s; }
+        .heart:nth-child(7) { left: 75%; animation-delay: 10s; }
+        .heart:nth-child(8) { left: 85%; animation-delay: 14s; }
+        .heart:nth-child(9) { left: 95%; animation-delay: 16s; }
+        .heart:nth-child(10) { left: 45%; animation-delay: 18s; }
 
-        /* Video Tab */
-        .video-style-option {
-            background: rgba(255,255,255,0.05);
-            border: 2px solid var(--border-color);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        @keyframes floatHeart {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.1; }
+            100% { transform: translateY(-100px) rotate(360deg) scale(1); opacity: 0; }
         }
-        .video-style-option:hover { border-color: var(--accent-blue); }
-        .video-style-option.selected { border-color: var(--accent-green); background: rgba(74, 222, 128, 0.1); }
 
-        .copy-btn {
-            background: var(--accent-purple);
-            border: none;
-            padding: 8px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            color: white;
-            font-weight: 600;
-            margin-top: 10px;
+        /* Floating Quotes */
+        .floating-quotes {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
         }
-        .copy-btn:hover { background: var(--accent-pink); }
+        .quote-bubble {
+            position: absolute;
+            background: rgba(20, 20, 20, 0.95);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 16px;
+            padding: 14px 20px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 260px;
+            opacity: 0;
+            backdrop-filter: blur(10px);
+            animation: thoughtBubble 8s ease-in-out infinite;
+        }
+        .quote-bubble:nth-child(1) { top: 15%; right: 5%; animation-delay: 3s; }
+        .quote-bubble:nth-child(2) { top: 35%; left: 3%; animation-delay: 8s; }
+        .quote-bubble:nth-child(3) { top: 55%; right: 8%; animation-delay: 13s; }
+        .quote-bubble:nth-child(4) { top: 25%; left: 5%; animation-delay: 18s; }
+        .quote-bubble:nth-child(5) { top: 70%; right: 4%; animation-delay: 23s; }
+        .quote-bubble:nth-child(6) { top: 45%; left: 4%; animation-delay: 28s; }
+        .quote-bubble:nth-child(7) { top: 60%; left: 6%; animation-delay: 33s; }
+        .quote-bubble:nth-child(8) { top: 20%; right: 6%; animation-delay: 38s; }
+        .quote-bubble:nth-child(9) { top: 80%; right: 10%; animation-delay: 43s; }
+
+        @keyframes thoughtBubble {
+            0% { opacity: 0; transform: translateY(8px) scale(0.95); }
+            10% { opacity: 0.9; transform: translateY(0) scale(1); }
+            30% { opacity: 0.9; }
+            40% { opacity: 0; transform: translateY(-4px) scale(0.98); }
+            100% { opacity: 0; }
+        }
 
         @media (max-width: 768px) {
-            .header h1 { font-size: 1.8rem; }
-            .images-grid, .loading-grid { grid-template-columns: 1fr; }
-            .image-option img, .loading-box { height: 200px; }
+            .floating-quotes { display: none; }
+        }
+
+        /* Notification Toast */
+        .notification-toast {
+            position: fixed;
+            bottom: 20px; right: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: 12px 18px;
+            z-index: 1000;
+            animation: slideInRight 0.5s ease-out;
+            box-shadow: var(--shadow-gold);
+            max-width: 240px;
+        }
+        .notification-toast.hidden {
+            display: none;
+        }
+        .toast-close {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+        .toast-close:hover {
+            color: var(--accent-gold);
+        }
+        .toast-link { display: flex; flex-direction: column; text-decoration: none; color: inherit; cursor: pointer; }
+        .toast-link:hover { opacity: 0.9; }
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .toast-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .toast-icon { font-size: 24px; }
+        .toast-title { color: var(--accent-gold); font-weight: 700; }
+        .toast-message { color: var(--text-secondary); font-size: 14px; }
+        .toast-price { color: var(--accent-red); font-weight: 900; font-size: 24px; margin-top: 8px; }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Main Content */
+        .main-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at center top, rgba(220, 38, 38, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 2px solid var(--accent-gold);
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-size: 14px;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-gold);
+        }
+        .badge-dot {
+            width: 8px; height: 8px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        .hero-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: clamp(48px, 10vw, 90px);
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+        .hero-title .highlight {
+            background: var(--gradient-red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-subtitle {
+            font-size: clamp(20px, 4vw, 32px);
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        .hero-tagline {
+            font-size: 18px;
+            color: var(--accent-rose);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gradient-red);
+            color: #fff;
+            font-size: 22px;
+            font-weight: 700;
+            padding: 20px 50px;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(220, 38, 38, 0.4);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(220, 38, 38, 0.5);
+        }
+        .cta-button .price {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 18px;
+        }
+        .cta-subtext {
+            margin-top: 15px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Launch Offer */
+        .launch-offer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .offer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(212, 175, 55, 0.2);
+            border: 2px solid var(--accent-gold);
+            border-radius: 50px;
+            padding: 12px 28px;
+        }
+        .offer-icon { font-size: 24px; }
+        .offer-text { font-size: 18px; font-weight: 700; color: var(--accent-gold); }
+        .offer-date {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px 30px;
+        }
+        .date-label { color: var(--text-secondary); font-size: 14px; }
+        .date-value { font-family: 'Secular One', sans-serif; font-size: 28px; color: var(--accent-rose); }
+        .offer-urgency {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        .urgency-dot {
+            width: 8px; height: 8px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 20px;
+            position: relative;
+        }
+        .section.alt-bg {
+            background: var(--bg-secondary);
+        }
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+        .section-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: clamp(32px, 6vw, 48px);
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        /* Why Grid - HOLLYWOOD EDITION */
+        .why-section-hollywood {
+            padding: 120px 20px;
+            background: linear-gradient(180deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .why-section-hollywood::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .why-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .why-main-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: clamp(32px, 6vw, 50px);
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+        .why-subtitle {
+            color: var(--accent-gold);
+            font-size: 18px;
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+        .why-card {
+            background: linear-gradient(145deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 40px 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .why-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .why-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(212, 175, 55, 0.15);
+        }
+        .why-card:hover::before {
+            opacity: 1;
+        }
+        .why-card:hover::after {
+            opacity: 1;
+        }
+        .why-icon {
+            font-size: 55px;
+            margin-bottom: 20px;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .why-card:hover .why-icon {
+            transform: scale(1.15) rotate(-5deg);
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.4));
+        }
+        .why-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--accent-gold);
+            transition: color 0.3s ease;
+        }
+        .why-text {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* TEASER SECTION - STANDARDIZED DESIGN */
+        .teaser-section {
+            padding: 50px 20px;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, #0f0f0f 50%, var(--bg-primary) 100%);
+            text-align: center;
+        }
+        
+        .teaser-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient-red);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .teaser-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(220, 38, 38, 0.4);
+        }
+        
+        .teaser-badge .arrow {
+            transition: transform 0.3s ease;
+        }
+        
+        .teaser-badge.open .arrow {
+            transform: scale(1.2);
+        }
+        
+        .teaser-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s ease, opacity 0.3s ease;
+        }
+        
+        .teaser-content.open {
+            max-height: 2000px;
+            opacity: 1;
+        }
+        
+        .teaser-main-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: clamp(28px, 5vw, 40px);
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .teaser-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+        
+        .teaser-quotes-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .teaser-quote-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #222 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 25px 30px;
+            margin: 15px 0;
+            position: relative;
+            text-align: right;
+            transition: all 0.3s ease;
+        }
+        
+        .teaser-quote-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateX(-5px);
+        }
+        
+        .teaser-quote-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 50px;
+            color: var(--accent-gold);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+        
+        .teaser-quote-text {
+            font-size: 18px;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            line-height: 1.6;
+            padding-right: 30px;
+        }
+        
+        .teaser-quote-source {
+            color: var(--accent-gold);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .teaser-footer-text {
+            margin-top: 40px;
+            font-size: 18px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        .teaser-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient-gold);
+            color: #000;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-gold);
+        }
+        
+        .teaser-cta:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Professional Review */
+        .pro-review-section {
+            padding: 100px 20px;
+            background: var(--bg-secondary);
+            text-align: center;
+        }
+        .pro-review-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient-gold);
+            color: #000;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+        .pro-review-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1a1a1a 0%, #222222 100%);
+            border: 2px solid var(--accent-gold);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+        }
+        .pro-review-card::before {
+            content: '✦';
+            position: absolute;
+            top: -15px; left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-secondary);
+            color: var(--accent-gold);
+            padding: 5px 15px;
+            font-size: 24px;
+        }
+        .pro-review-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .publisher-logo {
+            font-family: 'Secular One', sans-serif;
+            font-size: 36px;
+            color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.1);
+            width: 70px; height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            border: 2px solid var(--accent-gold);
+        }
+        .publisher-info { text-align: right; }
+        .publisher-name { font-size: 24px; font-weight: 700; color: var(--accent-gold); }
+        .publisher-dept { font-size: 14px; color: var(--text-secondary); }
+        .pro-review-quote {
+            font-size: clamp(20px, 4vw, 26px);
+            line-height: 1.6;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .pro-review-quote .highlight-text {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-style: normal;
+        }
+        .pro-review-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 14px;
+        }
+        .pro-review-details { margin-bottom: 30px; }
+        .detail-line {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 8px;
+            border-right: 3px solid var(--accent-gold);
+        }
+        .pro-review-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .review-divider { color: var(--accent-gold); }
+
+        /* Reviews - Hollywood Style */
+        .reviews-hollywood {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, #0d0d0d 50%, var(--bg-primary) 100%);
+            text-align: center;
+        }
+        .reviews-header {
+            margin-bottom: 50px;
+        }
+        .reviews-star {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 15px;
+        }
+        .reviews-main-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: clamp(28px, 5vw, 42px);
+            color: var(--accent-gold);
+        }
+        .reviews-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .review-hollywood-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #222 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 35px 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .review-hollywood-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+        }
+        .review-rating {
+            margin-bottom: 20px;
+            font-size: 20px;
+            letter-spacing: 3px;
+        }
+        .review-quote {
+            font-size: 18px;
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: normal;
+        }
+        .review-author-line {
+            color: var(--accent-gold);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Reviews grid old
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .review-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .review-card:hover { border-color: var(--accent-gold); }
+        .review-stars { color: var(--accent-gold); font-size: 18px; margin-bottom: 10px; }
+        .review-text { color: var(--text-secondary); font-size: 15px; margin-bottom: 15px; }
+        .review-author { color: var(--accent-rose); font-size: 14px; font-weight: 500; }
+
+        /* About Author */
+        .about-section {
+            padding: 100px 20px;
+            background: var(--bg-secondary);
+        }
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .about-image {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+        .about-image img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top;
+            border: 4px solid var(--accent-gold);
+            box-shadow: var(--shadow-gold);
+        }
+        .about-content { flex: 2; min-width: 300px; }
+        .about-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--accent-gold);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+        .about-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .about-text {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .about-signature {
+            color: var(--accent-rose);
+            font-style: italic;
+            font-size: 18px;
+            border-right: 3px solid var(--accent-gold);
+            padding-right: 15px;
+            margin-top: 20px;
+        }
+
+        /* Social */
+        .social-section {
+            padding: 80px 20px;
+        }
+        .social-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 15px 30px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        .social-link:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-gold);
+        }
+        .social-link .icon { font-size: 24px; }
+        .social-link .label { font-weight: 500; }
+        .social-link .handle { color: var(--text-secondary); font-size: 14px; }
+
+        /* Story Form */
+        .story-section {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, #0f0808 50%, var(--bg-primary) 100%);
+            text-align: center;
+        }
+        .story-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient-red);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        .story-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: clamp(28px, 5vw, 40px);
+            margin-bottom: 15px;
+        }
+        .story-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .story-reward {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--accent-gold);
+            padding: 12px 24px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            color: var(--accent-gold);
+            font-size: 15px;
+        }
+        .story-form {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: right;
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(26, 26, 26, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-family: 'Heebo', sans-serif;
+            transition: all 0.3s ease;
+            direction: rtl;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-red);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.2);
+        }
+        .form-textarea { min-height: 150px; resize: vertical; }
+        .form-submit {
+            width: 100%;
+            padding: 18px 30px;
+            background: var(--gradient-red);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Heebo', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        .form-submit:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-glow);
+        }
+        .form-note {
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+        .form-success {
+            display: none;
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid #22c55e;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+        }
+        .form-success.show { display: block; }
+        .form-success h3 { color: #22c55e; margin-bottom: 10px; }
+
+        /* Buy Section */
+        .buy-section {
+            padding: 100px 20px;
+            background: var(--bg-secondary);
+        }
+        .buy-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 18px;
+            margin-bottom: 50px;
+            margin-top: -40px;
+        }
+        .buy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .buy-card {
+            background: var(--bg-card);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 35px 30px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .buy-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+        .buy-card.featured {
+            border-color: var(--accent-red);
+            background: linear-gradient(180deg, rgba(220, 38, 38, 0.1) 0%, var(--bg-card) 100%);
+        }
+        .buy-card-badge {
+            position: absolute;
+            top: -12px; left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-red);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .buy-card-badge.intl {
+            background: var(--gradient-gold);
+            color: #000;
+        }
+        .buy-icon { font-size: 50px; margin-bottom: 15px; }
+        .buy-title { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+        .buy-desc { color: var(--text-secondary); font-size: 14px; margin-bottom: 20px; }
+        .buy-price { font-size: 36px; font-weight: 900; color: var(--accent-red); margin-bottom: 5px; }
+        .buy-note { font-size: 13px; color: var(--accent-gold); margin-bottom: 20px; }
+        .buy-button {
+            display: block;
+            background: var(--gradient-red);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+        .buy-button:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-glow);
+        }
+        .buy-button.secondary {
+            background: transparent;
+            border: 2px solid var(--accent-red);
+            color: var(--accent-red);
+        }
+        .buy-button.secondary:hover {
+            background: var(--accent-red);
+            color: white;
+        }
+        .buy-button.amazon {
+            background: #ff9900;
+            color: #000;
+        }
+        .buy-delivery { font-size: 13px; color: var(--text-secondary); }
+
+        /* Footer */
+        .footer {
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--bg-primary);
+        }
+        .footer-links { margin-bottom: 20px; }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover { color: var(--accent-gold); }
+        .footer-divider { color: rgba(255,255,255,0.2); }
+        .footer-text { color: var(--text-secondary); font-size: 14px; }
+        .footer-author { color: var(--accent-red); margin-top: 10px; }
+        .footer-contact { margin-top: 10px; }
+        .footer-contact a { color: var(--accent-gold); text-decoration: none; }
+
+        /* Accessibility Widget */
+        #accessibility-widget {
+            position: fixed;
+            top: 90px; left: 20px;
+            z-index: 9999;
+        }
+        .accessibility-btn {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+        }
+        .accessibility-btn:hover { transform: scale(1.1); }
+        .accessibility-menu {
+            position: absolute;
+            top: 60px; left: 0;
+            background: #1a1a1a;
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: 15px;
+            min-width: 200px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .accessibility-menu.active { display: flex; }
+        .accessibility-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+        .accessibility-header button {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .accessibility-menu button:not(.accessibility-header button) {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: right;
+            transition: all 0.2s ease;
+        }
+        .accessibility-menu button:not(.accessibility-header button):hover {
+            background: var(--accent-gold);
+            color: #000;
+        }
+        body.high-contrast { filter: contrast(1.5); }
+        body.grayscale { filter: grayscale(100%); }
+        body.underline-links a { text-decoration: underline !important; }
+
+        @media (max-width: 768px) {
+            .notification-toast { left: auto; right: 10px; bottom: 10px; max-width: 180px; padding: 10px 14px; }
+            .cta-button { padding: 14px 28px; font-size: 16px; }
+            .about-container { flex-direction: column; text-align: center; }
+            .about-signature { border-right: none; padding-right: 0; text-align: center; }
+            .social-links { flex-direction: column; align-items: center; }
+            .social-link { width: 100%; max-width: 300px; justify-content: center; }
+            #accessibility-widget { top: 80px; left: 10px; }
+            .lang-switch { top: 10px; left: 10px; }
+            .lang-switch a { padding: 8px 15px; font-size: 12px; }
+            .highlight-item { width: 100%; justify-content: center; }
+            .teaser-quote-card { padding: 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>FunnyDates Video Factory V6.1 🎬</h1>
-            <p style="color: var(--text-secondary);">101 דייטים ואף נשיכה - מערכת הפקה מלאה</p>
-            <div class="badges">
-                <span class="badge badge-free">🆓 חינם לגמרי</span>
-                <span class="badge badge-chapters">📚 101+ פרקים</span>
-                <span class="badge badge-gold">🎨 3 פרומפטים × 4 תמונות</span>
+    <!-- Language Switch -->
+    <div class="lang-switch">
+        <a href="https://funnydates101.com">🌍 English</a>
+    </div>
+
+    <!-- Floating Hearts -->
+    <div class="floating-hearts">
+        <span class="heart">💔</span>
+        <span class="heart">❤️</span>
+        <span class="heart">💕</span>
+        <span class="heart">💔</span>
+        <span class="heart">❤️</span>
+        <span class="heart">💕</span>
+        <span class="heart">💔</span>
+        <span class="heart">❤️</span>
+        <span class="heart">💕</span>
+        <span class="heart">💔</span>
+    </div>
+
+    <!-- Accessibility Widget -->
+    <div id="accessibility-widget">
+        <button class="accessibility-btn" onclick="toggleAccessibilityMenu()" aria-label="תפריט נגישות">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9H15V22H13V16H11V22H9V9H3V7H21V9Z"/>
+            </svg>
+        </button>
+        <div class="accessibility-menu" id="accessibility-menu">
+            <div class="accessibility-header">
+                <span>נגישות</span>
+                <button onclick="toggleAccessibilityMenu()">✕</button>
             </div>
-        </header>
-
-        <div class="tabs-container">
-            <button class="tab-btn active" onclick="switchTab('images')">🎨 תמונות</button>
-            <button class="tab-btn" onclick="switchTab('video')">🎬 וידאו</button>
-        </div>
-
-        <!-- TAB: Images -->
-        <div id="tab-images" class="tab-content active">
-            <button class="btn btn-warning btn-large" onclick="pickRandomChapter()">
-                🎲 הגרל פרק רנדומלי מתוך 101+
-            </button>
-
-            <!-- Step 1: Chapter -->
-            <div class="card" id="step1" style="display:none;">
-                <h2 class="card-title">📖 שלב 1: הפרק שנבחר</h2>
-                <div class="chapter-display">
-                    <div class="chapter-number" id="chapNum"></div>
-                    <div class="chapter-title" id="chapTitle"></div>
-                    <div class="chapter-subtitle" id="chapSub"></div>
-                </div>
-                <button class="btn btn-primary" onclick="pickRandomChapter()" style="margin-top:10px;">🔄 פרק אחר</button>
-            </div>
-
-            <!-- Step 2: Pick Prompt -->
-            <div class="card" id="step2" style="display:none;">
-                <h2 class="card-title">🎯 שלב 2: בחר פרומפט (3 אפשרויות)</h2>
-                <div class="prompt-options" id="promptOptions"></div>
-                <button class="btn btn-success btn-large" id="generateBtn" onclick="generate4Images()" disabled style="margin-top:15px;">
-                    👆 בחר פרומפט קודם
-                </button>
-            </div>
-
-            <!-- Step 3: Loading -->
-            <div class="card" id="step3" style="display:none;">
-                <h2 class="card-title">⏳ יוצר 4 תמונות...</h2>
-                <div class="loading-grid">
-                    <div class="loading-box"><div class="spinner"></div><span>1</span></div>
-                    <div class="loading-box"><div class="spinner"></div><span>2</span></div>
-                    <div class="loading-box"><div class="spinner"></div><span>3</span></div>
-                    <div class="loading-box"><div class="spinner"></div><span>4</span></div>
-                </div>
-                <p style="text-align:center; margin-top:15px; color:var(--text-secondary);">20-40 שניות...</p>
-            </div>
-
-            <!-- Step 4: Results -->
-            <div class="card" id="step4" style="display:none;">
-                <h2 class="card-title">🖼️ שלב 3: בחר את התמונה הטובה!</h2>
-                <div class="images-grid" id="imagesGrid"></div>
-                <div style="margin-top:20px; text-align:center;">
-                    <button class="btn btn-warning" onclick="generate4Images()">🔄 4 תמונות חדשות</button>
-                    <button class="btn btn-primary" onclick="switchTab('video')" style="margin-right:10px;">🎬 המשך לוידאו</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB: Video -->
-        <div id="tab-video" class="tab-content">
-            <div class="card" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2)); border-color: var(--accent-blue);">
-                <h2 class="card-title">🎬 יצירת וידאו</h2>
-                <ol style="line-height: 2; color: var(--text-secondary);">
-                    <li>הורד את התמונה שבחרת</li>
-                    <li>בחר סגנון וידאו והעתק פרומפט</li>
-                    <li>פתח <a href="https://pika.art" target="_blank" style="color:var(--accent-gold);">Pika</a> / <a href="https://app.runwayml.com" target="_blank" style="color:var(--accent-gold);">Runway</a> / <a href="https://pixverse.ai" target="_blank" style="color:var(--accent-gold);">PixVerse</a></li>
-                    <li>העלה תמונה + הדבק פרומפט = וידאו!</li>
-                </ol>
-            </div>
-
-            <!-- Selected Image Preview -->
-            <div class="card" id="selectedImageCard" style="display:none;">
-                <h2 class="card-title">🖼️ התמונה שבחרת</h2>
-                <img id="selectedImagePreview" style="width:100%; max-width:400px; border-radius:15px; display:block; margin:0 auto;">
-                <div style="text-align:center; margin-top:15px;">
-                    <button class="btn btn-success" onclick="downloadSelectedImage()">💾 הורד תמונה</button>
-                </div>
-            </div>
-
-            <!-- Video Styles -->
-            <div class="card">
-                <h2 class="card-title">🎥 בחר סגנון וידאו</h2>
-                <div id="videoStyles">
-                    <div class="video-style-option" onclick="selectVideoStyle(0, this)">
-                        <strong>🎬 קולנועי / דרמטי</strong>
-                        <p class="prompt-text" style="margin-top:10px;" id="vidPrompt0">Cinematic slow motion, camera pushes in dramatically, orchestral tension, shallow depth of field, film grain texture, movie trailer quality, emotional impact moment</p>
-                        <button class="copy-btn" onclick="copyVidPrompt(0); event.stopPropagation();">📋 העתק</button>
-                    </div>
-                    <div class="video-style-option" onclick="selectVideoStyle(1, this)">
-                        <strong>😂 קומדיה / TikTok</strong>
-                        <p class="prompt-text" style="margin-top:10px;" id="vidPrompt1">Comedy timing, quick zoom on reaction faces, upbeat energy, bright lighting, sitcom style camera work, viral TikTok moment, funny freeze frame</p>
-                        <button class="copy-btn" onclick="copyVidPrompt(1); event.stopPropagation();">📋 העתק</button>
-                    </div>
-                    <div class="video-style-option" onclick="selectVideoStyle(2, this)">
-                        <strong>📱 POV / ריאליסטי</strong>
-                        <p class="prompt-text" style="margin-top:10px;" id="vidPrompt2">POV handheld camera, authentic shaky footage, reaction video style, natural lighting, Instagram Reels aesthetic, relatable moment captured</p>
-                        <button class="copy-btn" onclick="copyVidPrompt(2); event.stopPropagation();">📋 העתק</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Descriptions -->
-            <div class="card">
-                <h2 class="card-title">📝 תיאורים לסרטון</h2>
-                <div style="background:rgba(255,215,0,0.1); border:2px solid var(--accent-gold); border-radius:15px; padding:20px;">
-                    <div style="margin-bottom:20px;">
-                        <strong style="color:var(--accent-gold);">🇮🇱 עברית:</strong>
-                        <p id="descHe" style="margin-top:5px;">-</p>
-                        <button class="copy-btn" onclick="copyDesc('he')">📋 העתק</button>
-                    </div>
-                    <div>
-                        <strong style="color:var(--accent-gold);">🇺🇸 English:</strong>
-                        <p id="descEn" style="margin-top:5px;" dir="ltr">-</p>
-                        <button class="copy-btn" onclick="copyDesc('en')">📋 העתק</button>
-                    </div>
-                </div>
-            </div>
+            <button onclick="changeFontSize(1)">הגדל טקסט +</button>
+            <button onclick="changeFontSize(-1)">הקטן טקסט -</button>
+            <button onclick="toggleHighContrast()">ניגודיות גבוהה</button>
+            <button onclick="toggleGrayscale()">גווני אפור</button>
+            <button onclick="toggleUnderlineLinks()">הדגש קישורים</button>
+            <button onclick="resetAccessibility()">איפוס</button>
         </div>
     </div>
 
-<script>
-// ============================================
-// 📚 FULL CHAPTERS DATABASE - 101+ chapters
-// ============================================
-const chapters = [
-    { num: 1, he: "דייט עם סבתא... ועם שלושה סלים", sub: "כשדייט הופך למשלוח", prompts: [
-        "Photorealistic scene: confused Israeli man in car, woman loading THREE huge wicker baskets into backseat like delivery service, his shocked face realizing this is not a date, afternoon sunlight, comedy moment",
-        "Cinematic shot: backseat filled with traditional wicker baskets, man's disappointed expression in rearview mirror, woman giving directions like Waze, urban Israeli street background",
-        "Viral meme style photo: man transformed into unwilling delivery driver, woman with shopping baskets treating him like Uber, the moment of WTF realization, bright daylight comedy"
-    ]},
-    { num: 2, he: "נפגשנו לפני רבע שעה - אבל כבר חודשיים ביחד", sub: "יין, צפונבוניות וחשבון 500₪", prompts: [
-        "Luxury beach bar at sunset, elegant woman surrounded by SEVEN empty wine glasses, shocked man looking at bill showing 500 shekels, golden hour lighting, Tel Aviv vibes",
-        "Photorealistic: fancy seaside restaurant, tower of empty wine glasses on table, woman ordering more while man's jaw drops at the check, Mediterranean sunset",
-        "Comedy disaster: sophisticated woman completely unbothered by mountain of drinks, man calculating expenses with horror, beach bar romantic setting turned nightmare"
-    ]},
-    { num: 3, he: "הצפרדע, המפתחות ומרינה", sub: "רכבים שלא עומדים בסטנדרטים", prompts: [
-        "Woman frantically opening EVERY compartment in man's car - glove box, doors, console - searching for place for keys, his horrified expression, highway background",
-        "Photorealistic: judgmental woman inspecting modest car interior with disgust, man embarrassed, she's asking 'this is what they give you in high-tech?'",
-        "Cinematic moment: woman's hands opening car storage spaces one by one, man's face transitioning from hope to despair, road to Herzliya Marina visible"
-    ]},
-    { num: 4, he: "יש לך שיניים יפות (וזהו)", sub: "כשמחמאה היא כל מה שנשאר", prompts: [
-        "Split screen: LEFT romantic bar date with chemistry, RIGHT next morning man checking phone showing text 'You have nice teeth' only, disappointed face",
-        "Man staring at phone screen with single message 'nice teeth', his confused expression, morning coffee getting cold, the anticlimactic moment",
-        "Photorealistic: hopeful man reading underwhelming text message about his teeth, flashback bubble showing romantic date, comedy of expectations vs reality"
-    ]},
-    { num: 5, he: "הוליווד אקספרס", sub: "וגאס, תשוקה, וצה״ל שהרס הכל", prompts: [
-        "Israeli guy in Hollywood villa jacuzzi, palm trees and hills view, phone showing 'MOM + IDF CALLING', his face going from paradise to panic",
-        "Las Vegas pool party luxury, young man living the dream, suddenly military notification on phone ruins everything, dramatic contrast",
-        "Photorealistic: Hollywood mansion pool, Israeli tourist's perfect moment shattered by army callback, stripper pole in background, comedy disaster"
-    ]},
-    { num: 6, he: "אהבה בקומה 42", sub: "דירות יוקרה ותשוקה", prompts: [
-        "Luxury empty penthouse, sexy real estate agent with FOR SALE sign, floor-to-ceiling windows with city view, romantic tension, modern design",
-        "Photorealistic: Tel Aviv tower apartment showing, attractive agent and client alone, Persian carpet, the moment before something happens",
-        "Cinematic: high-rise empty apartment, city lights through windows, real estate showing turned romantic, professional meets personal"
-    ]},
-    { num: 7, he: "אני מבינה הכל", sub: "כששפת הגוף מדברת אבל המילים חסרות", prompts: [
-        "Beautiful Russian woman nodding and smiling while Israeli man talks with dramatic hand gestures, speech bubble showing complex Hebrew, her bubble just says 'I understand everything'",
-        "Romantic Dead Sea backdrop, language barrier comedy, she keeps nodding without understanding, he keeps talking without noticing",
-        "Photorealistic: couple on date, clear communication gap, her confident 'I understand' expression while completely lost, desert landscape"
-    ]},
-    { num: 8, he: "בין קבלה לאיחור", sub: "איחורים כרוניים ורוחניות", prompts: [
-        "Man asleep on couch, clock showing 2 HOURS passed, woman finally arriving at door with red Kabbalah string bracelet, expired movie tickets on table",
-        "Photorealistic: exhausted boyfriend waiting, spiritual girlfriend arriving super late with mystical books, the patience limit reached",
-        "Comedy scene: him surrounded by empty coffee cups waiting, her floating in with Kabbalah center energy, completely unaware of time"
-    ]},
-    { num: 9, he: "אהבה בשפה זרה", sub: "גוגל טרנסלייט וכימיה", prompts: [
-        "Romantic beach date, couple communicating through phones with Google Translate between them, both typing simultaneously, sunset, tortilla cooking on camp stove",
-        "Photorealistic: language barrier romance at sea, phones as translators, confused but happy expressions, Mediterranean beach setting",
-        "Cinematic: two people falling for each other despite no common language, technology bridging the gap, waves crashing romantic backdrop"
-    ]},
-    { num: 10, he: "רוח סערה מרחוב הארבעה", sub: "ריקוד לוהט ואופנוע", prompts: [
-        "Tel Aviv nightclub, couple in passionate tango frozen mid-dance, neon lights, smoke machine, then CUT TO same woman cold and distant on motorcycle next day",
-        "Split image: fiery dance floor connection vs. ice cold coffee date, same woman two personalities, club vs cafe contrast",
-        "Photorealistic: intense club moment with mysterious woman, then awkward silent date, the magic that disappeared with the night"
-    ]},
-    { num: 11, he: "הטיטאניק שלי טבעה בחניה", sub: "סאונדטרק רומנטי ואכזבה", prompts: [
-        "Couple in car with romantic movie playing, parking lot setting, Titanic soundtrack moment ruined by mundane reality, comedy of expectations",
-        "Photorealistic: romantic movie scene recreation attempt in parking lot, everything going wrong, she's not impressed",
-        "Cinematic parody: man trying to create movie magic in his Honda, woman's unimpressed face, parking lot romance fail"
-    ]},
-    { num: 12, he: "אהבה, ניקוטין והאלמנה השחורה", sub: "סיגריות וקשר שנמוג בעשן", prompts: [
-        "Mysterious woman in black smoking dramatically, tragic backstory visible in her eyes, man captivated but doomed, noir lighting",
-        "Photorealistic: femme fatale energy, cigarette smoke swirling, dark romantic atmosphere, relationship fading like smoke",
-        "Cinematic noir: widow in elegant black, addiction and attraction, the relationship dissolving, moody dramatic lighting"
-    ]},
-    { num: 13, he: "כבר אמרתי פולניה?", sub: "סופ״ש בפולין בימי קורונה", prompts: [
-        "Couple in huge Polish hotel bed, shopping bags everywhere, COVID masks nearby, cultural disconnect visible, winter through window",
-        "Photorealistic: pandemic romance in Poland, giant European bed, duty-free shopping haul, awkward international dating",
-        "Travel comedy: Israeli in Polish hotel, everything supersized and foreign, girlfriend unimpressed, snow outside"
-    ]},
-    { num: 14, he: "דייט בחשיכה", sub: "לא זיהיתי אפילו את עצמי", prompts: [
-        "Pitch black restaurant, hands searching for food, candles as only light, mysterious dining experience, blind date literally",
-        "Photorealistic: dark dining concept, faces barely visible, the awkwardness of eating without seeing, romantic experiment gone weird",
-        "Cinematic: shadows and candlelight, sensory dating experience, comedy of trying to be romantic in complete darkness"
-    ]},
-    { num: 15, he: "דייט לוהט מדי", sub: "הדייט שעלה באש", prompts: [
-        "Literal fire at restaurant table, date night disaster, flames from candle spreading, couple's shocked faces, waiters rushing with extinguishers",
-        "Photorealistic: romantic dinner turned fire emergency, tablecloth burning, the date that literally went up in flames",
-        "Comedy disaster: everything on fire except their love (which also died), restaurant chaos, fire extinguisher foam everywhere"
-    ]},
-    { num: 16, he: "המרוקאית והדג החריף", sub: "אשש!", prompts: [
-        "Moroccan restaurant, woman eating incredibly spicy fish without flinching, man dying from one bite, cultural food challenge",
-        "Photorealistic: spicy food showdown, her totally fine, him red-faced and sweating, traditional Moroccan setting",
-        "Comedy food scene: cultural clash over spice tolerance, he's drinking all the water, she's ordering more"
-    ]},
-    { num: 17, he: "שלישיה בשישי", sub: "אה רגע, ביום שלישי!", prompts: [
-        "Calendar confusion comedy, man showing up on wrong day, woman not there, empty restaurant table with reservation sign",
-        "Photorealistic: day mix-up disaster, alone at table for two, checking phone frantically, embarrassed expression",
-        "Comedy of errors: Tuesday vs Friday confusion, awkward solo dining, the miscommunication catastrophe"
-    ]},
-    { num: 18, he: "טוסט יבש וקציצה קרה", sub: "ארוחת בוקר מאכזבת", prompts: [
-        "Depressing breakfast plate: dry toast, cold meatball, worst morning-after meal, disappointed face, harsh morning light",
-        "Photorealistic: sad breakfast scene, the romance died overnight, unappetizing food matching dead chemistry",
-        "Anti-romantic morning: pathetic plate of food, regret visible on faces, morning after disaster"
-    ]},
-    { num: 19, he: "ליוויתן בא לביקור", sub: "הפתעה גדולה", prompts: [
-        "Unexpected large surprise at door, oversized visitor, shocked expression, apartment suddenly too small, comedy of scale",
-        "Photorealistic: something enormous showing up uninvited, the WTF moment, cramped apartment meeting something huge",
-        "Surreal comedy: leviathan-sized surprise, regular apartment, impossible situation, exaggerated reactions"
-    ]},
-    { num: 20, he: "הדייט שהזמין אותי - לשלם", sub: "הפוך על הפוך", prompts: [
-        "Role reversal: woman who invited him now pointing at bill expectantly, man's shocked face, fancy restaurant setting",
-        "Photorealistic: she asked him out, she picked the place, she's pointing at the check for HIM, modern dating absurdity",
-        "Comedy scene: confident woman, confused man with wallet out, the table turned completely, who pays now?"
-    ]},
-    { num: 21, he: "אגם ברמת גן", sub: "רומנטיקה עירונית", prompts: [
-        "Ramat Gan National Park lake, urban romance attempt, paddle boats, families everywhere ruining mood, city park date",
-        "Photorealistic: trying to be romantic at municipal park, kids screaming, ice cream melting, suburban love attempt",
-        "Comedy: romantic lake expectations vs reality of crowded park, pedal boat traffic jam, unromantic urban nature"
-    ]},
-    { num: 22, he: "הונגריה בדרייב אין", sub: "קולנוע ואהבה", prompts: [
-        "Drive-in movie date, Hungarian film neither understands, fogged windows, retro romantic setting, subtitle confusion",
-        "Photorealistic: car at outdoor cinema, foreign film playing, couple more focused on each other than subtitles",
-        "Cinematic: classic drive-in romance, language barrier with movie, making own entertainment in car"
-    ]},
-    { num: 23, he: "קייב זה כאן", sub: "רק בלי תרגום", prompts: [
-        "Ukrainian woman, Israeli man, zero language overlap, hand gestures conversation, frustration and attraction mix",
-        "Photorealistic: communication through pointing and miming, no common words, chemistry despite barriers",
-        "Comedy of miscommunication: drawing pictures to talk, phone translators failing, romance finding a way"
-    ]},
-    { num: 24, he: "רוח דרומית ולילה סוער", sub: "סערת רגשות", prompts: [
-        "Stormy night, southern wind blowing, passionate encounter, weather matching emotions, dramatic atmosphere",
-        "Photorealistic: wind-swept romantic scene, desert storm energy, intense connection, wild night",
-        "Cinematic: weather as metaphor, stormy emotions, southern passion, dramatic skies and drama below"
-    ]},
-    { num: 25, he: "החתלתולה מרוטשילד", sub: "חיות וחיזורים", prompts: [
-        "Cute kitten on Rothschild Boulevard Tel Aviv, using cat to pick up women, hipster neighborhood, trendy street",
-        "Photorealistic: man with adorable cat as dating prop, women stopping to pet, Rothschild trees background",
-        "Comedy: weaponized cuteness, strategic pet ownership, the kitten is the real star, boulevard setting"
-    ]},
-    { num: 26, he: "הווגינה שהרסה לי את הדייט", sub: "TMI מהרגע הראשון", prompts: [
-        "First date, woman oversharing medical details, man's horrified face, too much information, coffee going cold from shock",
-        "Photorealistic: awkward café moment, inappropriate conversation topic, his face frozen in discomfort",
-        "Comedy disaster: first meeting TMI bomb, him trying to escape, her completely oblivious, cringe maximum"
-    ]},
-    { num: 27, he: "נעצרת בגלל פנטזיה", sub: "כשדמיון פוגש מציאות", prompts: [
-        "Fantasy vs reality clash, imagination bubble popping, expectations meeting disappointing truth, visual metaphor",
-        "Photorealistic: dream scenario crashing into real world, the moment fantasy dies, comedy of expectations",
-        "Split screen: imagined perfect date vs actual awkward reality, the gap between hope and truth"
-    ]},
-    { num: 28, he: "הינשוף בחניה והלב השבור", sub: "לילה מוזר", prompts: [
-        "Parking lot at night, actual owl watching over heartbreak scene, surreal breakup moment, bird witness",
-        "Photorealistic: owl on streetlight, couple ending things below, nature observing human drama, dark parking lot",
-        "Cinematic weird: nocturnal bird as breakup audience, car headlights, the strangest ending ever"
-    ]},
-    { num: 29, he: "סיפורי סבתא", sub: "שלא מספרים לילדים", prompts: [
-        "Grandmother with knowing smile, stories too spicy to share, scandalized younger listener, family secrets energy",
-        "Photorealistic: elderly woman with mischievous expression, implying wild past, shocked grandchild, tea time reveal",
-        "Comedy: generation gap, grandmother's inappropriate stories, the listener can't unhear things, family gathering chaos"
-    ]},
-    { num: 30, he: "הבר, הג׳ינג׳ית והברווזים", sub: "סיפור שלא יישכח", prompts: [
-        "Bar scene with redhead woman, actual ducks somehow involved, absurdist comedy, unforgettable weird night",
-        "Photorealistic: regular bar but ducks are there, ginger woman in the middle, everyone confused, surreal situation",
-        "Comedy chaos: birds in bar, redheaded mystery woman, the night that made no sense but was perfect"
-    ]},
-    { num: 55, he: "הדייט שהפך למרדף אחרי תוכי", sub: "משוגע לגמרי", prompts: [
-        "Couple chasing escaped parrot through city streets, bird flying ahead mockingly, absurd date activity",
-        "Photorealistic: colorful parrot on the run, man and woman in pursuit, people staring, urban bird chase",
-        "Comedy action: date turned safari, exotic bird escape, the worst pet timing, running through traffic after parrot"
-    ]},
-    { num: 69, he: "סמי השחף והקיבוצניקית מפלמחים", sub: "ציפורים ויחסים", prompts: [
-        "Seagull stealing food from date, kibbutz woman unfazed, beach restaurant chaos, bird attack comedy",
-        "Photorealistic: aggressive seagull mid-theft, woman from kibbutz calmly handling it, man panicking, seaside dining disaster",
-        "Nature vs date: seagull as third wheel, kibbutznik survival skills, beach romance with wildlife interruption"
-    ]},
-    { num: 91, he: "User Experience רומנטי", sub: "כנס הייטק ורגשות", prompts: [
-        "Tech conference romance, UX designer flirting using industry jargon, laptops and attraction, startup energy",
-        "Photorealistic: conference booth meeting, professional attraction, screens everywhere, high-tech love connection",
-        "Comedy: dating using tech terminology, interface design pickup lines, the nerdiest romance, convention center setting"
-    ]},
-    { num: 92, he: "הקבוצה הסודית", sub: "גברים על ספה אחת", prompts: [
-        "Men's therapy group on couch, emotional breakthrough moment, unexpected encounter with date there too",
-        "Photorealistic: vulnerability circle, men sharing feelings, awkward recognition of someone you're dating",
-        "Comedy drama: support group meets dating life, the worst place to see your date, couch therapy session"
-    ]},
-    { num: 93, he: "ספיד דייטינג בפ״ת", sub: "שבע דקות גיהנום", prompts: [
-        "Speed dating event in Petah Tikva, timer showing 7 minutes, desperate faces, rotating tables chaos",
-        "Photorealistic: community center speed dating, awkward rapid conversations, bell about to ring, suburban dating hell",
-        "Comedy: speed dating horror, watching clock, bad matches cycling through, the longest 7 minutes ever"
-    ]},
-    { num: 94, he: "Here 4 Iguana", sub: "אפליקציה חדשה ודייטים בזמן אמת 🦎", prompts: [
-        "Dating app with iguana mascot logo, phone showing nearby matches, bar scene, revolutionary proximity dating",
-        "Photorealistic: smartphone with iguana app interface, real-time matches at venue, modern dating technology",
-        "Tech meets romance: lizard-themed dating app in action, people actually meeting in person, venue-based matching magic"
-    ]},
-    { num: 95, he: "המועדון, הדיכאון והדיג׳יי", sub: "מסיבת גרושים מהגיהנום", prompts: [
-        "Divorced people party, sad DJ playing, attempts at fun failing, midlife crisis dance floor",
-        "Photorealistic: depressing divorcee event, bad music, forced smiles, club trying too hard",
-        "Comedy tragedy: singles night gone wrong, terrible DJ, everyone pretending to have fun, fake engagement for escape"
-    ]},
-    { num: 96, he: "אהבה בצל AI", sub: "כשהאלגוריתם פוגש את חני מחולון", prompts: [
-        "Futuristic dating scene, AI matchmaking screens, woman from Holon meets algorithm's choice, tech romance",
-        "Photorealistic: AI dating interface, matched couple meeting, robot cupid energy, modern love tech",
-        "Sci-fi comedy: artificial intelligence playing matchmaker, skeptical woman, computer knows best?, digital love"
-    ]},
-    { num: 97, he: "היא הגיבה לי בלייק - החתול שלה לא", sub: "פייסבוק וחתולים", prompts: [
-        "Facebook dating match, her cat clearly disapproving from background, pet veto on relationship, social media romance",
-        "Photorealistic: couple's selfie with judgmental cat, animal not approving, online dating meets real life pet",
-        "Comedy: cat as relationship decider, woman liked him but cat says no, feline blocking love"
-    ]},
-    { num: 98, he: "חתונה, קרחנה ומה שביניהם", sub: "וודקה וריקודים", prompts: [
-        "Wedding party, bald spot visible while dancing, vodka flowing, Israeli wedding chaos, celebration energy",
-        "Photorealistic: wedding reception drunk dancing, unflattering moment captured, family celebration gone wild",
-        "Comedy: wedding as dating venue, too much vodka, embarrassing dance moves, someone's mom stealing the show"
-    ]},
-    { num: 99, he: "טנטרה או טראומה", sub: "נשימות וחומוס טבעוני", prompts: [
-        "Tantric workshop gone wrong, breathing exercises, vegan hummus break, spiritual dating attempt disaster",
-        "Photorealistic: new age class, meditation circles, uncomfortable participants, alternative dating scene",
-        "Comedy: trying too hard to be spiritual, fake enlightenment, hummus as relationship counseling, workshop weirdness"
-    ]},
-    { num: 100, he: "אסקי, הילדים, והבחורה במבצע", sub: "סוף עונה", prompts: [
-        "Go-kart date with kids involved, sale shopping woman, dog named Aski running around, chaos family outing",
-        "Photorealistic: karting track with children as matchmakers, woman with shopping bags, dog complicating everything",
-        "Comedy: dating with kids present, bargain hunter date, pet and children creating chaos, unconventional romance"
-    ]},
-    { num: 101, he: "הפרק שאת קוראת הוא עלייך", sub: "יעל, קפה, והדייט שסגר מעגל", prompts: [
-        "Meta moment: woman reading this book on date, coffee shop, full circle story, book within story",
-        "Photorealistic: person reading '101 Dates' book at café, recognizing themselves in story, breaking fourth wall",
-        "Cinematic: the final date, coffee shop meeting, book as conversation starter, everything coming together perfectly"
-    ]},
-    { num: "X", he: "ט״ו באב, טינדר ונסיכת ההפתעות", sub: "פרק בונוס עם טוויסט", prompts: [
-        "Tu B'Av Israeli valentine, Tinder match surprise, unexpected twist ending, romantic holiday plot twist",
-        "Photorealistic: love holiday celebration, dating app showing match, the surprise reveal moment",
-        "Bonus chapter energy: holiday romance, app-based meeting, the twist no one expected, happy ending vibes"
-    ]}
-];
+    <!-- Quote Bubbles -->
+    <div class="floating-quotes">
+        <div class="quote-bubble">"עלתה לאוטו עם שלושה סלים – הבנתי שאני לא בדייט, אני בשליחות" 🧺</div>
+        <div class="quote-bubble">"שבע כוסות יין ופתאום אנחנו זוג ותיק" 🍷</div>
+        <div class="quote-bubble">"לפעמים צריך לבלוע את הצפרדע – עניתי: אני בולע רק סטייקים" 🐸</div>
+        <div class="quote-bubble">"יש לך שיניים יפות. וזהו. זה כל מה שנשאר מהדייט" 😬</div>
+        <div class="quote-bubble">"היא התחילה לדבר על ילדים – קצת גבוה בשביל מישהו שכרגע ירד מכרית" 🏢</div>
+        <div class="quote-bubble">"קובעים לסרט – מגיעים כשכבר מתחיל הסרט הבא" 🎬</div>
+        <div class="quote-bubble">"בדיוק כשהתחיל השיר של הטיטאניק – נכנסה לאוטו. לא רוז." 🚢</div>
+        <div class="quote-bubble">"היא נעלמה כמו עשן של סיגריה – ריח חזק, בלי סימן לאן הלכה" 💨</div>
+        <div class="quote-bubble">"בדייטים, כמו באפליקציות – תמיד יש באג שלא סיפרו לך עליו" 🐛</div>
+    </div>
 
-// Fill in generic prompts for chapters without specific ones
-for (let i = 31; i <= 90; i++) {
-    if (!chapters.find(c => c.num === i)) {
-        chapters.push({
-            num: i,
-            he: `פרק ${i}`,
-            sub: "עוד סיפור מטורף",
-            prompts: [
-                `Photorealistic Israeli dating disaster scene chapter ${i}, awkward moment captured, genuine expressions, comedy gold`,
-                `Cinematic dating fail moment, chapter ${i} visualization, real emotions, viral potential image`,
-                `Professional photo quality dating comedy scene ${i}, authentic reactions, relatable disaster`
-            ]
-        });
-    }
-}
-
-// Sort chapters by number
-chapters.sort((a, b) => {
-    if (a.num === "X") return 1;
-    if (b.num === "X") return -1;
-    return a.num - b.num;
-});
-
-// ============================================
-// 🎮 APP LOGIC
-// ============================================
-let currentChapter = null;
-let selectedPromptIndex = null;
-let selectedPrompt = "";
-let selectedImageUrl = null;
-
-function switchTab(tab) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-    
-    if (tab === 'images') {
-        document.querySelectorAll('.tab-btn')[0].classList.add('active');
-        document.getElementById('tab-images').classList.add('active');
-    } else {
-        document.querySelectorAll('.tab-btn')[1].classList.add('active');
-        document.getElementById('tab-video').classList.add('active');
-        if (selectedImageUrl) {
-            document.getElementById('selectedImageCard').style.display = 'block';
-            document.getElementById('selectedImagePreview').src = selectedImageUrl;
-        }
-    }
-}
-
-function pickRandomChapter() {
-    currentChapter = chapters[Math.floor(Math.random() * chapters.length)];
-    selectedPromptIndex = null;
-    selectedPrompt = "";
-    
-    // Show chapter
-    document.getElementById('step1').style.display = 'block';
-    document.getElementById('chapNum').textContent = `פרק ${currentChapter.num}`;
-    document.getElementById('chapTitle').textContent = currentChapter.he;
-    document.getElementById('chapSub').textContent = currentChapter.sub;
-    
-    // Show prompts
-    document.getElementById('step2').style.display = 'block';
-    const promptsContainer = document.getElementById('promptOptions');
-    promptsContainer.innerHTML = currentChapter.prompts.map((p, idx) => `
-        <div class="prompt-option" onclick="selectPrompt(${idx}, this)">
-            <div class="prompt-option-header">
-                <span class="prompt-number">${idx + 1}</span>
-                <span class="prompt-style">${['🎬 קולנועי', '📸 ריאליסטי', '😂 קומי'][idx] || 'סגנון ' + (idx+1)}</span>
+    <!-- Notification Toast -->
+    <div class="notification-toast" id="priceToast">
+        <button class="toast-close" onclick="event.stopPropagation(); closeToast()" aria-label="סגור">✕</button>
+        <a href="#buy" class="toast-link" onclick="closeToast()">
+            <div class="toast-header">
+                <span class="toast-icon">🔥</span>
+                <span class="toast-title">מחיר השקה!</span>
             </div>
-            <p class="prompt-text">${p}</p>
-        </div>
-    `).join('');
-    
-    // Reset generate button
-    document.getElementById('generateBtn').disabled = true;
-    document.getElementById('generateBtn').textContent = '👆 בחר פרומפט קודם';
-    
-    // Hide other steps
-    document.getElementById('step3').style.display = 'none';
-    document.getElementById('step4').style.display = 'none';
-    
-    // Update descriptions
-    document.getElementById('descHe').textContent = `${currentChapter.he} 😂 #דייטים #מהלעזאזל #101דייטים #funnydates`;
-    document.getElementById('descEn').textContent = `Dating disaster chapter ${currentChapter.num} 😂 #dating #wtf #viral #funnydates101`;
-    
-    // Scroll
-    document.getElementById('step1').scrollIntoView({ behavior: 'smooth' });
-}
+            <div class="toast-price">₪75</div>
+        </a>
+    </div>
 
-function selectPrompt(idx, element) {
-    document.querySelectorAll('.prompt-option').forEach(p => p.classList.remove('selected'));
-    element.classList.add('selected');
-    selectedPromptIndex = idx;
-    selectedPrompt = currentChapter.prompts[idx];
-    
-    document.getElementById('generateBtn').disabled = false;
-    document.getElementById('generateBtn').textContent = '🚀 צור 4 תמונות!';
-}
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                הספר שכולם מדברים עליו
+            </div>
+            <h1 class="hero-title">
+                <span class="highlight">101 דייטים</span><br>ואף נשיכה
+            </h1>
+            <p class="hero-subtitle">מבוסס על דייטים אמיתיים.<br>חלקם שרדו. הקשר לא.</p>
+            <p class="hero-tagline">
+                כי לפעמים הדרך הכי טובה להתמודד עם דייט נורא<br>
+                היא לקרוא על דייטים של אחרים ולהרגיש טוב עם עצמך
+            </p>
+            <div class="cta-container">
+                <a href="#buy" class="cta-button">🎁 לרכישה במחיר השקה</a>
+                <p class="cta-subtext">📚 מודפס | 📱 דיגיטלי | 🌍 Amazon</p>
+            </div>
+            <div class="launch-offer">
+                <div class="offer-badge">
+                    <span class="offer-icon">🎁</span>
+                    <span class="offer-text">מחיר השקה מיוחד</span>
+                </div>
+                <div class="offer-date">
+                    <span class="date-label">בתוקף עד</span>
+                    <span class="date-value">31.01.2026</span>
+                </div>
+                <div class="offer-urgency">
+                    <span class="urgency-dot"></span>
+                    <span>מהדורה מוגבלת</span>
+                </div>
+            </div>
+        </section>
 
-function generate4Images() {
-    if (!selectedPrompt) return;
-    
-    // Show loading
-    document.getElementById('step3').style.display = 'block';
-    document.getElementById('step4').style.display = 'none';
-    document.getElementById('step3').scrollIntoView({ behavior: 'smooth' });
-    
-    // Generate 4 different seeds
-    const seeds = [
-        Math.floor(Math.random() * 999999),
-        Math.floor(Math.random() * 999999),
-        Math.floor(Math.random() * 999999),
-        Math.floor(Math.random() * 999999)
-    ];
-    
-    const encoded = encodeURIComponent(selectedPrompt);
-    const urls = seeds.map(s => `https://image.pollinations.ai/prompt/${encoded}?width=1024&height=1024&nologo=true&seed=${s}`);
-    
-    const grid = document.getElementById('imagesGrid');
-    grid.innerHTML = '';
-    let loaded = 0;
-    
-    urls.forEach((url, idx) => {
-        const img = new Image();
-        img.onload = () => {
-            loaded++;
-            const div = document.createElement('div');
-            div.className = 'image-option';
-            div.onclick = () => selectImage(url, div);
-            div.innerHTML = `
-                <span class="num">${idx + 1}</span>
-                <img src="${url}">
-                <button class="dl-btn" onclick="downloadImg('${url}', ${idx + 1}); event.stopPropagation();">💾 הורד</button>
-            `;
-            grid.appendChild(div);
+        <!-- Why Section - HOLLYWOOD EDITION -->
+        <section class="why-section-hollywood">
+            <div class="why-header">
+                <h2 class="why-main-title">למה לקרוא את הספר?</h2>
+                <p class="why-subtitle">שלוש סיבות שיגרמו לך להתחיל עוד הלילה</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="why-icon">🎭</span>
+                    <h3 class="why-title">צחוק עד דמעות</h3>
+                    <p class="why-text">101 סיפורים שיגרמו לך להתגלגל מצחוק. תצחק, תתפדח במקומם, ותודה שזה לא רק לך קורה.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-icon">💔</span>
+                    <h3 class="why-title">תתכונן להרגיש פחות לבד</h3>
+                    <p class="why-text">כולנו מרגישים לפעמים לבד בעולם הדייטים המטורף. הספר הזה מראה לך שאתה ממש לא היחיד.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-icon">🍷</span>
+                    <h3 class="why-title">סודות בלי פילטרים</h3>
+                    <p class="why-text">סיפורים אמיתיים, עם הומור ישראלי חסר מעצורים שייקח אותך למחוזות שלא ידעת שקיימים.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teaser Section - Hollywood Style -->
+        <section class="teaser-section">
+            <button class="teaser-badge" id="teaserToggle" onclick="toggleTeaser()">
+                <span>🎬</span>
+                <span>רוצה להציץ לבלגן?</span>
+                <span class="arrow">👀</span>
+            </button>
             
-            if (loaded >= 2) {
-                document.getElementById('step3').style.display = 'none';
-                document.getElementById('step4').style.display = 'block';
-            }
-        };
-        img.onerror = () => { loaded++; };
-        img.src = url;
-    });
-    
-    // Timeout
-    setTimeout(() => {
-        document.getElementById('step3').style.display = 'none';
-        if (grid.children.length > 0) {
-            document.getElementById('step4').style.display = 'block';
+            <div class="teaser-content" id="teaserContent">
+                <h2 class="teaser-main-title">טעימה מדייטים אמיתיים. בלי פילטרים.</h2>
+                <p class="teaser-subtitle">כי בדייטים — זה תמיד מצחיק, עד שזה קורה לך.</p>
+                
+                <div class="teaser-quotes-container">
+                    <div class="teaser-quote-card">
+                        <p class="teaser-quote-text">היא עלתה לאוטו עם שלושה סלים. רק אז הבנתי — זה לא דייט. זה משלוח.</p>
+                        <p class="teaser-quote-source">— דייט עם סבתא… ועם שלושה סלים</p>
+                    </div>
+                    
+                    <div class="teaser-quote-card">
+                        <p class="teaser-quote-text">"ברור שאנחנו ביחד כבר חודשיים." הכרתי אותה לפני עשר דקות.</p>
+                        <p class="teaser-quote-source">— נפגשנו לפני רבע שעה</p>
+                    </div>
+                    
+                    <div class="teaser-quote-card">
+                        <p class="teaser-quote-text">היא התחילה לדבר על ילדים. אני עוד לא סיימתי את המשקה.</p>
+                        <p class="teaser-quote-source">— אהבה בקומה 42</p>
+                    </div>
+                    
+                    <div class="teaser-quote-card">
+                        <p class="teaser-quote-text">יש דייטים שנגמרים בנשיקה. ויש כאלה שנגמרים בהודעת ויתור.</p>
+                        <p class="teaser-quote-source">— יש לך שיניים יפות (וזהו)</p>
+                    </div>
+                </div>
+                
+                <p class="teaser-footer-text">וכן. זה סיפור אמיתי. כי בדייטים — זה תמיד מצחיק, עד שזה קורה לך. 🎬</p>
+                
+                <a href="#buy" class="teaser-cta">😂 אני מוכן לצחוק על זה קצת</a>
+            </div>
+        </section>
+
+        <!-- Pro Review -->
+        <section class="pro-review-section">
+            <div class="pro-review-badge">
+                <span>📚</span>
+                <span>ביקורת מקצועית</span>
+            </div>
+            <div class="pro-review-card">
+                <div class="pro-review-header">
+                    <div class="publisher-logo">ניב</div>
+                    <div class="publisher-info">
+                        <div class="publisher-name">ספרי ניב</div>
+                        <div class="publisher-dept">מחלקת לקטורה</div>
+                    </div>
+                </div>
+                <blockquote class="pro-review-quote">
+                    עולם מטורלל, לא צפוי, מרגש ומורכב —<br>
+                    <span class="highlight-text">אבל תמיד מצחיק.</span>
+                </blockquote>
+                <div class="pro-review-highlights">
+                    <div class="highlight-item"><span>⚡</span><span>קצב מהיר ושפה עכשווית</span></div>
+                    <div class="highlight-item"><span>💥</span><span>בסוף כל פרק — פאנץ' מבריק</span></div>
+                    <div class="highlight-item"><span>🎯</span><span>תיאורים מלאי חיים ומיומנות</span></div>
+                </div>
+                <div class="pro-review-details">
+                    <p class="detail-line">מבט חברתי-תרבותי על עולם הדייטינג המודרני בישראל</p>
+                    <p class="detail-line">השפעת האפליקציות, פערים תרבותיים, ציפיות לא ריאליות</p>
+                    <p class="detail-line">המחבר, איש ההייטק, מגלה מיומנות רבה בתיאורים</p>
+                </div>
+                <div class="pro-review-footer">
+                    <span>אוגוסט 2025</span>
+                    <span class="review-divider">•</span>
+                    <span>ביקורת רשמית</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section - HOLLYWOOD STYLE -->
+        <section class="reviews-hollywood">
+            <div class="reviews-header">
+                <span class="reviews-star">⭐</span>
+                <h2 class="reviews-main-title">אנשים שקראו — ולא יכלו להתעלם</h2>
+            </div>
+            
+            <div class="reviews-showcase">
+                <div class="review-hollywood-card">
+                    <div class="review-rating">
+                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                    </div>
+                    <blockquote class="review-quote">
+                        "הבעיה בספר הזה —<br>שאתה מזהה את עצמך."
+                    </blockquote>
+                    <div class="review-author-line">— שרית</div>
+                </div>
+                
+                <div class="review-hollywood-card">
+                    <div class="review-rating">
+                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                    </div>
+                    <blockquote class="review-quote">
+                        "מישהו היה צריך לכתוב את זה.<br>טוב שהוא עשה את זה לפניי."
+                    </blockquote>
+                    <div class="review-author-line">— יוסי</div>
+                </div>
+                
+                <div class="review-hollywood-card">
+                    <div class="review-rating">
+                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                    </div>
+                    <blockquote class="review-quote">
+                        "סיימתי.<br>ואז שלחתי הודעה לאקס."
+                    </blockquote>
+                    <div class="review-author-line">— מיכל</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Author -->
+        <section class="about-section">
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="N4829.png" alt="ניר רם - מחבר הספר">
+                </div>
+                <div class="about-content">
+                    <div class="about-badge">✍️ קצת עלי</div>
+                    <h2 class="about-title">ניר רם</h2>
+                    <p class="about-text">
+                        מנהל מערכות מידע עם רקע עשיר בעולם המקצועי, שחייו האישיים הפכו אותו גם <strong>לחוקר סקרן של עולם הדייטים</strong>.
+                    </p>
+                    <p class="about-text">
+                        גרוש ואב לשלושה ילדים בוגרים — אלון, דון ומיכאלה — הוא מביא שילוב ייחודי של <strong>חדות מחשבה, סקרנות אנושית ויכולת נדירה למצוא את הצד המצחיק</strong> גם ברגעים הכי מביכים.
+                    </p>
+                    <p class="about-signature">
+                        "בקיצור: אם כבר עברתי את זה — לפחות שיצא מזה סיפור טוב לספר."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social -->
+        <section class="social-section">
+            <h2 class="social-title">📱 עוד תוכן מצחיק בערוצים</h2>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@funnydates101" class="social-link" target="_blank">
+                    <span class="icon">▶️</span>
+                    <div><div class="label">YouTube</div><div class="handle">@funnydates101</div></div>
+                </a>
+                <a href="https://www.tiktok.com/@funnydates101" class="social-link" target="_blank">
+                    <span class="icon">🎵</span>
+                    <div><div class="label">TikTok</div><div class="handle">@funnydates101</div></div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Story Form -->
+        <section class="story-section" id="share">
+            <div class="story-badge"><span>🎬</span><span>יש לך סיפור?</span></div>
+            <h2 class="story-title">הסיפור שלך יכול להפוך לסרטון!</h2>
+            <p class="story-subtitle">היה לך דייט מטורף? הזוי? מצחיק עד דמעות?<br>שלח לנו ואולי הסיפור שלך יעלה לערוץ!</p>
+            <div class="story-reward"><span>🌟</span><span>הסיפור שלך יפורסם עם אזכור שלך בסרטון</span></div>
+            
+            <form class="story-form" id="storyForm">
+                <input type="hidden" name="access_key" value="c3307ded-69c5-4654-9615-0be668c334d4">
+                <div class="form-group">
+                    <label class="form-label">השם שלך (או כינוי)</label>
+                    <input type="text" name="name" class="form-input" placeholder="איך לקרוא לך?" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">אימייל</label>
+                    <input type="email" name="email" class="form-input" placeholder="כדי שנוכל לעדכן אותך" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">הסיפור שלך</label>
+                    <textarea name="story" class="form-input form-textarea" placeholder="ספר/י לנו מה קרה..." required></textarea>
+                </div>
+                <button type="submit" class="form-submit">🚀 שלח את הסיפור</button>
+                <p class="form-note">* הסיפור ישמר בסודיות ויפורסם רק באישורך</p>
+            </form>
+            <div class="form-success" id="formSuccess">
+                <h3>✅ תודה רבה!</h3>
+                <p>הסיפור שלך התקבל בהצלחה.<br>אם הוא ייבחר, ניצור איתך קשר!</p>
+            </div>
+        </section>
+
+        <!-- Buy Section -->
+        <section class="buy-section" id="buy">
+            <h2 class="section-title">איפה לקנות?</h2>
+            <p class="buy-subtitle">בחרו את הפורמט המתאים לכם</p>
+            <div class="buy-grid">
+                <div class="buy-card featured">
+                    <div class="buy-card-badge">🇮🇱 הכי נמכר</div>
+                    <div class="buy-icon">📚</div>
+                    <h3 class="buy-title">ספר מודפס</h3>
+                    <p class="buy-desc">משלוח עד הבית בישראל</p>
+                    <div class="buy-price">₪75</div>
+                    <div class="buy-note">מחיר השקה מיוחד!</div>
+                    <a href="https://bookpod.co.il/product/101-%d7%93%d7%99%d7%99%d7%98%d7%99%d7%9d-%d7%95%d7%90%d7%a3-%d7%a0%d7%a9%d7%99%d7%9b%d7%94/" class="buy-button" target="_blank">להזמנה ב-BookPod</a>
+                    <p class="buy-delivery">🚚 תוך 5 ימי עסקים</p>
+                </div>
+                <div class="buy-card">
+                    <div class="buy-icon">📱</div>
+                    <h3 class="buy-title">ספר דיגיטלי</h3>
+                    <p class="buy-desc">קריאה מיידית בכל מכשיר</p>
+                    <div class="buy-price">₪44</div>
+                    <div class="buy-note">הורדה מיידית!</div>
+                    <a href="https://www.e-vrit.co.il/Product/37846" class="buy-button secondary" target="_blank">להורדה ב-E-Vrit</a>
+                    <p class="buy-delivery">⚡ קבלה מיידית</p>
+                </div>
+                <div class="buy-card">
+                    <div class="buy-card-badge intl">🇺🇸 משלוח לארה"ב</div>
+                    <div class="buy-icon">📦</div>
+                    <h3 class="buy-title">Amazon</h3>
+                    <p class="buy-desc">ספר מודפס בעברית</p>
+                    <div class="buy-price">$13.90</div>
+                    <div class="buy-note">לישראלים בחו"ל</div>
+                    <a href="https://www.amazon.com/dp/B0FY7DJFJ9" class="buy-button amazon" target="_blank">Buy on Amazon</a>
+                    <p class="buy-delivery">🌐 משלוח בינלאומי</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="/terms.html">תקנון ומדיניות</a>
+                <span class="footer-divider">|</span>
+                <a href="/accessibility.html">הצהרת נגישות</a>
+                <span class="footer-divider">|</span>
+                <a href="mailto:info@funnydates101.co.il">צור קשר</a>
+            </div>
+            <p class="footer-text">Ⓒ כל הזכויות שמורות לניר רם 2025</p>
+            <p class="footer-author">📚 101 דייטים ואף נשיכה</p>
+            <p class="footer-contact">📧 <a href="mailto:info@funnydates101.co.il">info@funnydates101.co.il</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Accessibility
+        let fontSize = 100;
+        function toggleAccessibilityMenu() {
+            document.getElementById('accessibility-menu').classList.toggle('active');
         }
-    }, 60000);
-}
+        function changeFontSize(delta) {
+            fontSize += delta * 10;
+            fontSize = Math.max(80, Math.min(150, fontSize));
+            document.body.style.fontSize = fontSize + '%';
+        }
+        function toggleHighContrast() {
+            document.body.classList.toggle('high-contrast');
+            document.body.classList.remove('grayscale');
+        }
+        function toggleGrayscale() {
+            document.body.classList.toggle('grayscale');
+            document.body.classList.remove('high-contrast');
+        }
+        function toggleUnderlineLinks() {
+            document.body.classList.toggle('underline-links');
+        }
+        function resetAccessibility() {
+            fontSize = 100;
+            document.body.style.fontSize = '100%';
+            document.body.classList.remove('high-contrast', 'grayscale', 'underline-links');
+        }
 
-function selectImage(url, element) {
-    document.querySelectorAll('.image-option').forEach(o => o.classList.remove('selected'));
-    element.classList.add('selected');
-    selectedImageUrl = url;
-}
+        // Close toast function
+        function closeToast() {
+            const toast = document.getElementById('priceToast');
+            if (toast) toast.classList.add('hidden');
+        }
 
-function downloadImg(url, num) {
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `funnydates-ch${currentChapter?.num || 'X'}-opt${num}.png`;
-    a.target = '_blank';
-    a.click();
-}
+        // Toggle teaser section
+        function toggleTeaser() {
+            const toggle = document.getElementById('teaserToggle');
+            const content = document.getElementById('teaserContent');
+            toggle.classList.toggle('open');
+            content.classList.toggle('open');
+        }
 
-function downloadSelectedImage() {
-    if (selectedImageUrl) {
-        const a = document.createElement('a');
-        a.href = selectedImageUrl;
-        a.download = `funnydates-chapter-${currentChapter?.num || 'X'}.png`;
-        a.target = '_blank';
-        a.click();
-    }
-}
-
-function selectVideoStyle(idx, element) {
-    document.querySelectorAll('.video-style-option').forEach(o => o.classList.remove('selected'));
-    element.classList.add('selected');
-}
-
-function copyVidPrompt(idx) {
-    const text = document.getElementById(`vidPrompt${idx}`).textContent;
-    navigator.clipboard.writeText(text);
-    alert('✅ פרומפט הוידאו הועתק!');
-}
-
-function copyDesc(lang) {
-    const text = document.getElementById(lang === 'he' ? 'descHe' : 'descEn').textContent;
-    navigator.clipboard.writeText(text);
-    alert('✅ הועתק!');
-}
-</script>
+        // Form submit
+        document.getElementById('storyForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            try {
+                await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                document.getElementById('storyForm').style.display = 'none';
+                document.getElementById('formSuccess').style.display = 'block';
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
 </body>
 </html>
