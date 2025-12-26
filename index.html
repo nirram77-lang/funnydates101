@@ -838,26 +838,6 @@
             font-weight: 500;
         }
 
-        /* Reviews grid old
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .review-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        .review-card:hover { border-color: var(--accent-gold); }
-        .review-stars { color: var(--accent-gold); font-size: 18px; margin-bottom: 10px; }
-        .review-text { color: var(--text-secondary); font-size: 15px; margin-bottom: 15px; }
-        .review-author { color: var(--accent-rose); font-size: 14px; font-weight: 500; }
-
         /* About Author */
         .about-section {
             padding: 100px 20px;
@@ -1253,7 +1233,7 @@
             .teaser-quote-card { padding: 20px; }
         }
 
-        /* 🎬 TikTok/YouTube Coupon Banner - NEW */
+        /* 🎬 TikTok/YouTube Coupon Banner */
         .social-coupon-banner {
             position: fixed;
             bottom: 20px;
@@ -1342,7 +1322,7 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-    <!-- 🎬 TikTok/YouTube Coupon Banner - NEW -->
+    <!-- 🎬 TikTok/YouTube Coupon Banner -->
     <div class="social-coupon-banner" id="socialCouponBanner">
         <button class="coupon-close" onclick="event.stopPropagation(); closeCouponBanner()" aria-label="סגור">✕</button>
         <div class="coupon-row">
@@ -1441,7 +1421,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 היא לקרוא על דייטים של אחרים ולהרגיש טוב עם עצמך
             </p>
             <div class="cta-container">
-                <a href="#buy" class="cta-button">🎁 לרכישה במחיר השקה</a>
+                <!-- ✅ UPDATED: Classic casual CTA button text -->
+                <a href="#buy" class="cta-button">רוצה לצחוק? רק ₪75</a>
                 <p class="cta-subtext">📚 מודפס | 📱 דיגיטלי | 🌍 Amazon</p>
             </div>
             <div class="launch-offer">
@@ -1778,7 +1759,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
                     body: formData
-                           });
+                });
                 document.getElementById('storyForm').style.display = 'none';
                 document.getElementById('formSuccess').style.display = 'block';
             } catch (error) {
@@ -1786,7 +1767,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }
         });
 
-        // 🎬 TikTok/YouTube Coupon Banner - NEW
+        // 🎬 TikTok/YouTube Coupon Banner
         function closeCouponBanner() {
             var banner = document.getElementById('socialCouponBanner');
             if (banner) banner.classList.add('hidden');
@@ -1804,25 +1785,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         }
 
-        // 🖱️ Draggable Banners - Make floating banners draggable
+        // 🖱️ Draggable Banners
         function makeDraggable(element) {
             if (!element) return;
             
             let isDragging = false;
             let startX, startY, initialX, initialY;
             
-            // Mouse events
             element.addEventListener('mousedown', startDrag);
             document.addEventListener('mousemove', drag);
             document.addEventListener('mouseup', stopDrag);
             
-            // Touch events for mobile
             element.addEventListener('touchstart', startDrag, { passive: false });
             document.addEventListener('touchmove', drag, { passive: false });
             document.addEventListener('touchend', stopDrag);
             
             function startDrag(e) {
-                // Don't drag if clicking on buttons or links
                 if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
                     return;
                 }
@@ -1830,7 +1808,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 isDragging = true;
                 element.classList.add('dragging');
                 
-                // Get starting position
                 if (e.type === 'touchstart') {
                     startX = e.touches[0].clientX;
                     startY = e.touches[0].clientY;
@@ -1839,12 +1816,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     startY = e.clientY;
                 }
                 
-                // Get element's current position
                 const rect = element.getBoundingClientRect();
                 initialX = rect.left;
                 initialY = rect.top;
                 
-                // Remove bottom/right positioning, use top/left instead
                 element.style.bottom = 'auto';
                 element.style.right = 'auto';
                 element.style.left = initialX + 'px';
@@ -1866,14 +1841,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     currentY = e.clientY;
                 }
                 
-                // Calculate new position
                 const deltaX = currentX - startX;
                 const deltaY = currentY - startY;
                 
                 let newX = initialX + deltaX;
                 let newY = initialY + deltaY;
                 
-                // Keep within viewport bounds
                 const rect = element.getBoundingClientRect();
                 const maxX = window.innerWidth - rect.width;
                 const maxY = window.innerHeight - rect.height;
@@ -1895,7 +1868,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }
         }
         
-        // Initialize draggable banners when page loads
         document.addEventListener('DOMContentLoaded', function() {
             makeDraggable(document.getElementById('priceToast'));
             makeDraggable(document.getElementById('socialCouponBanner'));
