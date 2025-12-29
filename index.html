@@ -285,89 +285,6 @@
             transform: scale(1.05);
         }
         
-        /* ═══════════════════════════════════════════════════════════════════════════ */
-        /* SOCIAL TICKER - Dark/Pink (Original Design) */
-        /* ═══════════════════════════════════════════════════════════════════════════ */
-        
-        .social-ticker {
-            bottom: 30px;
-            left: 30px;
-            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
-            border: 2px solid #ec4899;
-            box-shadow: 
-                0 10px 40px rgba(236, 72, 153, 0.3),
-                0 0 30px rgba(236, 72, 153, 0.15);
-            padding: 15px 20px;
-            min-width: 220px;
-        }
-        
-        .social-ticker:hover {
-            transform: scale(1.03);
-            box-shadow: 
-                0 15px 50px rgba(236, 72, 153, 0.4),
-                0 0 40px rgba(236, 72, 153, 0.2);
-        }
-        
-        .social-ticker .floating-ticker-close {
-            background: rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .social-ticker .floating-ticker-close:hover {
-            background: #ec4899;
-            color: #fff;
-        }
-        
-        .social-ticker-content {
-            cursor: pointer;
-        }
-        
-        .social-ticker-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 2px;
-        }
-        
-        .social-ticker-icon {
-            font-size: 18px;
-        }
-        
-        .social-ticker-title {
-            font-size: 14px;
-            color: #fff;
-            font-weight: 500;
-        }
-        
-        .social-ticker-subtitle {
-            font-family: 'Secular One', sans-serif;
-            font-size: 20px;
-            color: #fbbf24;
-            margin-bottom: 10px;
-        }
-        
-        .social-ticker-bottom {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .social-ticker-views {
-            font-family: 'Secular One', sans-serif;
-            font-size: 20px;
-            color: #22c55e;
-            background: #166534;
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-weight: 700;
-        }
-        
-        .social-ticker-share {
-            font-size: 12px;
-            color: #f472b6;
-            line-height: 1.3;
-        }
-        
         @media (max-width: 768px) {
             .price-ticker {
                 top: 100px;
@@ -375,11 +292,218 @@
                 transform: scale(0.9);
                 transform-origin: top left;
             }
-            .social-ticker {
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════════════════ */
+        /* COUPON TICKER - Elegant BookPod Edition */
+        /* ═══════════════════════════════════════════════════════════════════════════ */
+        
+        .coupon-ticker {
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+            border: 2px solid #d4af37;
+            box-shadow: 
+                0 15px 50px rgba(212, 175, 55, 0.25),
+                0 0 40px rgba(212, 175, 55, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            padding: 0;
+            min-width: 220px;
+            overflow: hidden;
+            border-radius: 16px;
+            animation: couponGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes couponGlow {
+            0%, 100% { 
+                box-shadow: 
+                    0 15px 50px rgba(212, 175, 55, 0.25),
+                    0 0 40px rgba(212, 175, 55, 0.1);
+            }
+            50% { 
+                box-shadow: 
+                    0 20px 60px rgba(212, 175, 55, 0.35),
+                    0 0 50px rgba(212, 175, 55, 0.2);
+            }
+        }
+        
+        .coupon-ticker:hover {
+            transform: scale(1.02) translateY(-3px);
+            box-shadow: 
+                0 25px 70px rgba(212, 175, 55, 0.4),
+                0 0 60px rgba(212, 175, 55, 0.25);
+            animation: none;
+        }
+        
+        .coupon-ticker .floating-ticker-close {
+            background: rgba(0, 0, 0, 0.4);
+            color: rgba(255, 255, 255, 0.6);
+            top: 10px;
+            left: 10px;
+        }
+        
+        .coupon-ticker .floating-ticker-close:hover {
+            background: #d4af37;
+            color: #000;
+        }
+        
+        .coupon-ticker-content {
+            cursor: pointer;
+            padding: 18px 22px;
+        }
+        
+        /* Premium Badge */
+        .coupon-premium-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            animation: badgeShine 2s ease-in-out infinite;
+        }
+        
+        @keyframes badgeShine {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.15); }
+        }
+        
+        .coupon-badge-icon {
+            font-size: 14px;
+        }
+        
+        .coupon-badge-text {
+            font-size: 11px;
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Main Discount */
+        .coupon-main {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .coupon-discount {
+            font-family: 'Secular One', sans-serif;
+            font-size: 52px;
+            background: linear-gradient(135deg, #d4af37, #f4d03f, #d4af37);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
+            animation: discountShine 3s linear infinite;
+        }
+        
+        @keyframes discountShine {
+            to { background-position: 200% center; }
+        }
+        
+        .coupon-discount-label {
+            font-family: 'Secular One', sans-serif;
+            font-size: 24px;
+            color: #d4af37;
+        }
+        
+        /* BookPod Info */
+        .coupon-bookpod {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-bottom: 10px;
+        }
+        
+        .coupon-bookpod-icon {
+            font-size: 18px;
+        }
+        
+        .coupon-bookpod-text {
+            font-size: 13px;
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        /* Source */
+        .coupon-source {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 14px;
+            opacity: 0.7;
+        }
+        
+        .coupon-source-icon {
+            font-size: 14px;
+        }
+        
+        .coupon-source-text {
+            font-size: 12px;
+            color: #b0b0b0;
+        }
+        
+        /* CTA - WhatsApp Green */
+        .coupon-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            padding: 12px 18px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .coupon-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: ctaShimmer 2s ease-in-out infinite;
+        }
+        
+        @keyframes ctaShimmer {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+        
+        .coupon-ticker:hover .coupon-cta {
+            background: linear-gradient(135deg, #2be077, #159e8a);
+            transform: scale(1.02);
+        }
+        
+        .coupon-cta-icon {
+            font-size: 16px;
+        }
+        
+        .coupon-cta-text {
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        @media (max-width: 768px) {
+            .coupon-ticker {
                 bottom: 15px;
-                left: 10px;
-                transform: scale(0.9);
-                transform-origin: bottom left;
+                left: 15px;
+                right: 15px;
+                min-width: auto;
+            }
+            .coupon-discount {
+                font-size: 44px;
             }
         }
 
@@ -1809,19 +1933,39 @@
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════ -->
-    <!-- 📊 FLOATING SOCIAL STATS TICKER (Original Design + WhatsApp Share) -->
+    <!-- 📊 FLOATING COUPON TICKER - Elegant BookPod Edition -->
     <!-- ═══════════════════════════════════════════════════════════════════════════ -->
-    <div class="floating-ticker social-ticker" id="socialTicker">
+    <div class="floating-ticker coupon-ticker" id="socialTicker">
         <button class="floating-ticker-close" onclick="closeTicker('socialTicker')">✕</button>
-        <div class="social-ticker-content" onclick="shareToWhatsApp()">
-            <div class="social-ticker-header">
-                <span class="social-ticker-icon">📺</span>
-                <span class="social-ticker-title">מטיקטוק/יוטיוב? 10%</span>
+        <div class="coupon-ticker-content" onclick="shareToWhatsApp()">
+            <!-- Premium Badge -->
+            <div class="coupon-premium-badge">
+                <span class="coupon-badge-icon">🎁</span>
+                <span class="coupon-badge-text">קופון בלעדי</span>
             </div>
-            <div class="social-ticker-subtitle">הנחה!</div>
-            <div class="social-ticker-bottom">
-                <div class="social-ticker-views">10110</div>
-                <div class="social-ticker-share">לחץ לשיתוף הקופון</div>
+            
+            <!-- Main Content -->
+            <div class="coupon-main">
+                <div class="coupon-discount">10%</div>
+                <div class="coupon-discount-label">הנחה</div>
+            </div>
+            
+            <!-- BookPod Info -->
+            <div class="coupon-bookpod">
+                <span class="coupon-bookpod-icon">📚</span>
+                <span class="coupon-bookpod-text">על הספר המודפס ב-BookPod</span>
+            </div>
+            
+            <!-- Source -->
+            <div class="coupon-source">
+                <span class="coupon-source-icon">📺</span>
+                <span class="coupon-source-text">למגיעים מטיקטוק / יוטיוב</span>
+            </div>
+            
+            <!-- CTA -->
+            <div class="coupon-cta">
+                <span class="coupon-cta-icon">📲</span>
+                <span class="coupon-cta-text">לחץ לשיתוף הקופון</span>
             </div>
         </div>
     </div>
@@ -2376,38 +2520,43 @@
         // Initialize draggable tickers
         document.addEventListener('DOMContentLoaded', function() {
             const priceTicker = document.getElementById('priceTicker');
-            const socialTicker = document.getElementById('socialTicker');
+            const couponTicker = document.getElementById('socialTicker');
             if (priceTicker) makeDraggable(priceTicker);
-            if (socialTicker) makeDraggable(socialTicker);
+            if (couponTicker) makeDraggable(couponTicker);
         });
         
         // ═══════════════════════════════════════════════════════════════════════════
-        // 📱 WHATSAPP SHARE - Hollywood Style!
+        // 📱 WHATSAPP SHARE - Premium BookPod Edition!
         // ═══════════════════════════════════════════════════════════════════════════
         
         function shareToWhatsApp() {
-            const shareText = `🔥 *גיליתי משהו מטורף!* 🔥
+            const shareText = `✨ *קופון הנחה בלעדי!* ✨
 
 📚 *101 דייטים ואף נשיכה*
-הספר הכי מצחיק על דייטים שקראתי!
+_הספר הכי מצחיק על דייטים בישראל!_
 
-😂 101 סיפורי דייטים אמיתיים שיגרמו לך להתגלגל מצחוק
+━━━━━━━━━━━━━━━━
 
-🎁 *קופון הנחה 10%!*
-הזכר/י שהגעת מטיקטוק/יוטיוב ותקבל/י 10% הנחה!
+🎁 *10% הנחה על הספר המודפס*
+🏷️ ב-BookPod בלבד
+📺 למגיעים מטיקטוק / יוטיוב
 
-💰 מחיר השקה: רק ₪75 (במקום ₪89)
+━━━━━━━━━━━━━━━━
 
-🛒 להזמנה:
-https://funnydates101.co.il
+💰 *מחיר השקה: ₪75*
+🚚 משלוח עד הבית בישראל
 
-⭐ "הבעיה בספר הזה — שאתה מזהה את עצמך" ⭐
+🛒 *להזמנה:*
+https://funnydates101.co.il/#buy
 
-📺 עקבו אחרינו:
-TikTok: @funnydates101
-YouTube: @funnydates101
+━━━━━━━━━━━━━━━━
 
-💔❤️💔`;
+⭐ _"הבעיה בספר הזה — שאתה מזהה את עצמך"_
+
+📱 TikTok: @funnydates101
+▶️ YouTube: @funnydates101
+
+💔 מבוסס על דייטים אמיתיים. חלקם שרדו. הקשר לא. 💔`;
 
             const encodedText = encodeURIComponent(shareText);
             const whatsappUrl = `https://wa.me/?text=${encodedText}`;
