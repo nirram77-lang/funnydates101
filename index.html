@@ -163,6 +163,227 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════════════════ */
+        /* 🔥 FLOATING DRAGGABLE TICKERS - ORIGINAL DESIGN */
+        /* ═══════════════════════════════════════════════════════════════════════════ */
+        
+        .floating-ticker {
+            position: fixed;
+            z-index: 999;
+            border-radius: 16px;
+            cursor: grab;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            user-select: none;
+        }
+        
+        .floating-ticker:active {
+            cursor: grabbing;
+        }
+        
+        .floating-ticker.hidden {
+            display: none;
+        }
+        
+        .floating-ticker-close {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0, 0, 0, 0.2);
+            color: rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .floating-ticker-close:hover {
+            background: rgba(0, 0, 0, 0.4);
+            color: #fff;
+        }
+        
+        .floating-ticker-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════════════════ */
+        /* PRICE TICKER - Yellow/Gold (Original Design) */
+        /* ═══════════════════════════════════════════════════════════════════════════ */
+        
+        .price-ticker {
+            top: 180px;
+            left: 30px;
+            background: linear-gradient(145deg, #fbbf24, #f59e0b);
+            border: 3px solid #fcd34d;
+            box-shadow: 
+                0 0 0 1px rgba(0,0,0,0.1),
+                0 10px 40px rgba(251, 191, 36, 0.4),
+                0 0 30px rgba(251, 191, 36, 0.2);
+            padding: 20px 25px;
+            min-width: 160px;
+            text-align: center;
+        }
+        
+        .price-ticker:hover {
+            transform: scale(1.03);
+            box-shadow: 
+                0 0 0 1px rgba(0,0,0,0.1),
+                0 15px 50px rgba(251, 191, 36, 0.5),
+                0 0 40px rgba(251, 191, 36, 0.3);
+        }
+        
+        .price-ticker-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .price-ticker-icon {
+            font-size: 22px;
+        }
+        
+        .price-ticker-title {
+            font-weight: 800;
+            font-size: 16px;
+            color: #1a1a1a;
+        }
+        
+        .price-ticker-price {
+            font-family: 'Secular One', sans-serif;
+            font-size: 42px;
+            color: #dc2626;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 12px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .price-ticker-btn {
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Heebo', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .price-ticker-btn:hover {
+            background: #333;
+            transform: scale(1.05);
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════════════════ */
+        /* SOCIAL TICKER - Dark/Pink (Original Design) */
+        /* ═══════════════════════════════════════════════════════════════════════════ */
+        
+        .social-ticker {
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 2px solid #ec4899;
+            box-shadow: 
+                0 10px 40px rgba(236, 72, 153, 0.3),
+                0 0 30px rgba(236, 72, 153, 0.15);
+            padding: 15px 20px;
+            min-width: 220px;
+        }
+        
+        .social-ticker:hover {
+            transform: scale(1.03);
+            box-shadow: 
+                0 15px 50px rgba(236, 72, 153, 0.4),
+                0 0 40px rgba(236, 72, 153, 0.2);
+        }
+        
+        .social-ticker .floating-ticker-close {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .social-ticker .floating-ticker-close:hover {
+            background: #ec4899;
+            color: #fff;
+        }
+        
+        .social-ticker-content {
+            cursor: pointer;
+        }
+        
+        .social-ticker-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 2px;
+        }
+        
+        .social-ticker-icon {
+            font-size: 18px;
+        }
+        
+        .social-ticker-title {
+            font-size: 14px;
+            color: #fff;
+            font-weight: 500;
+        }
+        
+        .social-ticker-subtitle {
+            font-family: 'Secular One', sans-serif;
+            font-size: 20px;
+            color: #fbbf24;
+            margin-bottom: 10px;
+        }
+        
+        .social-ticker-bottom {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .social-ticker-views {
+            font-family: 'Secular One', sans-serif;
+            font-size: 20px;
+            color: #22c55e;
+            background: #166534;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+        
+        .social-ticker-share {
+            font-size: 12px;
+            color: #f472b6;
+            line-height: 1.3;
+        }
+        
+        @media (max-width: 768px) {
+            .price-ticker {
+                top: 100px;
+                left: 10px;
+                transform: scale(0.9);
+                transform-origin: top left;
+            }
+            .social-ticker {
+                bottom: 15px;
+                left: 10px;
+                transform: scale(0.9);
+                transform-origin: bottom left;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════════════ */
         /* 🎬 HOLLYWOOD COSMIC TV TICKER - FunnyDates Edition */
         /* ═══════════════════════════════════════════════════════════════════════════ */
         
@@ -1573,6 +1794,39 @@
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+    <!-- 🔥 FLOATING PRICE TICKER (Original Design) -->
+    <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+    <div class="floating-ticker price-ticker" id="priceTicker">
+        <button class="floating-ticker-close" onclick="closeTicker('priceTicker')">✕</button>
+        <a href="#buy" class="floating-ticker-link" onclick="closeTicker('priceTicker')">
+            <div class="price-ticker-header">
+                <span class="price-ticker-icon">🔥</span>
+                <span class="price-ticker-title">מחיר השקה!</span>
+            </div>
+            <div class="price-ticker-price">₪75</div>
+            <button class="price-ticker-btn">לרכישה →</button>
+        </a>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+    <!-- 📊 FLOATING SOCIAL STATS TICKER (Original Design + WhatsApp Share) -->
+    <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+    <div class="floating-ticker social-ticker" id="socialTicker">
+        <button class="floating-ticker-close" onclick="closeTicker('socialTicker')">✕</button>
+        <div class="social-ticker-content" onclick="shareToWhatsApp()">
+            <div class="social-ticker-header">
+                <span class="social-ticker-icon">📺</span>
+                <span class="social-ticker-title">מטיקטוק/יוטיוב? 10%</span>
+            </div>
+            <div class="social-ticker-subtitle">הנחה!</div>
+            <div class="social-ticker-bottom">
+                <div class="social-ticker-views">10110</div>
+                <div class="social-ticker-share">לחץ לשיתוף הקופון</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════ -->
     <!-- 🎬 COSMIC TV TICKER - HOLLYWOOD EDITION! -->
     <!-- ═══════════════════════════════════════════════════════════════════════════ -->
     <div class="cosmic-ticker-container" id="cosmicTicker">
@@ -2050,6 +2304,115 @@
         }
         
         document.addEventListener('DOMContentLoaded', initTicker);
+        
+        // ═══════════════════════════════════════════════════════════════════════════
+        // 🔥 DRAGGABLE FLOATING TICKERS
+        // ═══════════════════════════════════════════════════════════════════════════
+        
+        function closeTicker(tickerId) {
+            const ticker = document.getElementById(tickerId);
+            if (ticker) ticker.classList.add('hidden');
+        }
+        
+        // Make tickers draggable
+        function makeDraggable(element) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            
+            element.onmousedown = dragMouseDown;
+            element.ontouchstart = dragTouchStart;
+            
+            function dragMouseDown(e) {
+                if (e.target.classList.contains('floating-ticker-close')) return;
+                if (e.target.tagName === 'A') return;
+                e.preventDefault();
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+            
+            function dragTouchStart(e) {
+                if (e.target.classList.contains('floating-ticker-close')) return;
+                if (e.target.tagName === 'A') return;
+                const touch = e.touches[0];
+                pos3 = touch.clientX;
+                pos4 = touch.clientY;
+                document.ontouchend = closeDragElement;
+                document.ontouchmove = elementTouchDrag;
+            }
+            
+            function elementDrag(e) {
+                e.preventDefault();
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                element.style.top = (element.offsetTop - pos2) + "px";
+                element.style.left = (element.offsetLeft - pos1) + "px";
+                element.style.bottom = "auto";
+                element.style.right = "auto";
+            }
+            
+            function elementTouchDrag(e) {
+                const touch = e.touches[0];
+                pos1 = pos3 - touch.clientX;
+                pos2 = pos4 - touch.clientY;
+                pos3 = touch.clientX;
+                pos4 = touch.clientY;
+                element.style.top = (element.offsetTop - pos2) + "px";
+                element.style.left = (element.offsetLeft - pos1) + "px";
+                element.style.bottom = "auto";
+                element.style.right = "auto";
+            }
+            
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+                document.ontouchend = null;
+                document.ontouchmove = null;
+            }
+        }
+        
+        // Initialize draggable tickers
+        document.addEventListener('DOMContentLoaded', function() {
+            const priceTicker = document.getElementById('priceTicker');
+            const socialTicker = document.getElementById('socialTicker');
+            if (priceTicker) makeDraggable(priceTicker);
+            if (socialTicker) makeDraggable(socialTicker);
+        });
+        
+        // ═══════════════════════════════════════════════════════════════════════════
+        // 📱 WHATSAPP SHARE - Hollywood Style!
+        // ═══════════════════════════════════════════════════════════════════════════
+        
+        function shareToWhatsApp() {
+            const shareText = `🔥 *גיליתי משהו מטורף!* 🔥
+
+📚 *101 דייטים ואף נשיכה*
+הספר הכי מצחיק על דייטים שקראתי!
+
+😂 101 סיפורי דייטים אמיתיים שיגרמו לך להתגלגל מצחוק
+
+🎁 *קופון הנחה 10%!*
+הזכר/י שהגעת מטיקטוק/יוטיוב ותקבל/י 10% הנחה!
+
+💰 מחיר השקה: רק ₪75 (במקום ₪89)
+
+🛒 להזמנה:
+https://funnydates101.co.il
+
+⭐ "הבעיה בספר הזה — שאתה מזהה את עצמך" ⭐
+
+📺 עקבו אחרינו:
+TikTok: @funnydates101
+YouTube: @funnydates101
+
+💔❤️💔`;
+
+            const encodedText = encodeURIComponent(shareText);
+            const whatsappUrl = `https://wa.me/?text=${encodedText}`;
+            window.open(whatsappUrl, '_blank');
+        }
         
         // ═══════════════════════════════════════════════════════════════════════════
         // Other Functions
