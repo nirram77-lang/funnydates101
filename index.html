@@ -293,43 +293,54 @@
         }
         
         /* ═══════════════════════════════════════════════════════════════════════════ */
-        /* 🎫 COUPON TICKER - Sleek Horizontal Classic Edition */
+        /* 🎫 COUPON TICKER - Sparkling Adult Humor Edition */
         /* ═══════════════════════════════════════════════════════════════════════════ */
         
         .coupon-ticker {
             bottom: 25px;
             left: 25px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
-            border: 2px solid #d4af37;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 50%, #1a1a1a 100%);
+            border: 2px solid #dc2626;
             box-shadow: 
-                0 8px 30px rgba(212, 175, 55, 0.25),
-                0 0 20px rgba(212, 175, 55, 0.1);
+                0 8px 30px rgba(220, 38, 38, 0.3),
+                0 0 20px rgba(212, 175, 55, 0.2);
             padding: 0;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             transition: all 0.3s ease;
+            animation: couponPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes couponPulse {
+            0%, 100% { 
+                box-shadow: 0 8px 30px rgba(220, 38, 38, 0.3), 0 0 20px rgba(212, 175, 55, 0.2);
+            }
+            50% { 
+                box-shadow: 0 8px 40px rgba(220, 38, 38, 0.5), 0 0 35px rgba(212, 175, 55, 0.4);
+            }
         }
         
         .coupon-ticker:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px) scale(1.02);
             box-shadow: 
-                0 12px 40px rgba(212, 175, 55, 0.35),
-                0 0 30px rgba(212, 175, 55, 0.15);
+                0 15px 50px rgba(220, 38, 38, 0.4),
+                0 0 40px rgba(212, 175, 55, 0.3);
+            animation: none;
         }
         
         .coupon-ticker .floating-ticker-close {
-            background: rgba(0, 0, 0, 0.4);
-            color: rgba(255, 255, 255, 0.6);
+            background: rgba(0, 0, 0, 0.5);
+            color: rgba(255, 255, 255, 0.7);
             top: 8px;
             left: 8px;
-            width: 18px;
-            height: 18px;
-            font-size: 10px;
+            width: 20px;
+            height: 20px;
+            font-size: 11px;
         }
         
         .coupon-ticker .floating-ticker-close:hover {
-            background: #d4af37;
-            color: #000;
+            background: #dc2626;
+            color: #fff;
         }
         
         .coupon-ticker-content {
@@ -341,71 +352,95 @@
         
         /* Left side - Discount */
         .coupon-left {
-            background: linear-gradient(135deg, #d4af37, #f4d03f);
-            padding: 12px 18px;
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            padding: 14px 20px;
             display: flex;
             align-items: center;
             gap: 6px;
-            border-left: 2px dashed rgba(0,0,0,0.2);
+            border-left: 2px dashed rgba(255,255,255,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .coupon-left::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+            animation: couponShine 4s ease-in-out infinite;
+        }
+        
+        @keyframes couponShine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
         }
         
         .coupon-discount-num {
             font-family: 'Secular One', sans-serif;
-            font-size: 32px;
-            color: #1a1a1a;
+            font-size: 34px;
+            color: #fff;
             line-height: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
         }
         
         .coupon-discount-label {
             font-size: 14px;
             font-weight: 800;
-            color: #1a1a1a;
+            color: #fff;
             line-height: 1.1;
+            position: relative;
+            z-index: 1;
         }
         
         /* Right side - Info */
         .coupon-right {
-            padding: 10px 16px 10px 14px;
+            padding: 12px 18px 12px 16px;
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 5px;
         }
         
         .coupon-code-line {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
         
         .coupon-code {
             font-family: 'Courier New', monospace;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             color: #d4af37;
             background: rgba(212, 175, 55, 0.15);
-            padding: 3px 8px;
-            border-radius: 4px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            letter-spacing: 1.5px;
         }
         
         .coupon-source {
-            font-size: 10px;
-            color: #888;
+            font-size: 11px;
+            color: #999;
         }
         
         .coupon-desc {
-            font-size: 11px;
-            color: #ccc;
+            font-size: 12px;
+            color: #ddd;
         }
         
         .coupon-cta-mini {
             display: flex;
             align-items: center;
-            gap: 4px;
-            font-size: 10px;
-            color: #25d366;
-            font-weight: 600;
+            gap: 5px;
+            font-size: 11px;
+            color: #4ade80;
+            font-weight: 700;
         }
         
         @media (max-width: 768px) {
@@ -415,7 +450,7 @@
                 right: auto;
             }
             .coupon-discount-num {
-                font-size: 26px;
+                font-size: 28px;
             }
             .coupon-left {
                 padding: 10px 14px;
