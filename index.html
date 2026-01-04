@@ -1707,6 +1707,199 @@
         }
         .buy-delivery { font-size: 13px; color: var(--text-secondary); }
 
+        /* ═══════════════════════════════════════════════════════════════
+           🎧 AUDIOBOOK CARD & MODAL STYLES
+        ═══════════════════════════════════════════════════════════════ */
+        
+        .buy-card.audiobook-card {
+            border-color: #e94560;
+            background: linear-gradient(180deg, rgba(233, 69, 96, 0.15) 0%, var(--bg-card) 100%);
+        }
+        .buy-card.audiobook-card:hover {
+            border-color: #e94560;
+            box-shadow: 0 0 40px rgba(233, 69, 96, 0.3);
+        }
+        .buy-card-badge.audiobook-badge {
+            background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+        }
+        .buy-desc-sub {
+            color: var(--accent-gold);
+            font-size: 13px;
+            font-style: italic;
+            margin-top: -15px;
+            margin-bottom: 20px;
+        }
+        .buy-button.audiobook-btn {
+            background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .buy-button.audiobook-btn:hover {
+            box-shadow: 0 0 30px rgba(233, 69, 96, 0.4);
+        }
+        
+        /* Audiobook Modal */
+        .audiobook-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .audiobook-modal-overlay.active { display: flex; }
+        .audiobook-modal {
+            background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%);
+            border: 2px solid #e94560;
+            border-radius: 24px;
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 0 60px rgba(233, 69, 96, 0.3), 0 25px 50px rgba(0, 0, 0, 0.5);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .audiobook-modal-close {
+            position: absolute;
+            top: 15px; left: 15px;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            color: #888;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            line-height: 1;
+        }
+        .audiobook-modal-close:hover {
+            background: #e94560;
+            color: white;
+            border-color: #e94560;
+        }
+        .audiobook-modal-header {
+            text-align: center;
+            padding: 35px 30px 20px;
+            background: linear-gradient(180deg, rgba(233, 69, 96, 0.1) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(233, 69, 96, 0.2);
+        }
+        .audiobook-modal-icon { font-size: 50px; margin-bottom: 10px; display: block; }
+        .audiobook-modal-header h2 { color: white; font-size: 28px; font-weight: 700; margin: 0 0 8px 0; }
+        .audiobook-modal-subtitle { color: #aaa; font-size: 14px; margin: 0 0 5px 0; }
+        .audiobook-modal-book-title { color: var(--accent-gold); font-size: 15px; font-style: italic; margin: 0; }
+        .audiobook-modal-price-display { text-align: center; padding: 20px; background: rgba(0, 0, 0, 0.2); }
+        .audiobook-modal-price { font-size: 42px; font-weight: 900; color: #e94560; display: block; }
+        .audiobook-modal-price-note { color: var(--accent-gold); font-size: 13px; }
+        #audiobookForm { padding: 25px 30px 30px; }
+        .audiobook-form-group { margin-bottom: 20px; }
+        .audiobook-form-group label { display: block; color: white; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+        .audiobook-form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        .audiobook-form-group input:focus { outline: none; border-color: #e94560; }
+        .audiobook-form-group input::placeholder { color: #555; }
+        .audiobook-error { color: #ff4444; font-size: 12px; margin-top: 5px; display: block; }
+        .audiobook-field-note { color: #666; font-size: 11px; margin-top: 6px; margin-bottom: 0; }
+        .audiobook-coupon-row { display: flex; gap: 10px; }
+        .audiobook-coupon-row input { flex: 1; }
+        .audiobook-coupon-btn {
+            padding: 14px 20px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-family: inherit;
+        }
+        .audiobook-coupon-btn:hover { background: rgba(255, 255, 255, 0.2); }
+        .audiobook-coupon-msg { font-size: 12px; margin-top: 6px; display: block; }
+        .audiobook-coupon-msg.success { color: #4ade80; }
+        .audiobook-coupon-msg.error { color: #ff4444; }
+        .audiobook-price-summary {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .audiobook-price-row { display: flex; justify-content: space-between; color: #aaa; font-size: 14px; padding: 8px 0; }
+        .audiobook-discount-row { color: #4ade80; display: none; }
+        .audiobook-discount-row.show { display: flex; }
+        .audiobook-total-row {
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 8px;
+            padding-top: 12px;
+        }
+        .audiobook-total-row span:last-child { color: #e94560; }
+        .audiobook-submit-btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        .audiobook-submit-btn:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4); }
+        .audiobook-secure-note { text-align: center; color: #666; font-size: 12px; margin-top: 15px; margin-bottom: 0; }
+        .audiobook-coming-soon { display: none; text-align: center; padding: 50px 30px; }
+        .audiobook-coming-soon.show { display: block; }
+        .audiobook-coming-soon-icon { font-size: 60px; margin-bottom: 20px; }
+        .audiobook-coming-soon h3 { color: white; font-size: 28px; margin-bottom: 15px; }
+        .audiobook-coming-soon p { color: #aaa; margin-bottom: 10px; }
+        .audiobook-coming-soon-btn {
+            background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        .audiobook-coming-soon-btn:hover { transform: scale(1.05); }
+        @media (max-width: 480px) {
+            .audiobook-modal { margin: 10px; max-height: calc(100vh - 20px); }
+            .audiobook-modal-header { padding: 30px 20px 15px; }
+            #audiobookForm { padding: 20px; }
+            .audiobook-modal-price { font-size: 36px; }
+        }
+
         /* Footer */
         .footer {
             padding: 40px 20px;
@@ -2177,6 +2370,17 @@
                     <a href="https://www.e-vrit.co.il/Product/37846" class="buy-button secondary" target="_blank">להורדה ב-E-Vrit</a>
                     <p class="buy-delivery">⚡ קבלה מיידית</p>
                 </div>
+                <div class="buy-card audiobook-card">
+                    <div class="buy-card-badge audiobook-badge">🎧 חדש!</div>
+                    <div class="buy-icon">🎧</div>
+                    <h3 class="buy-title">אודיובוק</h3>
+                    <p class="buy-desc">האזנה בכל מקום ובכל זמן</p>
+                    <p class="buy-desc-sub">101 דייטים ואף נשיכה</p>
+                    <div class="buy-price">₪69</div>
+                    <div class="buy-note">מחיר השקה מיוחד!</div>
+                    <button class="buy-button audiobook-btn" onclick="openAudiobookModal()">לרכישה</button>
+                    <p class="buy-delivery">🎧 יותר מ-4 שעות</p>
+                </div>
                 <div class="buy-card">
                     <div class="buy-card-badge intl">🇺🇸 משלוח לארה"ב</div>
                     <div class="buy-icon">📦</div>
@@ -2204,6 +2408,67 @@
             <p class="footer-contact">📧 <span id="contact-email"></span></p>
             <script>document.getElementById('contact-email').innerHTML='<a href="mai'+'lto:nir'+'@funny'+'dates101.co.il">nir'+'@funny'+'dates101.co.il</a>';</script>
         </footer>
+
+        <!-- Audiobook Purchase Modal -->
+        <div id="audiobookModal" class="audiobook-modal-overlay">
+            <div class="audiobook-modal">
+                <button class="audiobook-modal-close" onclick="closeAudiobookModal()">×</button>
+                <div class="audiobook-modal-header">
+                    <div class="audiobook-modal-icon">📖</div>
+                    <h2>אודיובוק</h2>
+                    <p class="audiobook-modal-subtitle">האזנה בכל מקום ובכל זמן</p>
+                    <p class="audiobook-modal-book-title">101 דייטים ואף נשיכה</p>
+                </div>
+                <div class="audiobook-modal-price-display">
+                    <span class="audiobook-modal-price" id="modalPrice">₪69</span>
+                    <span class="audiobook-modal-price-note">מחיר השקה מיוחד!</span>
+                </div>
+                <form id="audiobookForm" onsubmit="return submitAudiobookForm(event)">
+                    <div class="audiobook-form-group">
+                        <label for="audiobook-name">שם מלא *</label>
+                        <input type="text" id="audiobook-name" placeholder="ישראל ישראלי" required minlength="2">
+                        <span class="audiobook-error" id="nameError"></span>
+                    </div>
+                    <div class="audiobook-form-group">
+                        <label for="audiobook-email">כתובת אימייל *</label>
+                        <input type="email" id="audiobook-email" placeholder="your@email.com" required>
+                        <span class="audiobook-error" id="emailError"></span>
+                        <p class="audiobook-field-note">📧 לכתובת זו ישלח קישור להורדה</p>
+                    </div>
+                    <div class="audiobook-form-group">
+                        <label for="audiobook-coupon">קוד קופון</label>
+                        <div class="audiobook-coupon-row">
+                            <input type="text" id="audiobook-coupon" placeholder="הכנס קוד קופון">
+                            <button type="button" class="audiobook-coupon-btn" onclick="applyAudiobookCoupon()">החל</button>
+                        </div>
+                        <span class="audiobook-coupon-msg" id="couponMsg"></span>
+                    </div>
+                    <div class="audiobook-price-summary">
+                        <div class="audiobook-price-row">
+                            <span>מחיר אודיובוק:</span>
+                            <span>₪69</span>
+                        </div>
+                        <div class="audiobook-price-row audiobook-discount-row" id="discountRow">
+                            <span>הנחת קופון (10%):</span>
+                            <span>-₪6.90</span>
+                        </div>
+                        <div class="audiobook-price-row audiobook-total-row">
+                            <span>סה"כ לתשלום:</span>
+                            <span id="totalPrice">₪69</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="audiobook-submit-btn">המשך לתשלום →</button>
+                    <p class="audiobook-secure-note">🔒 התשלום מאובטח</p>
+                </form>
+                <div id="comingSoonMsg" class="audiobook-coming-soon">
+                    <div class="audiobook-coming-soon-icon">🚀</div>
+                    <h3>בקרוב!</h3>
+                    <p>האודיובוק יהיה זמין לרכישה בקרוב מאוד.</p>
+                    <p>פרטייך נשמרו ונעדכן אותך כשיעלה לאוויר!</p>
+                    <button class="audiobook-coming-soon-btn" onclick="closeAudiobookModal()">סגור</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -2462,6 +2727,127 @@
             } catch (error) {
                 console.error('Error:', error);
             }
+        });
+
+        // ═══════════════════════════════════════════════════════════════════════════
+        // 🎧 AUDIOBOOK PURCHASE MODAL
+        // ═══════════════════════════════════════════════════════════════════════════
+        
+        const AUDIOBOOK_BASE_PRICE = 69;
+        const AUDIOBOOK_COUPONS = {
+            'TIKTOK10': 10,
+            'YOUTUBE10': 10,
+            'LAUNCH10': 10,
+            'VIP10': 10,
+            'FRIENDS10': 10
+        };
+        let audiobookDiscount = 0;
+
+        function openAudiobookModal() {
+            document.getElementById('audiobookModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAudiobookModal() {
+            document.getElementById('audiobookModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            resetAudiobookForm();
+        }
+
+        function resetAudiobookForm() {
+            document.getElementById('audiobookForm').reset();
+            document.getElementById('audiobookForm').style.display = 'block';
+            document.getElementById('comingSoonMsg').classList.remove('show');
+            document.getElementById('discountRow').classList.remove('show');
+            document.getElementById('totalPrice').textContent = '₪' + AUDIOBOOK_BASE_PRICE;
+            document.getElementById('couponMsg').textContent = '';
+            document.getElementById('couponMsg').className = 'audiobook-coupon-msg';
+            document.getElementById('nameError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+            audiobookDiscount = 0;
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function applyAudiobookCoupon() {
+            const couponInput = document.getElementById('audiobook-coupon');
+            const couponMsg = document.getElementById('couponMsg');
+            const discountRow = document.getElementById('discountRow');
+            const totalPrice = document.getElementById('totalPrice');
+            const code = couponInput.value.trim().toUpperCase();
+            
+            if (!code) {
+                couponMsg.textContent = 'הכנס קוד קופון';
+                couponMsg.className = 'audiobook-coupon-msg error';
+                return;
+            }
+            
+            if (AUDIOBOOK_COUPONS[code]) {
+                audiobookDiscount = AUDIOBOOK_COUPONS[code];
+                const discountAmount = (AUDIOBOOK_BASE_PRICE * audiobookDiscount / 100).toFixed(2);
+                const finalPrice = Math.round(AUDIOBOOK_BASE_PRICE - parseFloat(discountAmount));
+                couponMsg.textContent = '✓ קופון הוחל! ' + audiobookDiscount + '% הנחה';
+                couponMsg.className = 'audiobook-coupon-msg success';
+                discountRow.classList.add('show');
+                totalPrice.textContent = '₪' + finalPrice;
+            } else {
+                audiobookDiscount = 0;
+                couponMsg.textContent = '✗ קוד קופון לא תקף';
+                couponMsg.className = 'audiobook-coupon-msg error';
+                discountRow.classList.remove('show');
+                totalPrice.textContent = '₪' + AUDIOBOOK_BASE_PRICE;
+            }
+        }
+
+        function submitAudiobookForm(event) {
+            event.preventDefault();
+            const name = document.getElementById('audiobook-name').value.trim();
+            const email = document.getElementById('audiobook-email').value.trim();
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            nameError.textContent = '';
+            emailError.textContent = '';
+            let isValid = true;
+            
+            if (name.length < 2) {
+                nameError.textContent = 'נא להזין שם מלא (לפחות 2 תווים)';
+                isValid = false;
+            }
+            if (!isValidEmail(email)) {
+                emailError.textContent = 'נא להזין כתובת אימייל תקינה';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                const finalPrice = audiobookDiscount > 0 
+                    ? Math.round(AUDIOBOOK_BASE_PRICE * (1 - audiobookDiscount/100))
+                    : AUDIOBOOK_BASE_PRICE;
+                console.log('=== Audiobook Order ===');
+                console.log('Name:', name);
+                console.log('Email:', email);
+                console.log('Coupon:', document.getElementById('audiobook-coupon').value || 'None');
+                console.log('Discount:', audiobookDiscount + '%');
+                console.log('Final Price:', finalPrice + '₪');
+                
+                // Show Coming Soon (remove when payment is ready)
+                document.getElementById('audiobookForm').style.display = 'none';
+                document.getElementById('comingSoonMsg').classList.add('show');
+                
+                // TODO: Redirect to payment page
+                // window.location.href = 'https://payment.verifone.co.il/...?amount=' + finalPrice + '&email=' + encodeURIComponent(email);
+            }
+            return false;
+        }
+
+        document.getElementById('audiobookModal')?.addEventListener('click', function(e) {
+            if (e.target === this) closeAudiobookModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeAudiobookModal();
         });
     </script>
 </body>
