@@ -1634,10 +1634,20 @@
         }
         .buy-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1000px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
             margin: 0 auto;
+        }
+        @media (max-width: 1100px) {
+            .buy-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .buy-grid {
+                grid-template-columns: 1fr;
+            }
         }
         .buy-card {
             background: var(--bg-card);
@@ -1739,7 +1749,7 @@
             box-shadow: 0 0 30px rgba(233, 69, 96, 0.4);
         }
         
-        /* Audiobook Modal */
+        /* Audiobook Modal - LARGER */
         .audiobook-modal-overlay {
             display: none;
             position: fixed;
@@ -1757,12 +1767,12 @@
             background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%);
             border: 2px solid #e94560;
             border-radius: 24px;
-            max-width: 400px;
+            max-width: 480px;
             width: 100%;
             position: relative;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 0 60px rgba(233, 69, 96, 0.3), 0 25px 50px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 80px rgba(233, 69, 96, 0.4), 0 30px 60px rgba(0, 0, 0, 0.5);
             animation: modalSlideIn 0.3s ease-out;
         }
         @keyframes modalSlideIn {
@@ -1772,12 +1782,12 @@
         .audiobook-modal-close {
             position: absolute;
             top: 15px; left: 15px;
-            width: 36px; height: 36px;
+            width: 40px; height: 40px;
             border-radius: 50%;
             border: 1px solid rgba(255, 255, 255, 0.2);
             background: rgba(0, 0, 0, 0.3);
             color: #888;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -1793,111 +1803,112 @@
         }
         .audiobook-modal-header {
             text-align: center;
-            padding: 35px 30px 20px;
+            padding: 40px 35px 25px;
             background: linear-gradient(180deg, rgba(233, 69, 96, 0.1) 0%, transparent 100%);
             border-bottom: 1px solid rgba(233, 69, 96, 0.2);
         }
-        .audiobook-modal-icon { font-size: 50px; margin-bottom: 10px; display: block; }
-        .audiobook-modal-header h2 { color: white; font-size: 28px; font-weight: 700; margin: 0 0 8px 0; }
-        .audiobook-modal-subtitle { color: #aaa; font-size: 14px; margin: 0 0 5px 0; }
-        .audiobook-modal-book-title { color: var(--accent-gold); font-size: 15px; font-style: italic; margin: 0; }
-        .audiobook-modal-price-display { text-align: center; padding: 20px; background: rgba(0, 0, 0, 0.2); }
-        .audiobook-modal-price { font-size: 42px; font-weight: 900; color: #e94560; display: block; }
-        .audiobook-modal-price-note { color: var(--accent-gold); font-size: 13px; }
-        #audiobookForm { padding: 25px 30px 30px; }
-        .audiobook-form-group { margin-bottom: 20px; }
-        .audiobook-form-group label { display: block; color: white; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+        .audiobook-modal-icon { font-size: 60px; margin-bottom: 15px; display: block; }
+        .audiobook-modal-header h2 { color: white; font-size: 32px; font-weight: 700; margin: 0 0 10px 0; }
+        .audiobook-modal-subtitle { color: #aaa; font-size: 16px; margin: 0 0 5px 0; }
+        .audiobook-modal-book-title { color: var(--accent-gold); font-size: 17px; font-style: italic; margin: 0; }
+        .audiobook-modal-price-display { text-align: center; padding: 25px; background: rgba(0, 0, 0, 0.2); }
+        .audiobook-modal-price { font-size: 52px; font-weight: 900; color: #e94560; display: block; }
+        .audiobook-modal-price-note { color: var(--accent-gold); font-size: 15px; }
+        #audiobookForm { padding: 30px 35px 35px; }
+        .audiobook-form-group { margin-bottom: 22px; }
+        .audiobook-form-group label { display: block; color: white; font-size: 16px; font-weight: 600; margin-bottom: 10px; }
         .audiobook-form-group input {
             width: 100%;
-            padding: 14px 16px;
+            padding: 16px 18px;
             border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             background: rgba(0, 0, 0, 0.3);
             color: white;
-            font-size: 16px;
+            font-size: 18px;
             font-family: inherit;
             transition: border-color 0.3s ease;
             box-sizing: border-box;
         }
         .audiobook-form-group input:focus { outline: none; border-color: #e94560; }
         .audiobook-form-group input::placeholder { color: #555; }
-        .audiobook-error { color: #ff4444; font-size: 12px; margin-top: 5px; display: block; }
-        .audiobook-field-note { color: #666; font-size: 11px; margin-top: 6px; margin-bottom: 0; }
-        .audiobook-coupon-row { display: flex; gap: 10px; }
+        .audiobook-error { color: #ff4444; font-size: 13px; margin-top: 6px; display: block; }
+        .audiobook-field-note { color: #666; font-size: 12px; margin-top: 8px; margin-bottom: 0; }
+        .audiobook-coupon-row { display: flex; gap: 12px; }
         .audiobook-coupon-row input { flex: 1; }
         .audiobook-coupon-btn {
-            padding: 14px 20px;
+            padding: 16px 24px;
             border: none;
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.1);
             color: white;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s ease;
             font-family: inherit;
         }
         .audiobook-coupon-btn:hover { background: rgba(255, 255, 255, 0.2); }
-        .audiobook-coupon-msg { font-size: 12px; margin-top: 6px; display: block; }
+        .audiobook-coupon-msg { font-size: 13px; margin-top: 8px; display: block; }
         .audiobook-coupon-msg.success { color: #4ade80; }
         .audiobook-coupon-msg.error { color: #ff4444; }
         .audiobook-price-summary {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
+            padding: 18px;
+            margin-bottom: 25px;
         }
-        .audiobook-price-row { display: flex; justify-content: space-between; color: #aaa; font-size: 14px; padding: 8px 0; }
+        .audiobook-price-row { display: flex; justify-content: space-between; color: #aaa; font-size: 16px; padding: 10px 0; }
         .audiobook-discount-row { color: #4ade80; display: none; }
         .audiobook-discount-row.show { display: flex; }
         .audiobook-total-row {
             color: white;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 8px;
-            padding-top: 12px;
+            margin-top: 10px;
+            padding-top: 14px;
         }
         .audiobook-total-row span:last-child { color: #e94560; }
         .audiobook-submit-btn {
             width: 100%;
-            padding: 16px;
+            padding: 18px;
             border: none;
             border-radius: 50px;
             background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
             color: white;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: inherit;
         }
         .audiobook-submit-btn:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4); }
-        .audiobook-secure-note { text-align: center; color: #666; font-size: 12px; margin-top: 15px; margin-bottom: 0; }
-        .audiobook-coming-soon { display: none; text-align: center; padding: 50px 30px; }
+        .audiobook-secure-note { text-align: center; color: #666; font-size: 14px; margin-top: 18px; margin-bottom: 0; }
+        .audiobook-coming-soon { display: none; text-align: center; padding: 60px 35px; }
         .audiobook-coming-soon.show { display: block; }
-        .audiobook-coming-soon-icon { font-size: 60px; margin-bottom: 20px; }
-        .audiobook-coming-soon h3 { color: white; font-size: 28px; margin-bottom: 15px; }
-        .audiobook-coming-soon p { color: #aaa; margin-bottom: 10px; }
+        .audiobook-coming-soon-icon { font-size: 70px; margin-bottom: 25px; }
+        .audiobook-coming-soon h3 { color: white; font-size: 32px; margin-bottom: 18px; }
+        .audiobook-coming-soon p { color: #aaa; font-size: 16px; margin-bottom: 12px; }
         .audiobook-coming-soon-btn {
             background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
             color: white;
             border: none;
-            padding: 14px 40px;
+            padding: 16px 45px;
             border-radius: 50px;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 25px;
             font-family: inherit;
             transition: all 0.3s ease;
         }
         .audiobook-coming-soon-btn:hover { transform: scale(1.05); }
-        @media (max-width: 480px) {
+        @media (max-width: 520px) {
             .audiobook-modal { margin: 10px; max-height: calc(100vh - 20px); }
-            .audiobook-modal-header { padding: 30px 20px 15px; }
-            #audiobookForm { padding: 20px; }
-            .audiobook-modal-price { font-size: 36px; }
+            .audiobook-modal-header { padding: 30px 25px 20px; }
+            #audiobookForm { padding: 25px; }
+            .audiobook-modal-price { font-size: 42px; }
+            .audiobook-modal-header h2 { font-size: 28px; }
         }
 
         /* Footer */
@@ -2373,7 +2384,7 @@
                 <div class="buy-card audiobook-card">
                     <div class="buy-card-badge audiobook-badge">🎧 חדש!</div>
                     <div class="buy-icon">🎧</div>
-                    <h3 class="buy-title">אודיובוק</h3>
+                    <h3 class="buy-title">AudioBook</h3>
                     <p class="buy-desc">האזנה בכל מקום ובכל זמן</p>
                     <p class="buy-desc-sub">101 דייטים ואף נשיכה</p>
                     <div class="buy-price">₪69</div>
@@ -2414,8 +2425,8 @@
             <div class="audiobook-modal">
                 <button class="audiobook-modal-close" onclick="closeAudiobookModal()">×</button>
                 <div class="audiobook-modal-header">
-                    <div class="audiobook-modal-icon">📖</div>
-                    <h2>אודיובוק</h2>
+                    <div class="audiobook-modal-icon">🎧</div>
+                    <h2>AudioBook</h2>
                     <p class="audiobook-modal-subtitle">האזנה בכל מקום ובכל זמן</p>
                     <p class="audiobook-modal-book-title">101 דייטים ואף נשיכה</p>
                 </div>
