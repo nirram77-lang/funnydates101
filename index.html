@@ -1639,6 +1639,18 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+        .buy-card {
+            background: var(--bg-card);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 35px 25px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 400px;
+        }
         @media (max-width: 1100px) {
             .buy-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1648,15 +1660,6 @@
             .buy-grid {
                 grid-template-columns: 1fr;
             }
-        }
-        .buy-card {
-            background: var(--bg-card);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 35px 30px;
-            text-align: center;
-            position: relative;
-            transition: all 0.3s ease;
         }
         .buy-card:hover {
             transform: translateY(-5px);
@@ -1682,21 +1685,22 @@
             color: #000;
         }
         .buy-icon { font-size: 50px; margin-bottom: 15px; }
-        .buy-title { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
-        .buy-desc { color: var(--text-secondary); font-size: 14px; margin-bottom: 20px; }
-        .buy-price { font-size: 36px; font-weight: 900; color: var(--accent-red); margin-bottom: 5px; }
-        .buy-note { font-size: 13px; color: var(--accent-gold); margin-bottom: 20px; }
+        .buy-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+        .buy-desc { color: var(--text-secondary); font-size: 14px; margin-bottom: 15px; flex-grow: 0; }
+        .buy-price { font-size: 32px; font-weight: 900; color: var(--accent-red); margin-bottom: 5px; }
+        .buy-note { font-size: 12px; color: var(--accent-gold); margin-bottom: 15px; }
+        .buy-button-wrapper { margin-top: auto; }
         .buy-button {
             display: block;
             background: var(--gradient-red);
             color: white;
-            padding: 15px 30px;
+            padding: 14px 25px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 15px;
             transition: all 0.3s ease;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .buy-button:hover {
             transform: scale(1.05);
@@ -1734,10 +1738,10 @@
         }
         .buy-desc-sub {
             color: var(--accent-gold);
-            font-size: 13px;
+            font-size: 12px;
             font-style: italic;
-            margin-top: -15px;
-            margin-bottom: 20px;
+            margin-top: -10px;
+            margin-bottom: 15px;
         }
         .buy-button.audiobook-btn {
             background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
@@ -2369,8 +2373,10 @@
                     <p class="buy-desc">משלוח עד הבית בישראל</p>
                     <div class="buy-price">₪75</div>
                     <div class="buy-note">מחיר השקה מיוחד!</div>
-                    <a href="https://bookpod.co.il/product/101-%d7%93%d7%99%d7%99%d7%98%d7%99%d7%9d-%d7%95%d7%90%d7%a3-%d7%a0%d7%a9%d7%99%d7%9b%d7%94/" class="buy-button" target="_blank">להזמנה ב-BookPod</a>
-                    <p class="buy-delivery">🚚 תוך 5 ימי עסקים</p>
+                    <div class="buy-button-wrapper">
+                        <a href="https://bookpod.co.il/product/101-%d7%93%d7%99%d7%99%d7%98%d7%99%d7%9d-%d7%95%d7%90%d7%a3-%d7%a0%d7%a9%d7%99%d7%9b%d7%94/" class="buy-button" target="_blank">להזמנה ב-BookPod</a>
+                        <p class="buy-delivery">🚚 תוך 5 ימי עסקים</p>
+                    </div>
                 </div>
                 <div class="buy-card">
                     <div class="buy-icon">📱</div>
@@ -2378,8 +2384,10 @@
                     <p class="buy-desc">קריאה מיידית בכל מכשיר</p>
                     <div class="buy-price">₪44</div>
                     <div class="buy-note">הורדה מיידית!</div>
-                    <a href="https://www.e-vrit.co.il/Product/37846" class="buy-button secondary" target="_blank">להורדה ב-E-Vrit</a>
-                    <p class="buy-delivery">⚡ קבלה מיידית</p>
+                    <div class="buy-button-wrapper">
+                        <a href="https://www.e-vrit.co.il/Product/37846" class="buy-button secondary" target="_blank">להורדה ב-E-Vrit</a>
+                        <p class="buy-delivery">⚡ קבלה מיידית</p>
+                    </div>
                 </div>
                 <div class="buy-card audiobook-card">
                     <div class="buy-card-badge audiobook-badge">🎧 חדש!</div>
@@ -2389,8 +2397,10 @@
                     <p class="buy-desc-sub">101 דייטים ואף נשיכה</p>
                     <div class="buy-price">₪69</div>
                     <div class="buy-note">מחיר השקה מיוחד!</div>
-                    <button class="buy-button audiobook-btn" onclick="openAudiobookModal()">לרכישה</button>
-                    <p class="buy-delivery">🎧 יותר מ-4 שעות</p>
+                    <div class="buy-button-wrapper">
+                        <button class="buy-button audiobook-btn" onclick="openAudiobookModal()">לרכישה</button>
+                        <p class="buy-delivery">🎧 יותר מ-4 שעות</p>
+                    </div>
                 </div>
                 <div class="buy-card">
                     <div class="buy-card-badge intl">🇺🇸 משלוח לארה"ב</div>
@@ -2399,8 +2409,10 @@
                     <p class="buy-desc">ספר מודפס בעברית</p>
                     <div class="buy-price">$13.90</div>
                     <div class="buy-note">לישראלים בחו"ל</div>
-                    <a href="https://www.amazon.com/dp/B0FY7DJFJ9" class="buy-button amazon" target="_blank">Buy on Amazon</a>
-                    <p class="buy-delivery">🌐 משלוח בינלאומי</p>
+                    <div class="buy-button-wrapper">
+                        <a href="https://www.amazon.com/dp/B0FY7DJFJ9" class="buy-button amazon" target="_blank">Buy on Amazon</a>
+                        <p class="buy-delivery">🌐 משלוח בינלאומי</p>
+                    </div>
                 </div>
             </div>
         </section>
