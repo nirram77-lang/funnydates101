@@ -2161,7 +2161,7 @@
     <!-- ═══════════════════════════════════════════════════════════════════════════ -->
     <div class="floating-ticker coupon-ticker" id="socialTicker">
         <button class="floating-ticker-close" onclick="closeTicker('socialTicker')">✕</button>
-        <div class="coupon-ticker-content" onclick="shareToWhatsApp()">
+        <div class="coupon-ticker-content" onclick="shareContent()">
             <!-- Left - Discount -->
             <div class="coupon-left">
                 <span class="coupon-discount-num">10%</span>
@@ -2170,7 +2170,7 @@
             <!-- Right - Info -->
             <div class="coupon-right">
                 <div class="coupon-code-line">
-                    <span class="coupon-code">TIKTOK10</span>
+                    <span class="coupon-code">10110</span>
                     <span class="coupon-source">📺 TikTok / YouTube</span>
                 </div>
                 <span class="coupon-desc">על הספר המודפס ב-BookPod</span>
@@ -2780,17 +2780,22 @@
         // 📱 WHATSAPP SHARE - Clean & Classic Edition!
         // ═══════════════════════════════════════════════════════════════════════════
         
-        function shareToWhatsApp() {
-            const shareText = `אם יצאת לפחות לדייט אחד ואמרת "מה לעזאזל קרה פה?" — זה הספר שלך.
-
-📚 *101 דייטים ואף נשיכה*
-🔥 עכשיו ב-10% הנחה נוספת על מחיר ההשקה
-
-👉 funnydates101.co.il`;
-
-            const encodedText = encodeURIComponent(shareText);
-            const whatsappUrl = `https://wa.me/?text=${encodedText}`;
-            window.open(whatsappUrl, '_blank');
+        function shareContent() {
+            const shareData = {
+                title: '101 דייטים ואף נשיכה',
+                text: 'אם יצאת לפחות לדייט אחד ואמרת "מה לעזאזל קרה פה?" — זה הספר שלך. 📚 עכשיו ב-10% הנחה עם קוד 10110!',
+                url: 'https://funnydates101.co.il'
+            };
+            
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .then(() => console.log('Shared successfully'))
+                    .catch((error) => console.log('Error sharing:', error));
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                const shareText = encodeURIComponent(shareData.text + ' ' + shareData.url);
+                window.open(`https://wa.me/?text=${shareText}`, '_blank');
+            }
         }
         
         // ═══════════════════════════════════════════════════════════════════════════
@@ -2852,6 +2857,7 @@
         const AUDIOBOOK_BASE_PRICE = 69;
         const AUDIOBOOK_COUPONS = {
             'TIKTOK10': 10,
+            '10110': 10,
             'YOUTUBE10': 10,
             'LAUNCH10': 10,
             'VIP10': 10,
