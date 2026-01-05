@@ -379,10 +379,10 @@
         /* Left side - Discount */
         .coupon-left {
             background: linear-gradient(135deg, #dc2626, #ef4444);
-            padding: 14px 20px;
+            padding: 10px 14px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             border-left: 2px dashed rgba(255,255,255,0.3);
             position: relative;
             overflow: hidden;
@@ -407,21 +407,23 @@
         
         .coupon-discount-num {
             font-family: 'Secular One', sans-serif;
-            font-size: 34px;
+            font-size: 20px;
             color: #fff;
             line-height: 1;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
             position: relative;
             z-index: 1;
+            opacity: 0.9;
         }
         
         .coupon-discount-label {
-            font-size: 14px;
-            font-weight: 800;
+            font-size: 11px;
+            font-weight: 700;
             color: #fff;
             line-height: 1.1;
             position: relative;
             z-index: 1;
+            opacity: 0.9;
         }
         
         /* Right side - Info */
@@ -2695,31 +2697,46 @@
         // ═══════════════════════════════════════════════════════════════════════════
         
         function closeTicker(tickerId) {
-   t.onmousedown = dragMouseDown;
+            const ticker = document.getElementById(tickerId);
+            if (ticker) {
+                ticker.classList.add('hidden');
+            }
+        }
+        
+        function makeDraggable(element) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            let isDragging = false;
+            
+            element.onmousedown = dragMouseDown;
             element.ontouchstart = dragTouchStart;
             
             function dragMouseDown(e) {
                 if (e.target.classList.contains('floating-ticker-close')) return;
-                if (e.target.tagName === 'A') return;
+                if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
+                if (e.target.closest('a') || e.target.closest('button')) return;
                 e.preventDefault();
                 pos3 = e.clientX;
                 pos4 = e.clientY;
+                isDragging = false;
                 document.onmouseup = closeDragElement;
                 document.onmousemove = elementDrag;
             }
             
             function dragTouchStart(e) {
                 if (e.target.classList.contains('floating-ticker-close')) return;
-                if (e.target.tagName === 'A') return;
+                if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
+                if (e.target.closest('a') || e.target.closest('button')) return;
                 const touch = e.touches[0];
                 pos3 = touch.clientX;
                 pos4 = touch.clientY;
+                isDragging = false;
                 document.ontouchend = closeDragElement;
                 document.ontouchmove = elementTouchDrag;
             }
             
             function elementDrag(e) {
                 e.preventDefault();
+                isDragging = true;
                 pos1 = pos3 - e.clientX;
                 pos2 = pos4 - e.clientY;
                 pos3 = e.clientX;
@@ -2732,6 +2749,7 @@
             
             function elementTouchDrag(e) {
                 const touch = e.touches[0];
+                isDragging = true;
                 pos1 = pos3 - touch.clientX;
                 pos2 = pos4 - touch.clientY;
                 pos3 = touch.clientX;
