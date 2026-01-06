@@ -8,6 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+    
     <style>
         :root {
             --bg-dark: #0a0a0a;
@@ -746,10 +750,25 @@
             display: block;
         }
 
+        .success-confetti {
+            font-size: 40px;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: confettiFloat 2s ease-in-out infinite;
+        }
+
+        @keyframes confettiFloat {
+            0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+            50% { transform: translateX(-50%) translateY(-10px) rotate(10deg); }
+        }
+
         .success-icon {
             font-size: 80px;
             margin-bottom: 25px;
             animation: bounceIn 0.6s ease;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
         }
 
         @keyframes bounceIn {
@@ -761,7 +780,10 @@
         .success-title {
             font-size: 32px;
             font-weight: 900;
-            color: var(--accent-gold);
+            background: linear-gradient(135deg, var(--accent-gold), #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 10px;
         }
 
@@ -772,33 +794,58 @@
         }
 
         .success-details {
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.05));
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 20px;
             padding: 25px;
             margin-bottom: 25px;
             text-align: right;
         }
 
-        .success-details p {
+        .success-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .success-step:last-child {
+            border-bottom: none;
+        }
+
+        .success-step .step-icon {
+            font-size: 22px;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .success-delivery {
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .success-delivery p {
             color: rgba(255, 255, 255, 0.8);
-            margin: 10px 0;
             font-size: 14px;
-        }
-
-        .success-details .highlight {
-            color: #22c55e;
-            font-weight: 600;
-        }
-
-        .success-info {
-            margin-bottom: 25px;
-        }
-
-        .success-info p {
-            color: var(--text-muted);
-            font-size: 13px;
             margin: 8px 0;
+        }
+
+        .success-order-id {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px dashed rgba(212, 175, 55, 0.5);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-family: monospace;
+            font-size: 14px;
+            color: var(--accent-gold);
+            direction: ltr;
         }
 
         .success-contact {
@@ -808,9 +855,12 @@
         }
 
         .close-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             background: linear-gradient(135deg, var(--accent-red), var(--accent-rose));
             border: none;
-            padding: 14px 40px;
+            padding: 16px 40px;
             border-radius: 50px;
             font-size: 16px;
             font-weight: 600;
@@ -823,6 +873,45 @@
         .close-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .loading-overlay.show {
+            display: flex;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(212, 175, 55, 0.2);
+            border-top-color: var(--accent-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: var(--accent-gold);
+            font-size: 18px;
+            font-weight: 600;
         }
 
         /* Coming Soon Screen */
@@ -1086,25 +1175,41 @@
             </div>
         </form>
 
-        <!-- Success Screen -->
+        <!-- Success Screen - Hollywood Edition -->
         <div class="success-screen" id="successScreen">
-            <div class="success-icon">🎉</div>
-            <h2 class="success-title">תודה רבה!</h2>
+            <div class="success-confetti">🎊</div>
+            <div class="success-icon">🎧</div>
+            <h2 class="success-title">מזל טוב! 🌟</h2>
             <p class="success-subtitle">ההזמנה שלך התקבלה בהצלחה</p>
             
             <div class="success-details">
-                <p>🎧 <span class="highlight">האודיובוק שלך בהכנה!</span></p>
-                <p>הקובץ יותאם אישית עם שמך ויישלח אליך תוך מספר שעות.</p>
+                <div class="success-step">
+                    <span class="step-icon">✨</span>
+                    <span>האודיובוק שלך בהכנה אישית!</span>
+                </div>
+                <div class="success-step">
+                    <span class="step-icon">🎤</span>
+                    <span>הקלטה מקצועית עם הקדשה בשמך</span>
+                </div>
+                <div class="success-step">
+                    <span class="step-icon">⏱️</span>
+                    <span>יישלח אליך תוך מספר שעות</span>
+                </div>
             </div>
 
-            <div class="success-info">
+            <div class="success-delivery">
+                <p>📱 קישור להורדה יגיע ל-WhatsApp</p>
                 <p>📧 חשבונית תישלח למייל</p>
-                <p>📱 קישור להורדה יגיע בוואטסאפ</p>
             </div>
+            
+            <div class="success-order-id" id="orderIdDisplay"></div>
 
-            <p class="success-contact">שאלות? 📞 052-265-3170</p>
+            <p class="success-contact">שאלות? אנחנו כאן! 📞 052-265-3170</p>
 
-            <button class="close-btn" onclick="closeSuccess()">חזרה לאתר</button>
+            <button class="close-btn" onclick="closeSuccess()">
+                <span>🏠</span>
+                <span>חזרה לאתר</span>
+            </button>
         </div>
 
         <!-- Coming Soon -->
@@ -1126,10 +1231,41 @@
         </div>
     </div>
 
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">שומר את ההזמנה... ✨</div>
+    </div>
+
     <script>
         // ═══════════════════════════════════════════════════════════════
         // 🎧 AUDIOBOOK ORDER - NO-ART GALLERY
         // ═══════════════════════════════════════════════════════════════
+
+        // 🔥 Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCR3aaXHhMHza1Quar8HhNlvPyTbZyG95I",
+            authDomain: "here4iguana.firebaseapp.com",
+            projectId: "here4iguana",
+            storageBucket: "here4iguana.firebasestorage.app",
+            messagingSenderId: "168718173015",
+            appId: "1:168718173015:web:51d212a5a904297d85b198",
+            measurementId: "G-0XZPRYZ1CN"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Generate Order ID
+        function generateOrderId() {
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            let result = 'AB-';
+            for (let i = 0; i < 6; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
 
         const BASE_PRICE = 69;
         
@@ -1320,8 +1456,12 @@
                     ? Math.round(BASE_PRICE * (1 - currentDiscount/100))
                     : BASE_PRICE;
 
+                // Generate unique order ID
+                const orderId = generateOrderId();
+
                 // Order data
                 const orderData = {
+                    orderId: orderId,
                     customerName: name,
                     customerEmail: email,
                     customerPhone: phone,
@@ -1336,19 +1476,38 @@
                     productName: 'אודיובוק 101 דייטים ואף נשיכה',
                     paymentMethod: 'bit',
                     bitPayerPhone: bitPayerPhone,
-                    status: 'pending_verification',
-                    createdAt: new Date().toISOString()
+                    status: 'pending',
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    source: 'funnydates101.co.il'
                 };
 
-                console.log('=== 🎧 Audiobook Order ===');
-                console.log(JSON.stringify(orderData, null, 2));
+                // Show loading
+                document.getElementById('loadingOverlay').classList.add('show');
 
-                // TODO: Save to Firebase
-                // saveOrderToFirebase(orderData);
-                
-                // Show success screen
-                document.getElementById('orderForm').style.display = 'none';
-                document.getElementById('successScreen').classList.add('show');
+                // Save to Firebase
+                db.collection('audiobook_orders').doc(orderId).set(orderData)
+                    .then(() => {
+                        console.log('✅ Order saved:', orderId);
+                        
+                        // Hide loading
+                        document.getElementById('loadingOverlay').classList.remove('show');
+                        
+                        // Show order ID
+                        document.getElementById('orderIdDisplay').textContent = '🎫 מספר הזמנה: ' + orderId;
+                        
+                        // Show success screen
+                        document.getElementById('orderForm').style.display = 'none';
+                        document.getElementById('successScreen').classList.add('show');
+                    })
+                    .catch((error) => {
+                        console.error('❌ Error saving order:', error);
+                        
+                        // Hide loading
+                        document.getElementById('loadingOverlay').classList.remove('show');
+                        
+                        // Show error but still show success (order might have been saved)
+                        alert('שגיאה בשמירת ההזמנה. אנא צור קשר: 052-265-3170');
+                    });
             }
 
             return false;
