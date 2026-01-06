@@ -342,11 +342,11 @@
             font-size: 13px;
             color: #ff4444;
             margin-top: 8px;
-            display: none;
             padding: 8px 12px;
             background: rgba(255, 68, 68, 0.1);
             border-radius: 8px;
             border-right: 3px solid #ff4444;
+            display: none;
         }
 
         .error-msg.show {
@@ -360,11 +360,16 @@
             75% { transform: translateX(5px); }
         }
 
-        /* Input with error */
-        .form-group input.error,
-        .form-group input[style*="border-color: var(--accent-red)"] {
+        /* Input validation states */
+        .form-group input.input-error {
             border-color: #ff4444 !important;
-            box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.2);
+            box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.2) !important;
+            background: rgba(255, 68, 68, 0.05) !important;
+        }
+
+        .form-group input.input-valid {
+            border-color: #22c55e !important;
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2) !important;
         }
 
         /* Two columns row */
@@ -1087,7 +1092,7 @@
         </div>
 
         <!-- Form -->
-        <form id="orderForm" class="order-form" onsubmit="return submitOrder(event)" novalidate>
+        <form id="orderForm" class="order-form" onsubmit="return submitOrder(event)">
             <!-- Personal Details -->
             <div class="form-section">
                 <div class="section-title">
@@ -1097,10 +1102,10 @@
                 
                 <div class="form-group">
                     <label>שם מלא <span class="required">*</span></label>
-                    <input type="text" id="customerName" placeholder="ישראל ישראלי" required minlength="2" maxlength="50" autocomplete="name">
+                    <input type="text" id="customerName" placeholder="ישראל ישראלי" required minlength="2" autocomplete="name">
                     <div class="field-hint">
                         <span class="hint-icon">✨</span>
-                        <span>השם יופיע בהקדשה האישית באודיובוק (עברית או אנגלית)</span>
+                        <span>השם יופיע בהקדשה האישית באודיובוק</span>
                     </div>
                     <div class="error-msg" id="nameError"></div>
                 </div>
@@ -1117,10 +1122,10 @@
 
                 <div class="form-group">
                     <label>טלפון נייד <span class="required">*</span></label>
-                    <input type="tel" id="customerPhone" placeholder="052-1234567" required autocomplete="tel" dir="ltr" maxlength="14">
+                    <input type="tel" id="customerPhone" placeholder="052-123-4567" required autocomplete="tel" dir="ltr" maxlength="12">
                     <div class="field-hint">
                         <span class="hint-icon">📱</span>
-                        <span>מספר ישראלי בלבד - לעדכון בוואטסאפ כשהקובץ מוכן</span>
+                        <span>פורמט: 05X-XXX-XXXX (10 ספרות) - לעדכון בוואטסאפ</span>
                     </div>
                     <div class="error-msg" id="phoneError"></div>
                 </div>
@@ -1134,8 +1139,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label>רחוב ומספר בית <span class="required">*</span></label>
-                    <input type="text" id="customerAddress" placeholder="רחוב הירקון 123" required autocomplete="street-address" maxlength="100">
+                    <label>רחוב ומספר <span class="required">*</span></label>
+                    <input type="text" id="customerAddress" placeholder="רחוב הירקון 123" required autocomplete="street-address">
                     <div class="error-msg" id="addressError"></div>
                 </div>
 
@@ -1147,7 +1152,7 @@
                     </div>
                     <div class="form-group">
                         <label>מיקוד <span class="required">*</span></label>
-                        <input type="text" id="customerZipcode" placeholder="7546800" required autocomplete="postal-code" dir="ltr" maxlength="7" pattern="[0-9]{7}">
+                        <input type="text" id="customerZipcode" placeholder="7546800" required autocomplete="postal-code" dir="ltr" maxlength="7" inputmode="numeric">
                         <div class="error-msg" id="zipcodeError"></div>
                     </div>
                 </div>
@@ -1223,10 +1228,10 @@
 
                 <div class="bit-phone-confirm" id="bitPhoneConfirm" style="display: none;">
                     <label>מספר הטלפון ששילמת ממנו:</label>
-                    <input type="tel" id="bitPayerPhone" placeholder="052-1234567" dir="ltr" maxlength="14">
+                    <input type="tel" id="bitPayerPhone" placeholder="052-123-4567" dir="ltr" maxlength="12">
                     <span class="field-hint">
                         <span class="hint-icon">🔍</span>
-                        <span>מספר ישראלי - לאימות התשלום</span>
+                        <span>פורמט: 05X-XXX-XXXX - לאימות התשלום</span>
                     </span>
                 </div>
             </div>
@@ -1352,69 +1357,39 @@
         let appliedCode = '';
 
         // ═══════════════════════════════════════════════════════════════
-        // 🔒 PROFESSIONAL VALIDATION FUNCTIONS
+        // 🔒 VALIDATION FUNCTIONS
         // ═══════════════════════════════════════════════════════════════
         
-        let firstErrorField = null;
-
-        // שם: עברית/אנגלית, מינימום 2 תווים, מקסימום 50
-        function isValidName(name) {
-            const trimmed = name.trim();
-            // Allow Hebrew, English, spaces, hyphens, apostrophes
-            const nameRegex = /^[\u0590-\u05FFa-zA-Z\s\-']{2,50}$/;
-            return nameRegex.test(trimmed);
-        }
-
-        // אימייל: פורמט תקני
         function isValidEmail(email) {
-            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            return emailRegex.test(email.trim());
+            return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email.trim());
         }
 
-        // טלפון ישראלי: 05X-XXXXXXX או 02/3/4/8/9-XXXXXXX או +972
+        // Israeli phone: 05X-XXXXXXX (10 digits starting with 05)
         function isValidPhone(phone) {
-            // Remove all non-digits
             const cleaned = phone.replace(/\D/g, '');
-            
-            // Israeli mobile: 05X (10 digits total)
-            // Israeli landline: 02/3/4/8/9 (9-10 digits)
-            // International: +972 (12-13 digits)
-            
-            // Check for Israeli mobile (05X)
-            if (cleaned.startsWith('05') && cleaned.length === 10) {
+            // Must be exactly 10 digits and start with 05
+            if (cleaned.length === 10 && cleaned.startsWith('05')) {
                 return true;
             }
-            
-            // Check for Israeli landline (02/3/4/8/9)
-            if (/^0[2-489]/.test(cleaned) && (cleaned.length === 9 || cleaned.length === 10)) {
+            // Or landline 9-10 digits starting with 0[2-9]
+            if (cleaned.length >= 9 && cleaned.length <= 10 && /^0[2-9]/.test(cleaned)) {
                 return true;
             }
-            
-            // Check for international format +972
-            if (cleaned.startsWith('972') && cleaned.length >= 12 && cleaned.length <= 13) {
-                return true;
-            }
-            
             return false;
         }
 
-        // כתובת: מינימום 5 תווים (רחוב + מספר)
-        function isValidAddress(address) {
-            const trimmed = address.trim();
-            return trimmed.length >= 5 && trimmed.length <= 100;
+        // Israeli zipcode: exactly 7 digits
+        function isValidZipcode(zip) {
+            return zip.replace(/\D/g, '').length === 7;
         }
 
-        // עיר: עברית/אנגלית, 2-30 תווים
-        function isValidCity(city) {
-            const trimmed = city.trim();
-            const cityRegex = /^[\u0590-\u05FFa-zA-Z\s\-]{2,30}$/;
-            return cityRegex.test(trimmed);
-        }
-
-        // מיקוד ישראלי: 7 ספרות
-        function isValidZipcode(zipcode) {
-            const cleaned = zipcode.replace(/\D/g, '');
-            return cleaned.length === 7;
+        // Format phone as user types
+        function formatPhone(input) {
+            let val = input.value.replace(/\D/g, '');
+            if (val.length > 10) val = val.slice(0, 10);
+            if (val.length > 3) val = val.slice(0, 3) + '-' + val.slice(3);
+            if (val.length > 7) val = val.slice(0, 7) + '-' + val.slice(7);
+            input.value = val;
         }
 
         function clearErrors() {
@@ -1422,33 +1397,73 @@
                 el.textContent = '';
                 el.classList.remove('show');
             });
-            // Reset input borders
             document.querySelectorAll('input').forEach(el => {
-                el.style.borderColor = '';
+                el.classList.remove('input-error', 'input-valid');
             });
-            firstErrorField = null;
         }
 
-        function showError(inputId, errorId, message) {
-            const errorEl = document.getElementById(errorId);
-            const inputEl = document.getElementById(inputId);
-            
-            errorEl.textContent = message;
-            errorEl.classList.add('show');
-            inputEl.style.borderColor = 'var(--accent-red)';
-            
-            // Track first error for scrolling
-            if (!firstErrorField) {
-                firstErrorField = inputEl;
+        function showError(id, message) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.textContent = message;
+                el.classList.add('show');
+            }
+            // Find related input and mark as error
+            const inputId = id.replace('Error', '').replace('customer', 'customer');
+            const input = document.getElementById(inputId) || document.getElementById('customer' + inputId.charAt(0).toUpperCase() + inputId.slice(1));
+            if (input) {
+                input.classList.add('input-error');
             }
         }
 
-        function scrollToFirstError() {
-            if (firstErrorField) {
-                firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                firstErrorField.focus();
+        function showValid(inputId) {
+            const input = document.getElementById(inputId);
+            if (input) {
+                input.classList.remove('input-error');
+                input.classList.add('input-valid');
             }
         }
+
+        // Real-time validation setup
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-format phone inputs
+            document.querySelectorAll('input[type="tel"]').forEach(input => {
+                input.addEventListener('input', function() { formatPhone(this); });
+            });
+            
+            // Validate on blur with visual feedback
+            const fields = [
+                { id: 'customerName', errorId: 'nameError', validate: v => v.trim().length >= 2, msg: '⚠️ הזן שם מלא (לפחות 2 תווים)' },
+                { id: 'customerEmail', errorId: 'emailError', validate: isValidEmail, msg: '⚠️ פורמט לא תקין (לדוגמה: name@email.com)' },
+                { id: 'customerPhone', errorId: 'phoneError', validate: isValidPhone, msg: '⚠️ הזן מספר ישראלי: 05X-XXX-XXXX' },
+                { id: 'customerAddress', errorId: 'addressError', validate: v => v.trim().length >= 5, msg: '⚠️ הזן רחוב ומספר בית' },
+                { id: 'customerCity', errorId: 'cityError', validate: v => v.trim().length >= 2, msg: '⚠️ הזן שם עיר' },
+                { id: 'customerZipcode', errorId: 'zipcodeError', validate: isValidZipcode, msg: '⚠️ הזן 7 ספרות (לדוגמה: 7546800)' }
+            ];
+            
+            fields.forEach(field => {
+                const input = document.getElementById(field.id);
+                if (input) {
+                    input.addEventListener('blur', function() {
+                        const val = this.value;
+                        const errorEl = document.getElementById(field.errorId);
+                        if (!val.trim()) {
+                            this.classList.remove('input-valid');
+                            this.classList.add('input-error');
+                            if (errorEl) { errorEl.textContent = '⚠️ שדה חובה'; errorEl.classList.add('show'); }
+                        } else if (!field.validate(val)) {
+                            this.classList.remove('input-valid');
+                            this.classList.add('input-error');
+                            if (errorEl) { errorEl.textContent = field.msg; errorEl.classList.add('show'); }
+                        } else {
+                            this.classList.remove('input-error');
+                            this.classList.add('input-valid');
+                            if (errorEl) { errorEl.textContent = ''; errorEl.classList.remove('show'); }
+                        }
+                    });
+                }
+            });
+        });
 
         // Apply discount code
         function applyDiscount() {
@@ -1557,83 +1572,95 @@
             const bitPayerPhone = document.getElementById('bitPayerPhone')?.value.trim() || '';
 
             let isValid = true;
+            let firstErrorInput = null;
 
-            // ═══════════════════════════════════════════════════════════════
-            // 🔒 PROFESSIONAL VALIDATION - FIELD BY FIELD
-            // ═══════════════════════════════════════════════════════════════
-
-            // 1. שם מלא - חובה, עברית/אנגלית, 2-50 תווים
-            if (!name) {
-                showError('customerName', 'nameError', '⚠️ שדה חובה - נא להזין שם מלא');
-                isValid = false;
-            } else if (!isValidName(name)) {
-                showError('customerName', 'nameError', '⚠️ שם לא תקין - השתמש באותיות בלבד (2-50 תווים)');
+            // 1. שם מלא
+            if (!name || name.length < 2) {
+                showError('nameError', '⚠️ הזן שם מלא (לפחות 2 תווים)');
+                document.getElementById('customerName').classList.add('input-error');
+                if (!firstErrorInput) firstErrorInput = document.getElementById('customerName');
                 isValid = false;
             }
-
-            // 2. אימייל - חובה, פורמט תקין
+            
+            // 2. אימייל
             if (!email) {
-                showError('customerEmail', 'emailError', '⚠️ שדה חובה - נא להזין כתובת אימייל');
+                showError('emailError', '⚠️ שדה חובה');
+                document.getElementById('customerEmail').classList.add('input-error');
+                if (!firstErrorInput) firstErrorInput = document.getElementById('customerEmail');
                 isValid = false;
             } else if (!isValidEmail(email)) {
-                showError('customerEmail', 'emailError', '⚠️ פורמט אימייל לא תקין (לדוגמה: name@email.com)');
+                showError('emailError', '⚠️ פורמט לא תקין (לדוגמה: name@email.com)');
+                document.getElementById('customerEmail').classList.add('input-error');
+                if (!firstErrorInput) firstErrorInput = document.getElementById('customerEmail');
                 isValid = false;
             }
-
-            // 3. טלפון - חובה, פורמט ישראלי
+            
+            // 3. טלפון - חייב להיות ישראלי תקין
             if (!phone) {
-                showError('customerPhone', 'phoneError', '⚠️ שדה חובה - נא להזין מספר טלפון');
+                showError('phoneError', '⚠️ שדה חובה');
+                document.getElementById('customerPhone').classList.add('input-error');
+                if (!firstErrorInput) firstErrorInput = document.getElementById('customerPhone');
                 isValid = false;
             } else if (!isValidPhone(phone)) {
-                showError('customerPhone', 'phoneError', '⚠️ מספר לא תקין - הזן מספר ישראלי (לדוגמה: 052-1234567)');
+                showError('phoneError', '⚠️ הזן מספר ישראלי: 05X-XXX-XXXX (10 ספרות)');
+                document.getElementById('customerPhone').classList.add('input-error');
+                if (!firstErrorInput) firstErrorInput = document.getElementById('customerPhone');
                 isValid = false;
             }
-
-            // 4. כתובת - חובה, מינימום 5 תווים
-            if (!address) {
-                showError('customerAddress', 'addressError', '⚠️ שדה חובה - נא להזין כתובת');
-                isValid = false;
-            } else if (!isValidAddress(address)) {
-                showError('customerAddress', 'addressError', '⚠️ כתובת קצרה מדי - הזן רחוב ומספר בית');
-                isValid = false;
-            }
-
-            // 5. עיר - חובה, 2-30 תווים
-            if (!city) {
-                showError('customerCity', 'cityError', '⚠️ שדה חובה - נא להזין שם עיר');
-                isValid = false;
-            } else if (!isValidCity(city)) {
-                showError('customerCity', 'cityError', '⚠️ שם עיר לא תקין - השתמש באותיות בלבד');
+            
+            // 4. כתובת
+            if (!address || address.length < 5) {
+                showError('addressError', '⚠️ הזן רחוב ומספר בית');
+                document.getElementById('customerAddress').classList.add('input-error');
+                if (!firstErrorInput) firstErrorInput = document.getElementById('customerAddress');
                 isValid = false;
             }
-
-            // 6. מיקוד - חובה, 7 ספרות
+            
+            // 5. עיר
+            if (!city || city.length < 2) {
+                showError('cityError', '⚠️ הזן שם עיר');
+                document.getElementById('customerCity').classList.add('input-error');
+                if (!firstErrorInput) firstErrorInput = document.getElementById('customerCity');
+                isValid = false;
+            }
+            
+            // 6. מיקוד - 7 ספרות
             if (!zipcode) {
-                showError('customerZipcode', 'zipcodeError', '⚠️ שדה חובה - נא להזין מיקוד');
+                showError('zipcodeError', '⚠️ שדה חובה');
+                document.getElementById('customerZipcode').classList.add('input-error');
+                if (!firstErrorInput) firstErrorInput = document.getElementById('customerZipcode');
                 isValid = false;
             } else if (!isValidZipcode(zipcode)) {
-                showError('customerZipcode', 'zipcodeError', '⚠️ מיקוד לא תקין - הזן 7 ספרות (לדוגמה: 7546800)');
+                showError('zipcodeError', '⚠️ הזן 7 ספרות (לדוגמה: 7546800)');
+                document.getElementById('customerZipcode').classList.add('input-error');
+                if (!firstErrorInput) firstErrorInput = document.getElementById('customerZipcode');
                 isValid = false;
             }
             
-            // 7. אישור תשלום Bit - חובה
+            // 7. אישור תשלום Bit
             if (!bitPaid) {
-                alert('⚠️ נא לסמן שביצעת תשלום ב-Bit לפני שליחת ההזמנה');
+                alert('⚠️ נא לסמן שביצעת תשלום ב-Bit');
                 isValid = false;
             }
             
-            // 8. טלפון Bit - חובה אם סימן שילם, פורמט ישראלי
+            // 8. טלפון Bit
             if (bitPaid && !bitPayerPhone) {
                 alert('⚠️ נא להזין את מספר הטלפון ששילמת ממנו');
                 isValid = false;
             } else if (bitPaid && !isValidPhone(bitPayerPhone)) {
-                alert('⚠️ מספר הטלפון ששילמת ממנו לא תקין - הזן מספר ישראלי (לדוגמה: 052-1234567)');
+                alert('⚠️ מספר טלפון Bit לא תקין - הזן: 05X-XXX-XXXX');
                 isValid = false;
             }
 
-            // אם יש שגיאות - גלול לשדה הראשון עם שגיאה
+            // Scroll to first error
+            if (!isValid && firstErrorInput) {
+                firstErrorInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstErrorInput.focus();
+                return false;
+            }
+
+            // If not valid, stop here
             if (!isValid) {
-                scrollToFirstError();
                 return false;
             }
 
@@ -1697,7 +1724,6 @@
                         // Show error but still show success (order might have been saved)
                         alert('שגיאה בשמירת ההזמנה. אנא צור קשר: 052-265-3170');
                     });
-            }
 
             return false;
         }
