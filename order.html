@@ -1069,7 +1069,7 @@
         </div>
 
         <!-- Form -->
-        <form id="orderForm" class="order-form" onsubmit="return submitOrder(event)" novalidate>
+        <form id="orderForm" class="order-form" onsubmit="return submitOrder(event)">
             <!-- Personal Details -->
             <div class="form-section">
                 <div class="section-title">
@@ -1214,7 +1214,7 @@
             </div>
 
             <!-- Submit -->
-            <button type="submit" class="submit-btn" id="submitBtn" onclick="console.log('🖱️ Button clicked!')">
+            <button type="submit" class="submit-btn" id="submitBtn">
                 <span class="btn-icon">✨</span>
                 <span id="submitText">שלח הזמנה</span>
             </button>
@@ -1292,29 +1292,20 @@
         // 🎧 AUDIOBOOK ORDER - NO-ART GALLERY
         // ═══════════════════════════════════════════════════════════════
 
-        console.log('🚀 Script loaded!');
-
         // 🔥 Firebase Configuration
-        let db;
-        try {
-            const firebaseConfig = {
-                apiKey: "AIzaSyCR3aaXHhMHza1Quar8HhNlvPyTbZyG95I",
-                authDomain: "here4iguana.firebaseapp.com",
-                projectId: "here4iguana",
-                storageBucket: "here4iguana.firebasestorage.app",
-                messagingSenderId: "168718173015",
-                appId: "1:168718173015:web:51d212a5a904297d85b198",
-                measurementId: "G-0XZPRYZ1CN"
-            };
+        const firebaseConfig = {
+            apiKey: "AIzaSyCR3aaXHhMHza1Quar8HhNlvPyTbZyG95I",
+            authDomain: "here4iguana.firebaseapp.com",
+            projectId: "here4iguana",
+            storageBucket: "here4iguana.firebasestorage.app",
+            messagingSenderId: "168718173015",
+            appId: "1:168718173015:web:51d212a5a904297d85b198",
+            measurementId: "G-0XZPRYZ1CN"
+        };
 
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            db = firebase.firestore();
-            console.log('✅ Firebase initialized successfully!');
-        } catch (error) {
-            console.error('❌ Firebase initialization error:', error);
-            alert('שגיאה בטעינת המערכת. נסה לרענן את הדף.');
-        }
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
         // Generate Order ID
         function generateOrderId() {
@@ -1349,7 +1340,8 @@
 
         function isValidPhone(phone) {
             const cleaned = phone.replace(/\D/g, '');
-            return cleaned.length >= 9 && cleaned.length <= 10;
+            // Accept 9-15 digits (covers local and international formats)
+            return cleaned.length >= 9 && cleaned.length <= 15;
         }
 
         function clearErrors() {
@@ -1357,12 +1349,25 @@
                 el.textContent = '';
                 el.classList.remove('show');
             });
+            firstError = null;
         }
+
+        let firstError = null;
 
         function showError(id, message) {
             const el = document.getElementById(id);
             el.textContent = message;
             el.classList.add('show');
+            // Track first error
+            if (!firstError) {
+                firstError = el;
+            }
+        }
+
+        function scrollToFirstError() {
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         }
 
         // Apply discount code
@@ -1456,11 +1461,8 @@
 
         // Submit order
         function submitOrder(event) {
-            console.log('📝 submitOrder called!');
             event.preventDefault();
             clearErrors();
-
-            console.log('📋 Getting form values...');
 
             // Get values
             const name = document.getElementById('customerName').value.trim();
@@ -1474,8 +1476,6 @@
             const bitPaid = document.getElementById('bitPaidCheckbox').checked;
             const bitPayerPhone = document.getElementById('bitPayerPhone')?.value.trim() || '';
 
-            console.log('📊 Form values:', { name, email, phone, address, city, zipcode, bitPaid, bitPayerPhone });
-
             let isValid = true;
 
             // Validate
@@ -1488,7 +1488,7 @@
                 isValid = false;
             }
             if (!isValidPhone(phone)) {
-                showError('phoneError', 'נא להזין מספר טלפון תקין');
+                showError('phoneError', 'מספר טלפון לא תקין');
                 isValid = false;
             }
             if (address.length < 3) {
@@ -1515,7 +1515,11 @@
                 isValid = false;
             }
 
-            console.log('✅ Validation result:', isValid);
+            // Scroll to first error if validation failed
+            if (!isValid) {
+                scrollToFirstError();
+                return false;
+            }
 
             if (isValid) {
                 const finalPrice = currentDiscount > 0 
@@ -1549,16 +1553,6 @@
 
                 // Show loading
                 document.getElementById('loadingOverlay').classList.add('show');
-
-                console.log('🔥 Saving to Firebase...', orderData);
-
-                // Check if db is initialized
-                if (!db) {
-                    console.error('❌ Firebase db not initialized!');
-                    alert('שגיאה במערכת. נא לרענן את הדף ולנסות שוב.');
-                    document.getElementById('loadingOverlay').classList.remove('show');
-                    return false;
-                }
 
                 // Save to Firebase
                 db.collection('audiobook_orders').doc(orderId).set(orderData)
@@ -1609,32 +1603,6 @@
         function goBack() {
             window.location.href = 'https://funnydates101.co.il';
         }
-
-        // Initialize when DOM is ready
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('📄 DOM loaded!');
-            
-            // Add form submit listener as backup
-            const form = document.getElementById('orderForm');
-            if (form) {
-                console.log('✅ Form found!');
-                form.addEventListener('submit', function(e) {
-                    console.log('📨 Form submit event triggered!');
-                });
-            } else {
-                console.error('❌ Form not found!');
-            }
-
-            // Check button
-            const btn = document.getElementById('submitBtn');
-            if (btn) {
-                console.log('✅ Submit button found!');
-            } else {
-                console.error('❌ Submit button not found!');
-            }
-        });
-
-        console.log('📜 Script fully parsed!');
     </script>
 </body>
 </html>
