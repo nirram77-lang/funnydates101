@@ -1707,7 +1707,7 @@
                     paymentMethod: 'bit',
                     bitPayerPhone: bitPayerPhone,
                     status: 'pending',
-                    createdAt: new Date().toISOString(),
+                    createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
                     source: 'funnydates101.co.il'
                 };
 
