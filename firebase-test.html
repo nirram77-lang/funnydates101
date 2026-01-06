@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Firebase Test</title>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+    <style>
+        body { font-family: Arial; padding: 40px; background: #1a1a2e; color: white; }
+        button { padding: 20px 40px; font-size: 20px; cursor: pointer; background: #22c55e; border: none; border-radius: 10px; color: white; }
+        button:hover { background: #16a34a; }
+        #result { margin-top: 20px; padding: 20px; background: #2a2a4e; border-radius: 10px; white-space: pre-wrap; }
+        .success { color: #22c55e; }
+        .error { color: #ff4444; }
+    </style>
+</head>
+<body>
+    <h1>🔥 Firebase Connection Test</h1>
+    <button onclick="testFirebase()">בדוק חיבור Firebase</button>
+    <div id="result">לחץ על הכפתור לבדיקה...</div>
+
+    <script>
+        // Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyCR3aaXHhMHza1Quar8HhNlvPyTbZyG95I",
+            authDomain: "here4iguana.firebaseapp.com",
+            projectId: "here4iguana",
+            storageBucket: "here4iguana.firebasestorage.app",
+            messagingSenderId: "168718173015",
+            appId: "1:168718173015:web:51d212a5a904297d85b198"
+        };
+
+        let db;
+        const result = document.getElementById('result');
+
+        function log(msg, isError = false) {
+            const time = new Date().toLocaleTimeString();
+            result.innerHTML += `<div class="${isError ? 'error' : ''}">[${time}] ${msg}</div>`;
+            console.log(msg);
+        }
+
+        // Initialize Firebase
+        try {
+            firebase.initializeApp(firebaseConfig);
+            db = firebase.firestore();
+            log('✅ Firebase initialized');
+        } catch (e) {
+            log('❌ Firebase init error: ' + e.message, true);
+        }
+
+        async function testFirebase() {
+            result.innerHTML = '';
+            log('🚀 Starting test...');
+            
+            const testId = 'TEST-' + Date.now();
+            const testData = {
+                id: testId,
+                message: 'Test from browser',
+                timestamp: new Date().toISOString()
+            };
+            
+            log('📝 Test data: ' + JSON.stringify(testData));
+            log('🔥 Attempting to write to audiobook_orders...');
+            
+            const startTime = Date.now();
+            
+            try {
+                // Method 1: Using set()
+                log('📤 Calling db.collection().doc().set()...');
+                
+                await db.collection('audiobook_orders').doc(testId).set(testData);
+                
+                const elapsed = Date.now() - startTime;
+                log(`✅ SUCCESS! Document saved in ${elapsed}ms`, false);
+                result.innerHTML += '<div class="success" style="font-size: 24px; margin-top: 20px;">🎉 Firebase עובד!</div>';
+                
+            } catch (error) {
+                const elapsed = Date.now() - startTime;
+                log(`❌ ERROR after ${elapsed}ms:`, true);
+                log(`   Code: ${error.code}`, true);
+                log(`   Message: ${error.message}`, true);
+                log(`   Full error: ${JSON.stringify(error)}`, true);
+            }
+        }
+    </script>
+</body>
+</html>
