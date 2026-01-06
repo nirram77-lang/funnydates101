@@ -1689,7 +1689,7 @@
             const orderId = generateOrderId();
             console.log('🎫 Generated order ID:', orderId);
 
-                // Order data
+                // Order data - using regular date instead of serverTimestamp
                 const orderData = {
                     orderId: orderId,
                     customerName: name,
@@ -1707,7 +1707,7 @@
                     paymentMethod: 'bit',
                     bitPayerPhone: bitPayerPhone,
                     status: 'pending',
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    createdAt: new Date().toISOString(),
                     source: 'funnydates101.co.il'
                 };
 
@@ -1725,16 +1725,13 @@
                     return false;
                 }
 
-                // Timeout after 15 seconds
+                // Timeout after 10 seconds - show ERROR, not success!
                 const timeoutId = setTimeout(() => {
-                    console.error('⏱️ Firebase timeout after 15 seconds');
+                    console.error('⏱️ Firebase timeout after 10 seconds');
                     document.getElementById('loadingOverlay').classList.remove('show');
-                    alert('הזמנתך נשלחה! אם לא תקבל אישור, צור קשר: 052-265-3170');
-                    // Still show success since order might have been saved
-                    document.getElementById('orderIdDisplay').textContent = '🎫 מספר הזמנה: ' + orderId;
-                    document.getElementById('orderForm').style.display = 'none';
-                    document.getElementById('successScreen').classList.add('show');
-                }, 15000);
+                    alert('⚠️ שגיאה בשליחת ההזמנה!\n\nנא לצלם מסך ולשלוח בוואטסאפ:\n052-265-3170\n\nמספר הזמנה: ' + orderId);
+                    // DO NOT show success screen on timeout!
+                }, 10000);
 
                 // Save to Firebase
                 db.collection('audiobook_orders').doc(orderId).set(orderData)
