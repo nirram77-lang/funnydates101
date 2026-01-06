@@ -311,10 +311,33 @@
         
         @media (max-width: 768px) {
             .price-ticker {
-                top: 100px;
+                top: auto;
+                bottom: 120px;
                 left: 10px;
-                transform: scale(0.9);
-                transform-origin: top left;
+                right: auto;
+                transform: scale(0.65);
+                transform-origin: bottom left;
+                padding: 12px 15px;
+                min-width: 120px;
+            }
+            .price-ticker-price {
+                font-size: 28px;
+            }
+            .price-ticker-title {
+                font-size: 12px;
+            }
+            .price-ticker-btn {
+                padding: 6px 14px;
+                font-size: 11px;
+            }
+        }
+        
+        /* iPhone safe area support */
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            @media (max-width: 768px) {
+                .price-ticker {
+                    bottom: calc(120px + env(safe-area-inset-bottom));
+                }
             }
         }
         
@@ -474,17 +497,41 @@
         @media (max-width: 768px) {
             .coupon-ticker {
                 bottom: 15px;
-                left: 15px;
-                right: auto;
+                left: auto;
+                right: 10px;
+                transform: scale(0.7);
+                transform-origin: bottom right;
             }
             .coupon-discount-num {
-                font-size: 28px;
+                font-size: 18px;
             }
             .coupon-left {
-                padding: 10px 14px;
+                padding: 8px 10px;
             }
             .coupon-right {
-                padding: 8px 12px 8px 10px;
+                padding: 6px 10px 6px 8px;
+            }
+            .coupon-code {
+                font-size: 10px;
+                padding: 3px 6px;
+            }
+            .coupon-desc {
+                font-size: 10px;
+            }
+            .coupon-source {
+                font-size: 9px;
+            }
+            .coupon-cta-mini {
+                font-size: 9px;
+            }
+        }
+        
+        /* iPhone safe area support for coupon */
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            @media (max-width: 768px) {
+                .coupon-ticker {
+                    bottom: calc(15px + env(safe-area-inset-bottom));
+                }
             }
         }
 
@@ -860,15 +907,40 @@
         
         @media (max-width: 768px) {
             .cosmic-ticker-container {
-                bottom: 15px;
-                right: 15px;
-                left: 15px;
+                bottom: 70px;
+                right: 10px;
+                left: auto;
+                transform: scale(0.6);
+                transform-origin: bottom right;
             }
             .cosmic-ticker {
-                width: 100%;
+                width: 280px;
             }
             .ticker-quote-text {
-                font-size: 15px;
+                font-size: 13px;
+            }
+            .ticker-header {
+                padding: 10px 12px;
+            }
+            .ticker-screen {
+                padding: 16px 14px;
+                min-height: 100px;
+            }
+            .ticker-logo-text {
+                font-size: 13px;
+            }
+            .ticker-live-badge {
+                padding: 4px 10px;
+                font-size: 9px;
+            }
+        }
+        
+        /* iPhone safe area support for cosmic ticker */
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            @media (max-width: 768px) {
+                .cosmic-ticker-container {
+                    bottom: calc(70px + env(safe-area-inset-bottom));
+                }
             }
         }
 
