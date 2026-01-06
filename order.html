@@ -469,6 +469,236 @@
             color: #22c55e;
         }
 
+        /* ═══════════════════════════════════════════════════════════════
+           💜 BIT PAYMENT SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        
+        .bit-payment-section {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(139, 92, 246, 0.1));
+            border: 2px solid rgba(124, 58, 237, 0.4);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bit-payment-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
+            animation: bitGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes bitGlow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .bit-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bit-logo {
+            height: 32px;
+            width: auto;
+        }
+
+        .bit-logo-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+            padding: 6px 16px;
+            border-radius: 8px;
+        }
+
+        .bit-title {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .bit-instructions {
+            position: relative;
+            z-index: 1;
+        }
+
+        .bit-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .bit-phone-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(124, 58, 237, 0.5);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+
+        .phone-number {
+            font-size: 26px;
+            font-weight: 900;
+            color: #A78BFA;
+            letter-spacing: 2px;
+            direction: ltr;
+        }
+
+        .copy-phone-btn {
+            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: 'Heebo', sans-serif;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .copy-phone-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(124, 58, 237, 0.4);
+        }
+
+        .bit-confirmation {
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bit-checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .bit-checkbox-label:hover {
+            background: rgba(124, 58, 237, 0.1);
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+
+        .bit-checkbox-label input[type="checkbox"] {
+            display: none;
+        }
+
+        .checkmark {
+            width: 26px;
+            height: 26px;
+            border: 2px solid rgba(124, 58, 237, 0.5);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .bit-checkbox-label input:checked + .checkmark {
+            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+            border-color: #7C3AED;
+        }
+
+        .bit-checkbox-label input:checked + .checkmark::after {
+            content: '✓';
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .checkbox-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .bit-phone-confirm {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bit-phone-confirm label {
+            display: block;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 10px;
+        }
+
+        .bit-phone-confirm input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(124, 58, 237, 0.4);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 18px;
+            font-family: 'Heebo', sans-serif;
+            color: white;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .bit-phone-confirm input:focus {
+            outline: none;
+            border-color: #7C3AED;
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+        }
+
+        .bit-phone-confirm input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
         /* Footer */
         .order-footer {
             background: rgba(0, 0, 0, 0.3);
@@ -768,7 +998,7 @@
                     🏷️ קוד הנחה (אופציונלי)
                 </label>
                 <div class="coupon-row">
-                    <input type="text" id="discountCode" placeholder="הכנס קוד הנחה" dir="ltr">
+                    <input type="text" id="discountCode" placeholder="הכנס קוד הנחה" dir="rtl">
                     <button type="button" class="coupon-btn" onclick="applyDiscount()">החל</button>
                 </div>
                 <div class="coupon-msg" id="couponMsg"></div>
@@ -790,15 +1020,65 @@
                 </div>
             </div>
 
+            <!-- Bit Payment Section -->
+            <div class="bit-payment-section">
+                <div class="bit-header">
+                    <img src="https://www.bitpay.co.il/wp-content/uploads/2021/01/bit-logo.png" alt="Bit" class="bit-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="bit-logo-fallback" style="display:none;">
+                        <span style="color:#7C3AED; font-weight:900; font-size:24px;">Bit</span>
+                    </div>
+                    <span class="bit-title">תשלום מהיר ומאובטח</span>
+                </div>
+
+                <div class="bit-instructions">
+                    <div class="bit-step">
+                        <span class="step-number">1</span>
+                        <span>פתח את אפליקציית <strong>Bit</strong> בטלפון</span>
+                    </div>
+                    <div class="bit-step">
+                        <span class="step-number">2</span>
+                        <span>שלח <strong id="bitAmount">₪69</strong> למספר:</span>
+                    </div>
+                    <div class="bit-phone-display">
+                        <span class="phone-number">052-265-3170</span>
+                        <button type="button" class="copy-phone-btn" onclick="copyBitPhone()">
+                            <span id="copyIcon">📋</span>
+                            <span id="copyText">העתק</span>
+                        </button>
+                    </div>
+                    <div class="bit-step">
+                        <span class="step-number">3</span>
+                        <span>סמן למטה שביצעת את התשלום</span>
+                    </div>
+                </div>
+
+                <div class="bit-confirmation">
+                    <label class="bit-checkbox-label">
+                        <input type="checkbox" id="bitPaidCheckbox" onchange="toggleBitConfirmation()">
+                        <span class="checkmark"></span>
+                        <span class="checkbox-text">שילמתי עם Bit 💜</span>
+                    </label>
+                </div>
+
+                <div class="bit-phone-confirm" id="bitPhoneConfirm" style="display: none;">
+                    <label>מספר הטלפון ששילמת ממנו:</label>
+                    <input type="tel" id="bitPayerPhone" placeholder="050-1234567" dir="ltr">
+                    <span class="field-hint">
+                        <span class="hint-icon">🔍</span>
+                        <span>לאימות התשלום</span>
+                    </span>
+                </div>
+            </div>
+
             <!-- Submit -->
-            <button type="submit" class="submit-btn">
-                <span class="btn-icon">💳</span>
-                <span>המשך לתשלום מאובטח</span>
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <span class="btn-icon">✨</span>
+                <span id="submitText">שלח הזמנה</span>
             </button>
 
             <div class="secure-note">
                 <span class="lock-icon">🔒</span>
-                <span>התשלום מאובטח באמצעות Bit / כרטיס אשראי</span>
+                <span>התשלום מאובטח באמצעות Bit</span>
             </div>
         </form>
 
@@ -931,6 +1211,48 @@
                 totalPrice.textContent = '₪' + BASE_PRICE;
                 headerPrice.textContent = '₪' + BASE_PRICE;
             }
+            
+            // Update Bit amount display
+            updateBitAmount();
+        }
+
+        // 💜 BIT PAYMENT FUNCTIONS
+        
+        function updateBitAmount() {
+            const bitAmount = document.getElementById('bitAmount');
+            const finalPrice = currentDiscount > 0 
+                ? Math.round(BASE_PRICE * (1 - currentDiscount/100))
+                : BASE_PRICE;
+            bitAmount.textContent = '₪' + finalPrice;
+        }
+
+        function copyBitPhone() {
+            const phone = '0522653170';
+            navigator.clipboard.writeText(phone).then(() => {
+                const copyIcon = document.getElementById('copyIcon');
+                const copyText = document.getElementById('copyText');
+                copyIcon.textContent = '✓';
+                copyText.textContent = 'הועתק!';
+                setTimeout(() => {
+                    copyIcon.textContent = '📋';
+                    copyText.textContent = 'העתק';
+                }, 2000);
+            });
+        }
+
+        function toggleBitConfirmation() {
+            const checkbox = document.getElementById('bitPaidCheckbox');
+            const phoneConfirm = document.getElementById('bitPhoneConfirm');
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            
+            if (checkbox.checked) {
+                phoneConfirm.style.display = 'block';
+                submitText.textContent = 'שלח הזמנה ✨';
+            } else {
+                phoneConfirm.style.display = 'none';
+                submitText.textContent = 'שלח הזמנה';
+            }
         }
 
         // Submit order
@@ -945,6 +1267,10 @@
             const address = document.getElementById('customerAddress').value.trim();
             const city = document.getElementById('customerCity').value.trim();
             const zipcode = document.getElementById('customerZipcode').value.trim();
+            
+            // Bit payment
+            const bitPaid = document.getElementById('bitPaidCheckbox').checked;
+            const bitPayerPhone = document.getElementById('bitPayerPhone')?.value.trim() || '';
 
             let isValid = true;
 
@@ -973,6 +1299,17 @@
                 showError('zipcodeError', 'נא להזין מיקוד');
                 isValid = false;
             }
+            
+            // Validate Bit payment
+            if (!bitPaid) {
+                alert('נא לסמן שביצעת תשלום ב-Bit');
+                isValid = false;
+            }
+            
+            if (bitPaid && !isValidPhone(bitPayerPhone)) {
+                alert('נא להזין את מספר הטלפון ששילמת ממנו');
+                isValid = false;
+            }
 
             if (isValid) {
                 const finalPrice = currentDiscount > 0 
@@ -993,19 +1330,21 @@
                     finalPrice: finalPrice,
                     product: 'audiobook-he',
                     productName: 'אודיובוק 101 דייטים ואף נשיכה',
+                    paymentMethod: 'bit',
+                    bitPayerPhone: bitPayerPhone,
+                    status: 'pending_verification',
                     createdAt: new Date().toISOString()
                 };
 
                 console.log('=== 🎧 Audiobook Order ===');
                 console.log(JSON.stringify(orderData, null, 2));
 
-                // TODO: Save to Firebase & redirect to payment
-                // For now, show Coming Soon
+                // TODO: Save to Firebase
+                // saveOrderToFirebase(orderData);
+                
+                // Show success screen
                 document.getElementById('orderForm').style.display = 'none';
-                document.getElementById('comingSoon').classList.add('show');
-
-                // When payment is ready:
-                // window.location.href = 'https://payment.verifone.co.il/...?amount=' + finalPrice;
+                document.getElementById('successScreen').classList.add('show');
             }
 
             return false;
