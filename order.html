@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>רכישת אודיובוק | 101 דייטים ואף נשיכה</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --accent-red: #dc2626;
+            --accent-rose: #f43f5e;
+            --accent-gold: #d4af37;
+            --text-white: #ffffff;
+            --text-muted: #9ca3af;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: var(--bg-dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(244, 63, 94, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatParticle 15s infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 6s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 8s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 10s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 12s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 14s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 1s; }
+        .particle:nth-child(10) { left: 95%; animation-delay: 3s; }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.2; }
+            100% { transform: translateY(-100px) scale(1); opacity: 0; }
+        }
+
+        /* Main Container */
+        .order-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 520px;
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.95), rgba(10, 10, 10, 0.98));
+            border-radius: 24px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 
+                0 25px 80px rgba(0, 0, 0, 0.5),
+                0 0 60px rgba(220, 38, 38, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .order-header {
+            background: linear-gradient(135deg, var(--bg-dark), #111);
+            padding: 30px 30px 25px;
+            text-align: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+        }
+
+        .order-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+
+        /* NO-ART GALLERY Badge */
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+        }
+
+        .brand-badge .brand-icon {
+            font-size: 20px;
+        }
+
+        .brand-badge .brand-name {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .product-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .product-title {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--text-white);
+            margin-bottom: 5px;
+        }
+
+        .product-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .product-subtitle span {
+            color: var(--accent-gold);
+        }
+
+        /* Price Display */
+        .price-display {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(244, 63, 94, 0.1));
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            padding: 15px 40px;
+            border-radius: 16px;
+        }
+
+        .price-amount {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--accent-red);
+            line-height: 1;
+        }
+
+        .price-note {
+            font-size: 12px;
+            color: var(--accent-rose);
+            margin-top: 5px;
+        }
+
+        /* Form */
+        .order-form {
+            padding: 30px;
+        }
+
+        .form-section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-title .icon {
+            font-size: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-white);
+            margin-bottom: 8px;
+        }
+
+        .form-group label .required {
+            color: var(--accent-red);
+        }
+
+        .form-group input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-size: 15px;
+            font-family: 'Heebo', sans-serif;
+            color: var(--text-white);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group input[dir="ltr"] {
+            text-align: left;
+        }
+
+        .field-hint {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .field-hint .hint-icon {
+            font-size: 12px;
+        }
+
+        .error-msg {
+            font-size: 12px;
+            color: var(--accent-red);
+            margin-top: 6px;
+            display: none;
+        }
+
+        .error-msg.show {
+            display: block;
+        }
+
+        /* Two columns row */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        /* Coupon Section */
+        .coupon-section {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .coupon-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .coupon-row input {
+            flex: 1;
+            text-transform: uppercase;
+        }
+
+        .coupon-btn {
+            background: linear-gradient(135deg, var(--accent-gold), #b8963d);
+            border: none;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Heebo', sans-serif;
+            color: var(--bg-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .coupon-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .coupon-msg {
+            font-size: 13px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .coupon-msg.success {
+            color: #22c55e;
+        }
+
+        .coupon-msg.error {
+            color: var(--accent-red);
+        }
+
+        /* Price Summary */
+        .price-summary {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .price-row:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .price-row.discount {
+            color: #22c55e;
+            display: none;
+        }
+
+        .price-row.discount.show {
+            display: flex;
+        }
+
+        .price-row.total {
+            padding-top: 15px;
+            margin-top: 5px;
+            border-top: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .price-row.total span:first-child {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-white);
+        }
+
+        .price-row.total span:last-child {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--accent-red);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-rose));
+            border: none;
+            padding: 18px;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Heebo', sans-serif;
+            color: var(--text-white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(220, 38, 38, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .submit-btn .btn-icon {
+            font-size: 20px;
+        }
+
+        /* Secure Note */
+        .secure-note {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .secure-note .lock-icon {
+            color: #22c55e;
+        }
+
+        /* Footer */
+        .order-footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .footer-brand .logo {
+            font-size: 24px;
+        }
+
+        .footer-brand .name {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+        }
+
+        .footer-info {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* Success Screen */
+        .success-screen {
+            display: none;
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .success-screen.show {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 80px;
+            margin-bottom: 25px;
+            animation: bounceIn 0.6s ease;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .success-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        .success-subtitle {
+            font-size: 18px;
+            color: var(--text-white);
+            margin-bottom: 30px;
+        }
+
+        .success-details {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: right;
+        }
+
+        .success-details p {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .success-details .highlight {
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .success-info {
+            margin-bottom: 25px;
+        }
+
+        .success-info p {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin: 8px 0;
+        }
+
+        .success-contact {
+            color: var(--accent-gold);
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .close-btn {
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-rose));
+            border: none;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Heebo', sans-serif;
+            color: var(--text-white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        /* Coming Soon Screen */
+        .coming-soon {
+            display: none;
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .coming-soon.show {
+            display: block;
+        }
+
+        .coming-soon-icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+
+        .coming-soon h3 {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .coming-soon p {
+            color: var(--text-muted);
+            margin: 10px 0;
+            font-size: 15px;
+        }
+
+        .coming-soon .close-btn {
+            margin-top: 25px;
+        }
+
+        /* Responsive */
+        @media (max-width: 540px) {
+            body {
+                padding: 10px;
+            }
+
+            .order-container {
+                border-radius: 20px;
+            }
+
+            .order-header {
+                padding: 25px 20px 20px;
+            }
+
+            .product-title {
+                font-size: 22px;
+            }
+
+            .price-amount {
+                font-size: 36px;
+            }
+
+            .order-form {
+                padding: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .submit-btn {
+                font-size: 16px;
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Main Order Form -->
+    <div class="order-container">
+        <!-- Header -->
+        <div class="order-header">
+            <div class="brand-badge">
+                <span class="brand-icon">🦎</span>
+                <span class="brand-name">NO-ART GALLERY</span>
+            </div>
+            
+            <div class="product-icon">🎧</div>
+            <h1 class="product-title">101 דייטים ואף נשיכה</h1>
+            <p class="product-subtitle">אודיובוק עם <span>הקדשה אישית</span></p>
+            
+            <div class="price-display">
+                <span class="price-amount" id="headerPrice">₪69</span>
+                <span class="price-note">מחיר השקה מיוחד!</span>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form id="orderForm" class="order-form" onsubmit="return submitOrder(event)">
+            <!-- Personal Details -->
+            <div class="form-section">
+                <div class="section-title">
+                    <span class="icon">👤</span>
+                    <span>פרטים אישיים</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>שם מלא <span class="required">*</span></label>
+                    <input type="text" id="customerName" placeholder="ישראל ישראלי" required minlength="2" autocomplete="name">
+                    <div class="field-hint">
+                        <span class="hint-icon">✨</span>
+                        <span>השם יופיע בהקדשה האישית באודיובוק</span>
+                    </div>
+                    <div class="error-msg" id="nameError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>כתובת אימייל <span class="required">*</span></label>
+                    <input type="email" id="customerEmail" placeholder="your@email.com" required autocomplete="email" dir="ltr">
+                    <div class="field-hint">
+                        <span class="hint-icon">📧</span>
+                        <span>קישור להורדה + חשבונית יישלחו לכאן</span>
+                    </div>
+                    <div class="error-msg" id="emailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>טלפון <span class="required">*</span></label>
+                    <input type="tel" id="customerPhone" placeholder="050-1234567" required autocomplete="tel" dir="ltr">
+                    <div class="field-hint">
+                        <span class="hint-icon">📱</span>
+                        <span>עדכון בוואטסאפ כשהקובץ מוכן</span>
+                    </div>
+                    <div class="error-msg" id="phoneError"></div>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="form-section">
+                <div class="section-title">
+                    <span class="icon">📍</span>
+                    <span>כתובת למשלוח</span>
+                </div>
+
+                <div class="form-group">
+                    <label>רחוב ומספר <span class="required">*</span></label>
+                    <input type="text" id="customerAddress" placeholder="רחוב הירקון 123" required autocomplete="street-address">
+                    <div class="error-msg" id="addressError"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>עיר <span class="required">*</span></label>
+                        <input type="text" id="customerCity" placeholder="תל אביב" required autocomplete="address-level2">
+                        <div class="error-msg" id="cityError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>מיקוד <span class="required">*</span></label>
+                        <input type="text" id="customerZipcode" placeholder="6330000" required autocomplete="postal-code" dir="ltr" maxlength="7">
+                        <div class="error-msg" id="zipcodeError"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Discount Code -->
+            <div class="coupon-section">
+                <label style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px; display: block;">
+                    🏷️ קוד הנחה (אופציונלי)
+                </label>
+                <div class="coupon-row">
+                    <input type="text" id="discountCode" placeholder="הכנס קוד הנחה" dir="ltr">
+                    <button type="button" class="coupon-btn" onclick="applyDiscount()">החל</button>
+                </div>
+                <div class="coupon-msg" id="couponMsg"></div>
+            </div>
+
+            <!-- Price Summary -->
+            <div class="price-summary">
+                <div class="price-row">
+                    <span>מחיר אודיובוק:</span>
+                    <span>₪69</span>
+                </div>
+                <div class="price-row discount" id="discountRow">
+                    <span id="discountLabel">הנחה (10%):</span>
+                    <span id="discountAmount">-₪6.90</span>
+                </div>
+                <div class="price-row total">
+                    <span>סה"כ לתשלום:</span>
+                    <span id="totalPrice">₪69</span>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="submit-btn">
+                <span class="btn-icon">💳</span>
+                <span>המשך לתשלום מאובטח</span>
+            </button>
+
+            <div class="secure-note">
+                <span class="lock-icon">🔒</span>
+                <span>התשלום מאובטח באמצעות Bit / כרטיס אשראי</span>
+            </div>
+        </form>
+
+        <!-- Success Screen -->
+        <div class="success-screen" id="successScreen">
+            <div class="success-icon">🎉</div>
+            <h2 class="success-title">תודה רבה!</h2>
+            <p class="success-subtitle">ההזמנה שלך התקבלה בהצלחה</p>
+            
+            <div class="success-details">
+                <p>🎧 <span class="highlight">האודיובוק שלך בהכנה!</span></p>
+                <p>הקובץ יותאם אישית עם שמך ויישלח אליך תוך מספר שעות.</p>
+            </div>
+
+            <div class="success-info">
+                <p>📧 חשבונית תישלח למייל</p>
+                <p>📱 קישור להורדה יגיע בוואטסאפ</p>
+            </div>
+
+            <p class="success-contact">שאלות? 📞 052-265-3170</p>
+
+            <button class="close-btn" onclick="closeSuccess()">חזרה לאתר</button>
+        </div>
+
+        <!-- Coming Soon -->
+        <div class="coming-soon" id="comingSoon">
+            <div class="coming-soon-icon">🚀</div>
+            <h3>בקרוב!</h3>
+            <p>האודיובוק יהיה זמין לרכישה בקרוב מאוד.</p>
+            <p>פרטייך נשמרו ונעדכן אותך כשיעלה לאוויר!</p>
+            <button class="close-btn" onclick="closeComingSoon()">סגור</button>
+        </div>
+
+        <!-- Footer -->
+        <div class="order-footer">
+            <div class="footer-brand">
+                <span class="logo">🦎</span>
+                <span class="name">NO-ART GALLERY</span>
+            </div>
+            <p class="footer-info">ע.מ 038680278 | שד׳ ירושלים 147, אשקלון</p>
+        </div>
+    </div>
+
+    <script>
+        // ═══════════════════════════════════════════════════════════════
+        // 🎧 AUDIOBOOK ORDER - NO-ART GALLERY
+        // ═══════════════════════════════════════════════════════════════
+
+        const BASE_PRICE = 69;
+        
+        // 🏷️ קודי הנחה פעילים
+        const DISCOUNT_CODES = {
+            'TIKTOK10': 10,
+            'YOUTUBE10': 10,
+            'INSTAGRAM10': 10,
+            'LAUNCH15': 15,
+            'VIP20': 20,
+            'FRIENDS25': 25,
+            '10110': 10
+        };
+
+        let currentDiscount = 0;
+        let appliedCode = '';
+
+        // Validation functions
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function isValidPhone(phone) {
+            const cleaned = phone.replace(/\D/g, '');
+            return cleaned.length >= 9 && cleaned.length <= 10;
+        }
+
+        function clearErrors() {
+            document.querySelectorAll('.error-msg').forEach(el => {
+                el.textContent = '';
+                el.classList.remove('show');
+            });
+        }
+
+        function showError(id, message) {
+            const el = document.getElementById(id);
+            el.textContent = message;
+            el.classList.add('show');
+        }
+
+        // Apply discount code
+        function applyDiscount() {
+            const codeInput = document.getElementById('discountCode');
+            const couponMsg = document.getElementById('couponMsg');
+            const discountRow = document.getElementById('discountRow');
+            const discountLabel = document.getElementById('discountLabel');
+            const discountAmount = document.getElementById('discountAmount');
+            const totalPrice = document.getElementById('totalPrice');
+            const headerPrice = document.getElementById('headerPrice');
+            
+            const code = codeInput.value.trim().toUpperCase();
+
+            if (!code) {
+                couponMsg.textContent = 'הכנס קוד הנחה';
+                couponMsg.className = 'coupon-msg error';
+                return;
+            }
+
+            if (DISCOUNT_CODES[code]) {
+                currentDiscount = DISCOUNT_CODES[code];
+                appliedCode = code;
+                
+                const discountValue = (BASE_PRICE * currentDiscount / 100);
+                const finalPrice = Math.round(BASE_PRICE - discountValue);
+                
+                couponMsg.textContent = '✓ קוד הנחה הוחל! ' + currentDiscount + '% הנחה';
+                couponMsg.className = 'coupon-msg success';
+                
+                discountLabel.textContent = 'הנחה (' + currentDiscount + '%):';
+                discountAmount.textContent = '-₪' + discountValue.toFixed(0);
+                discountRow.classList.add('show');
+                
+                totalPrice.textContent = '₪' + finalPrice;
+                headerPrice.textContent = '₪' + finalPrice;
+            } else {
+                currentDiscount = 0;
+                appliedCode = '';
+                
+                couponMsg.textContent = '✗ קוד הנחה לא תקף';
+                couponMsg.className = 'coupon-msg error';
+                discountRow.classList.remove('show');
+                
+                totalPrice.textContent = '₪' + BASE_PRICE;
+                headerPrice.textContent = '₪' + BASE_PRICE;
+            }
+        }
+
+        // Submit order
+        function submitOrder(event) {
+            event.preventDefault();
+            clearErrors();
+
+            // Get values
+            const name = document.getElementById('customerName').value.trim();
+            const email = document.getElementById('customerEmail').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            const address = document.getElementById('customerAddress').value.trim();
+            const city = document.getElementById('customerCity').value.trim();
+            const zipcode = document.getElementById('customerZipcode').value.trim();
+
+            let isValid = true;
+
+            // Validate
+            if (name.length < 2) {
+                showError('nameError', 'נא להזין שם מלא (לפחות 2 תווים)');
+                isValid = false;
+            }
+            if (!isValidEmail(email)) {
+                showError('emailError', 'נא להזין כתובת אימייל תקינה');
+                isValid = false;
+            }
+            if (!isValidPhone(phone)) {
+                showError('phoneError', 'נא להזין מספר טלפון תקין');
+                isValid = false;
+            }
+            if (address.length < 3) {
+                showError('addressError', 'נא להזין כתובת');
+                isValid = false;
+            }
+            if (city.length < 2) {
+                showError('cityError', 'נא להזין עיר');
+                isValid = false;
+            }
+            if (zipcode.length < 5) {
+                showError('zipcodeError', 'נא להזין מיקוד');
+                isValid = false;
+            }
+
+            if (isValid) {
+                const finalPrice = currentDiscount > 0 
+                    ? Math.round(BASE_PRICE * (1 - currentDiscount/100))
+                    : BASE_PRICE;
+
+                // Order data
+                const orderData = {
+                    customerName: name,
+                    customerEmail: email,
+                    customerPhone: phone,
+                    customerAddress: address,
+                    customerCity: city,
+                    customerZipcode: zipcode,
+                    basePrice: BASE_PRICE,
+                    discountCode: appliedCode || null,
+                    discountPercent: currentDiscount || 0,
+                    finalPrice: finalPrice,
+                    product: 'audiobook-he',
+                    productName: 'אודיובוק 101 דייטים ואף נשיכה',
+                    createdAt: new Date().toISOString()
+                };
+
+                console.log('=== 🎧 Audiobook Order ===');
+                console.log(JSON.stringify(orderData, null, 2));
+
+                // TODO: Save to Firebase & redirect to payment
+                // For now, show Coming Soon
+                document.getElementById('orderForm').style.display = 'none';
+                document.getElementById('comingSoon').classList.add('show');
+
+                // When payment is ready:
+                // window.location.href = 'https://payment.verifone.co.il/...?amount=' + finalPrice;
+            }
+
+            return false;
+        }
+
+        function closeSuccess() {
+            window.location.href = 'https://funnydates101.co.il';
+        }
+
+        function closeComingSoon() {
+            document.getElementById('comingSoon').classList.remove('show');
+            document.getElementById('orderForm').style.display = 'block';
+            document.getElementById('orderForm').reset();
+            document.getElementById('discountRow').classList.remove('show');
+            document.getElementById('totalPrice').textContent = '₪' + BASE_PRICE;
+            document.getElementById('headerPrice').textContent = '₪' + BASE_PRICE;
+            document.getElementById('couponMsg').textContent = '';
+            currentDiscount = 0;
+            appliedCode = '';
+        }
+    </script>
+</body>
+</html>
