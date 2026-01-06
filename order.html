@@ -178,6 +178,7 @@
             width: 100px;
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            pointer-events: none;
         }
 
         /* NO-ART GALLERY Badge */
@@ -259,8 +260,6 @@
         /* Form */
         .order-form {
             padding: 30px;
-            position: relative;
-            z-index: 2;
         }
 
         .form-section {
@@ -474,25 +473,6 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            position: relative;
-            overflow: hidden;
-            z-index: 5;
-        }
-
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-            pointer-events: none;
-        }
-
-        .submit-btn:hover::before {
-            left: 100%;
         }
 
         .submit-btn:hover {
@@ -518,8 +498,6 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            position: relative;
-            z-index: 5;
         }
 
         .secure-note .lock-icon {
@@ -537,27 +515,9 @@
             padding: 25px;
             margin-bottom: 25px;
             position: relative;
-            overflow: hidden;
-            z-index: 1;
         }
 
-        .bit-payment-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
-            animation: bitGlow 4s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @keyframes bitGlow {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.1); }
-        }
+        /* Removed animated ::before - was causing click blocking issues */
 
         .bit-header {
             display: flex;
@@ -565,8 +525,6 @@
             justify-content: center;
             gap: 12px;
             margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
         }
 
         .bit-logo {
@@ -590,8 +548,6 @@
         }
 
         .bit-instructions {
-            position: relative;
-            z-index: 1;
         }
 
         .bit-step {
@@ -660,8 +616,6 @@
 
         .bit-confirmation {
             margin-top: 20px;
-            position: relative;
-            z-index: 1;
         }
 
         .bit-checkbox-label {
@@ -722,8 +676,6 @@
             border-radius: 12px;
             border: 1px solid rgba(124, 58, 237, 0.3);
             animation: slideDown 0.3s ease;
-            position: relative;
-            z-index: 2;
         }
 
         @keyframes slideDown {
