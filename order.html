@@ -1069,7 +1069,7 @@
         </div>
 
         <!-- Form -->
-        <form id="orderForm" class="order-form" onsubmit="return submitOrder(event)">
+        <form id="orderForm" class="order-form" onsubmit="return submitOrder(event)" novalidate>
             <!-- Personal Details -->
             <div class="form-section">
                 <div class="section-title">
@@ -1214,7 +1214,7 @@
             </div>
 
             <!-- Submit -->
-            <button type="submit" class="submit-btn" id="submitBtn">
+            <button type="submit" class="submit-btn" id="submitBtn" onclick="console.log('🖱️ Button clicked!')">
                 <span class="btn-icon">✨</span>
                 <span id="submitText">שלח הזמנה</span>
             </button>
@@ -1292,20 +1292,29 @@
         // 🎧 AUDIOBOOK ORDER - NO-ART GALLERY
         // ═══════════════════════════════════════════════════════════════
 
-        // 🔥 Firebase Configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCR3aaXHhMHza1Quar8HhNlvPyTbZyG95I",
-            authDomain: "here4iguana.firebaseapp.com",
-            projectId: "here4iguana",
-            storageBucket: "here4iguana.firebasestorage.app",
-            messagingSenderId: "168718173015",
-            appId: "1:168718173015:web:51d212a5a904297d85b198",
-            measurementId: "G-0XZPRYZ1CN"
-        };
+        console.log('🚀 Script loaded!');
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+        // 🔥 Firebase Configuration
+        let db;
+        try {
+            const firebaseConfig = {
+                apiKey: "AIzaSyCR3aaXHhMHza1Quar8HhNlvPyTbZyG95I",
+                authDomain: "here4iguana.firebaseapp.com",
+                projectId: "here4iguana",
+                storageBucket: "here4iguana.firebasestorage.app",
+                messagingSenderId: "168718173015",
+                appId: "1:168718173015:web:51d212a5a904297d85b198",
+                measurementId: "G-0XZPRYZ1CN"
+            };
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            db = firebase.firestore();
+            console.log('✅ Firebase initialized successfully!');
+        } catch (error) {
+            console.error('❌ Firebase initialization error:', error);
+            alert('שגיאה בטעינת המערכת. נסה לרענן את הדף.');
+        }
 
         // Generate Order ID
         function generateOrderId() {
@@ -1447,8 +1456,11 @@
 
         // Submit order
         function submitOrder(event) {
+            console.log('📝 submitOrder called!');
             event.preventDefault();
             clearErrors();
+
+            console.log('📋 Getting form values...');
 
             // Get values
             const name = document.getElementById('customerName').value.trim();
@@ -1461,6 +1473,8 @@
             // Bit payment
             const bitPaid = document.getElementById('bitPaidCheckbox').checked;
             const bitPayerPhone = document.getElementById('bitPayerPhone')?.value.trim() || '';
+
+            console.log('📊 Form values:', { name, email, phone, address, city, zipcode, bitPaid, bitPayerPhone });
 
             let isValid = true;
 
@@ -1501,6 +1515,8 @@
                 isValid = false;
             }
 
+            console.log('✅ Validation result:', isValid);
+
             if (isValid) {
                 const finalPrice = currentDiscount > 0 
                     ? Math.round(BASE_PRICE * (1 - currentDiscount/100))
@@ -1533,6 +1549,16 @@
 
                 // Show loading
                 document.getElementById('loadingOverlay').classList.add('show');
+
+                console.log('🔥 Saving to Firebase...', orderData);
+
+                // Check if db is initialized
+                if (!db) {
+                    console.error('❌ Firebase db not initialized!');
+                    alert('שגיאה במערכת. נא לרענן את הדף ולנסות שוב.');
+                    document.getElementById('loadingOverlay').classList.remove('show');
+                    return false;
+                }
 
                 // Save to Firebase
                 db.collection('audiobook_orders').doc(orderId).set(orderData)
@@ -1583,6 +1609,32 @@
         function goBack() {
             window.location.href = 'https://funnydates101.co.il';
         }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 DOM loaded!');
+            
+            // Add form submit listener as backup
+            const form = document.getElementById('orderForm');
+            if (form) {
+                console.log('✅ Form found!');
+                form.addEventListener('submit', function(e) {
+                    console.log('📨 Form submit event triggered!');
+                });
+            } else {
+                console.error('❌ Form not found!');
+            }
+
+            // Check button
+            const btn = document.getElementById('submitBtn');
+            if (btn) {
+                console.log('✅ Submit button found!');
+            } else {
+                console.error('❌ Submit button not found!');
+            }
+        });
+
+        console.log('📜 Script fully parsed!');
     </script>
 </body>
 </html>
