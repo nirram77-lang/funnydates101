@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Firebase REST Test</title>
+    <style>
+        body { font-family: Arial; padding: 40px; background: #1a1a2e; color: white; }
+        button { padding: 20px 40px; font-size: 20px; cursor: pointer; background: #22c55e; border: none; border-radius: 10px; color: white; margin: 10px; }
+        button:hover { background: #16a34a; }
+        #result { margin-top: 20px; padding: 20px; background: #2a2a4e; border-radius: 10px; white-space: pre-wrap; font-family: monospace; }
+        .success { color: #22c55e; }
+        .error { color: #ff4444; }
+    </style>
+</head>
+<body>
+    <h1>🔥 Firebase REST API Test</h1>
+    <p>בדיקה ישירה בלי SDK</p>
+    
+    <button onclick="testREST()">בדוק REST API</button>
+    <button onclick="testSDK()">בדוק SDK רגיל</button>
+    
+    <div id="result">לחץ על כפתור לבדיקה...</div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        const result = document.getElementById('result');
+        const PROJECT_ID = 'here4iguana';
+        const API_KEY = 'AIzaSyCR3aaXHhMHza1Quar8HhNlvPyTbZyG95I';
+        
+        function log(msg, isError = false) {
+            const time = new Date().toLocaleTimeString();
+            result.innerHTML += `<div class="${isError ? 'error' : ''}">[${time}] ${msg}</div>`;
+            console.log(msg);
+        }
+
+        function clearLog() {
+            result.innerHTML = '';
+        }
+
+        // TEST 1: REST API Direct
+        async function testREST() {
+            clearLog();
+            log('🚀 Testing REST API directly...');
+            
+            const docId = 'REST-' + Date.now();
+            const url = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/audiobook_orders?documentId=${docId}&key=${API_KEY}`;
+            
+            const data = {
+                fields: {
+                    orderId: { stringValue: docId },
+                    customerName: { stringValue: 'REST Test' },
+                    customerEmail: { stringValue: 'rest@test.com' },
+                    test: { booleanValue: true },
+                    createdAt: { stringValue: new Date().toISOString() }
+                }
+            };
+            
+            log('📤 URL: ' + url);
+            log('📦 Data: ' + JSON.stringify(data, null, 2));
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                log('📥 Response status: ' + response.status);
+                
+                const responseData = await response.json();
+                log('📥 Response: ' + JSON.stringify(responseData, null, 2));
+                
+                if (response.ok) {
+                    log('✅ SUCCESS! Document created!', false);
+                    result.innerHTML += '<div class="success" style="font-size: 24px; margin-top: 20px;">🎉 REST API עובד!</div>';
+                } else {
+                    log('❌ FAILED: ' + responseData.error?.message, true);
+                }
+            } catch (error) {
+                log('❌ Network error: ' + error.message, true);
+            }
+        }
+
+        // TEST 2: SDK with explicit settings
+        async function testSDK() {
+            clearLog();
+            log('🚀 Testing Firebase SDK...');
+            
+            try {
+                // Initialize if not already
+                if (!firebase.apps.length) {
+                    firebase.initializeApp({
+                        apiKey: API_KEY,
+                        authDomain: "here4iguana.firebaseapp.com",
+                        projectId: PROJECT_ID,
+                        storageBucket: "here4iguana.firebasestorage.app",
+                        messagingSenderId: "168718173015",
+                        appId: "1:168718173015:web:51d212a5a904297d85b198"
+                    });
+                    log('✅ Firebase initialized');
+                }
+                
+                const db = firebase.firestore();
+                
+                // Disable offline persistence to force online-only
+                log('⚙️ Configuring Firestore...');
+                
+                const docId = 'SDK-' + Date.now();
+                const data = {
+                    orderId: docId,
+                    customerName: 'SDK Test',
+                    customerEmail: 'sdk@test.com',
+                    test: true,
+                    createdAt: new Date().toISOString()
+                };
+                
+                log('📤 Writing document: ' + docId);
+                log('📦 Data: ' + JSON.stringify(data, null, 2));
+                
+                // Set with merge and wait
+                const docRef = db.collection('audiobook_orders').doc(docId);
+                
+                log('🔥 Calling set()...');
+                const startTime = Date.now();
+                
+                await docRef.set(data);
+                
+                const elapsed = Date.now() - startTime;
+                log(`✅ SUCCESS in ${elapsed}ms!`);
+                result.innerHTML += '<div class="success" style="font-size: 24px; margin-top: 20px;">🎉 SDK עובד!</div>';
+                
+            } catch (error) {
+                log('❌ Error: ' + error.code + ' - ' + error.message, true);
+                log('❌ Full error: ' + JSON.stringify(error), true);
+            }
+        }
+    </script>
+</body>
+</html>
