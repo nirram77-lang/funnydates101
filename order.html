@@ -113,6 +113,53 @@
             overflow: hidden;
         }
 
+        /* Close Button */
+        .close-order-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .close-order-btn:hover {
+            background: rgba(220, 38, 38, 0.3);
+            border-color: rgba(220, 38, 38, 0.5);
+            transform: scale(1.1);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
         /* Header */
         .order-header {
             background: linear-gradient(135deg, var(--bg-dark), #111);
@@ -212,6 +259,8 @@
         /* Form */
         .order-form {
             padding: 30px;
+            position: relative;
+            z-index: 2;
         }
 
         .form-section {
@@ -427,6 +476,7 @@
             gap: 10px;
             position: relative;
             overflow: hidden;
+            z-index: 5;
         }
 
         .submit-btn::before {
@@ -438,6 +488,7 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: left 0.5s ease;
+            pointer-events: none;
         }
 
         .submit-btn:hover::before {
@@ -467,6 +518,8 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            position: relative;
+            z-index: 5;
         }
 
         .secure-note .lock-icon {
@@ -485,6 +538,7 @@
             margin-bottom: 25px;
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
 
         .bit-payment-section::before {
@@ -951,10 +1005,21 @@
         @media (max-width: 540px) {
             body {
                 padding: 10px;
+                align-items: flex-start;
             }
 
             .order-container {
                 border-radius: 20px;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+
+            .close-order-btn {
+                top: 10px;
+                left: 10px;
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
             }
 
             .order-header {
@@ -969,6 +1034,11 @@
                 font-size: 36px;
             }
 
+            .back-link {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
             .order-form {
                 padding: 20px;
             }
@@ -980,6 +1050,23 @@
             .submit-btn {
                 font-size: 16px;
                 padding: 16px;
+            }
+
+            .bit-phone-display {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .phone-number {
+                font-size: 22px;
+            }
+
+            .success-screen {
+                padding: 30px 20px;
+            }
+
+            .success-title {
+                font-size: 26px;
             }
         }
     </style>
@@ -1001,6 +1088,11 @@
 
     <!-- Main Order Form -->
     <div class="order-container">
+        <!-- Close Button -->
+        <button class="close-order-btn" onclick="goBack()" title="חזרה לאתר">
+            <span>✕</span>
+        </button>
+        
         <!-- Header -->
         <div class="order-header">
             <div class="brand-badge">
@@ -1016,6 +1108,12 @@
                 <span class="price-amount" id="headerPrice">₪69</span>
                 <span class="price-note">מחיר השקה מיוחד!</span>
             </div>
+            
+            <!-- Back link -->
+            <a href="https://funnydates101.co.il" class="back-link">
+                <span>←</span>
+                <span>חזרה לאתר</span>
+            </a>
         </div>
 
         <!-- Form -->
@@ -1527,6 +1625,11 @@
             document.getElementById('couponMsg').textContent = '';
             currentDiscount = 0;
             appliedCode = '';
+        }
+
+        // Go back to main site
+        function goBack() {
+            window.location.href = 'https://funnydates101.co.il';
         }
     </script>
 </body>
