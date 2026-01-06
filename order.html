@@ -339,14 +339,32 @@
         }
 
         .error-msg {
-            font-size: 12px;
-            color: var(--accent-red);
-            margin-top: 6px;
+            font-size: 13px;
+            color: #ff4444;
+            margin-top: 8px;
             display: none;
+            padding: 8px 12px;
+            background: rgba(255, 68, 68, 0.1);
+            border-radius: 8px;
+            border-right: 3px solid #ff4444;
         }
 
         .error-msg.show {
             display: block;
+            animation: shakeError 0.4s ease;
+        }
+
+        @keyframes shakeError {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Input with error */
+        .form-group input.error,
+        .form-group input[style*="border-color: var(--accent-red)"] {
+            border-color: #ff4444 !important;
+            box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.2);
         }
 
         /* Two columns row */
@@ -1069,7 +1087,7 @@
         </div>
 
         <!-- Form -->
-        <form id="orderForm" class="order-form" onsubmit="return submitOrder(event)">
+        <form id="orderForm" class="order-form" onsubmit="return submitOrder(event)" novalidate>
             <!-- Personal Details -->
             <div class="form-section">
                 <div class="section-title">
@@ -1079,10 +1097,10 @@
                 
                 <div class="form-group">
                     <label>שם מלא <span class="required">*</span></label>
-                    <input type="text" id="customerName" placeholder="ישראל ישראלי" required minlength="2" autocomplete="name">
+                    <input type="text" id="customerName" placeholder="ישראל ישראלי" required minlength="2" maxlength="50" autocomplete="name">
                     <div class="field-hint">
                         <span class="hint-icon">✨</span>
-                        <span>השם יופיע בהקדשה האישית באודיובוק</span>
+                        <span>השם יופיע בהקדשה האישית באודיובוק (עברית או אנגלית)</span>
                     </div>
                     <div class="error-msg" id="nameError"></div>
                 </div>
@@ -1098,11 +1116,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label>טלפון <span class="required">*</span></label>
-                    <input type="tel" id="customerPhone" placeholder="050-1234567" required autocomplete="tel" dir="ltr">
+                    <label>טלפון נייד <span class="required">*</span></label>
+                    <input type="tel" id="customerPhone" placeholder="052-1234567" required autocomplete="tel" dir="ltr" maxlength="14">
                     <div class="field-hint">
                         <span class="hint-icon">📱</span>
-                        <span>עדכון בוואטסאפ כשהקובץ מוכן</span>
+                        <span>מספר ישראלי בלבד - לעדכון בוואטסאפ כשהקובץ מוכן</span>
                     </div>
                     <div class="error-msg" id="phoneError"></div>
                 </div>
@@ -1116,8 +1134,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label>רחוב ומספר <span class="required">*</span></label>
-                    <input type="text" id="customerAddress" placeholder="רחוב הירקון 123" required autocomplete="street-address">
+                    <label>רחוב ומספר בית <span class="required">*</span></label>
+                    <input type="text" id="customerAddress" placeholder="רחוב הירקון 123" required autocomplete="street-address" maxlength="100">
                     <div class="error-msg" id="addressError"></div>
                 </div>
 
@@ -1129,7 +1147,7 @@
                     </div>
                     <div class="form-group">
                         <label>מיקוד <span class="required">*</span></label>
-                        <input type="text" id="customerZipcode" placeholder="6330000" required autocomplete="postal-code" dir="ltr" maxlength="7">
+                        <input type="text" id="customerZipcode" placeholder="7546800" required autocomplete="postal-code" dir="ltr" maxlength="7" pattern="[0-9]{7}">
                         <div class="error-msg" id="zipcodeError"></div>
                     </div>
                 </div>
@@ -1205,10 +1223,10 @@
 
                 <div class="bit-phone-confirm" id="bitPhoneConfirm" style="display: none;">
                     <label>מספר הטלפון ששילמת ממנו:</label>
-                    <input type="tel" id="bitPayerPhone" placeholder="050-1234567" dir="ltr">
+                    <input type="tel" id="bitPayerPhone" placeholder="052-1234567" dir="ltr" maxlength="14">
                     <span class="field-hint">
                         <span class="hint-icon">🔍</span>
-                        <span>לאימות התשלום</span>
+                        <span>מספר ישראלי - לאימות התשלום</span>
                     </span>
                 </div>
             </div>
@@ -1333,15 +1351,70 @@
         let currentDiscount = 0;
         let appliedCode = '';
 
-        // Validation functions
-        function isValidEmail(email) {
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        // ═══════════════════════════════════════════════════════════════
+        // 🔒 PROFESSIONAL VALIDATION FUNCTIONS
+        // ═══════════════════════════════════════════════════════════════
+        
+        let firstErrorField = null;
+
+        // שם: עברית/אנגלית, מינימום 2 תווים, מקסימום 50
+        function isValidName(name) {
+            const trimmed = name.trim();
+            // Allow Hebrew, English, spaces, hyphens, apostrophes
+            const nameRegex = /^[\u0590-\u05FFa-zA-Z\s\-']{2,50}$/;
+            return nameRegex.test(trimmed);
         }
 
+        // אימייל: פורמט תקני
+        function isValidEmail(email) {
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailRegex.test(email.trim());
+        }
+
+        // טלפון ישראלי: 05X-XXXXXXX או 02/3/4/8/9-XXXXXXX או +972
         function isValidPhone(phone) {
+            // Remove all non-digits
             const cleaned = phone.replace(/\D/g, '');
-            // Accept 9-15 digits (covers local and international formats)
-            return cleaned.length >= 9 && cleaned.length <= 15;
+            
+            // Israeli mobile: 05X (10 digits total)
+            // Israeli landline: 02/3/4/8/9 (9-10 digits)
+            // International: +972 (12-13 digits)
+            
+            // Check for Israeli mobile (05X)
+            if (cleaned.startsWith('05') && cleaned.length === 10) {
+                return true;
+            }
+            
+            // Check for Israeli landline (02/3/4/8/9)
+            if (/^0[2-489]/.test(cleaned) && (cleaned.length === 9 || cleaned.length === 10)) {
+                return true;
+            }
+            
+            // Check for international format +972
+            if (cleaned.startsWith('972') && cleaned.length >= 12 && cleaned.length <= 13) {
+                return true;
+            }
+            
+            return false;
+        }
+
+        // כתובת: מינימום 5 תווים (רחוב + מספר)
+        function isValidAddress(address) {
+            const trimmed = address.trim();
+            return trimmed.length >= 5 && trimmed.length <= 100;
+        }
+
+        // עיר: עברית/אנגלית, 2-30 תווים
+        function isValidCity(city) {
+            const trimmed = city.trim();
+            const cityRegex = /^[\u0590-\u05FFa-zA-Z\s\-]{2,30}$/;
+            return cityRegex.test(trimmed);
+        }
+
+        // מיקוד ישראלי: 7 ספרות
+        function isValidZipcode(zipcode) {
+            const cleaned = zipcode.replace(/\D/g, '');
+            return cleaned.length === 7;
         }
 
         function clearErrors() {
@@ -1349,24 +1422,31 @@
                 el.textContent = '';
                 el.classList.remove('show');
             });
-            firstError = null;
+            // Reset input borders
+            document.querySelectorAll('input').forEach(el => {
+                el.style.borderColor = '';
+            });
+            firstErrorField = null;
         }
 
-        let firstError = null;
-
-        function showError(id, message) {
-            const el = document.getElementById(id);
-            el.textContent = message;
-            el.classList.add('show');
-            // Track first error
-            if (!firstError) {
-                firstError = el;
+        function showError(inputId, errorId, message) {
+            const errorEl = document.getElementById(errorId);
+            const inputEl = document.getElementById(inputId);
+            
+            errorEl.textContent = message;
+            errorEl.classList.add('show');
+            inputEl.style.borderColor = 'var(--accent-red)';
+            
+            // Track first error for scrolling
+            if (!firstErrorField) {
+                firstErrorField = inputEl;
             }
         }
 
         function scrollToFirstError() {
-            if (firstError) {
-                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (firstErrorField) {
+                firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstErrorField.focus();
             }
         }
 
@@ -1478,53 +1558,92 @@
 
             let isValid = true;
 
-            // Validate
-            if (name.length < 2) {
-                showError('nameError', 'נא להזין שם מלא (לפחות 2 תווים)');
+            // ═══════════════════════════════════════════════════════════════
+            // 🔒 PROFESSIONAL VALIDATION - FIELD BY FIELD
+            // ═══════════════════════════════════════════════════════════════
+
+            // 1. שם מלא - חובה, עברית/אנגלית, 2-50 תווים
+            if (!name) {
+                showError('customerName', 'nameError', '⚠️ שדה חובה - נא להזין שם מלא');
                 isValid = false;
-            }
-            if (!isValidEmail(email)) {
-                showError('emailError', 'נא להזין כתובת אימייל תקינה');
-                isValid = false;
-            }
-            if (!isValidPhone(phone)) {
-                showError('phoneError', 'מספר טלפון לא תקין');
-                isValid = false;
-            }
-            if (address.length < 3) {
-                showError('addressError', 'נא להזין כתובת');
-                isValid = false;
-            }
-            if (city.length < 2) {
-                showError('cityError', 'נא להזין עיר');
-                isValid = false;
-            }
-            if (zipcode.length < 5) {
-                showError('zipcodeError', 'נא להזין מיקוד');
-                isValid = false;
-            }
-            
-            // Validate Bit payment
-            if (!bitPaid) {
-                alert('נא לסמן שביצעת תשלום ב-Bit');
-                isValid = false;
-            }
-            
-            if (bitPaid && !isValidPhone(bitPayerPhone)) {
-                alert('נא להזין את מספר הטלפון ששילמת ממנו');
+            } else if (!isValidName(name)) {
+                showError('customerName', 'nameError', '⚠️ שם לא תקין - השתמש באותיות בלבד (2-50 תווים)');
                 isValid = false;
             }
 
-            // Scroll to first error if validation failed
+            // 2. אימייל - חובה, פורמט תקין
+            if (!email) {
+                showError('customerEmail', 'emailError', '⚠️ שדה חובה - נא להזין כתובת אימייל');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showError('customerEmail', 'emailError', '⚠️ פורמט אימייל לא תקין (לדוגמה: name@email.com)');
+                isValid = false;
+            }
+
+            // 3. טלפון - חובה, פורמט ישראלי
+            if (!phone) {
+                showError('customerPhone', 'phoneError', '⚠️ שדה חובה - נא להזין מספר טלפון');
+                isValid = false;
+            } else if (!isValidPhone(phone)) {
+                showError('customerPhone', 'phoneError', '⚠️ מספר לא תקין - הזן מספר ישראלי (לדוגמה: 052-1234567)');
+                isValid = false;
+            }
+
+            // 4. כתובת - חובה, מינימום 5 תווים
+            if (!address) {
+                showError('customerAddress', 'addressError', '⚠️ שדה חובה - נא להזין כתובת');
+                isValid = false;
+            } else if (!isValidAddress(address)) {
+                showError('customerAddress', 'addressError', '⚠️ כתובת קצרה מדי - הזן רחוב ומספר בית');
+                isValid = false;
+            }
+
+            // 5. עיר - חובה, 2-30 תווים
+            if (!city) {
+                showError('customerCity', 'cityError', '⚠️ שדה חובה - נא להזין שם עיר');
+                isValid = false;
+            } else if (!isValidCity(city)) {
+                showError('customerCity', 'cityError', '⚠️ שם עיר לא תקין - השתמש באותיות בלבד');
+                isValid = false;
+            }
+
+            // 6. מיקוד - חובה, 7 ספרות
+            if (!zipcode) {
+                showError('customerZipcode', 'zipcodeError', '⚠️ שדה חובה - נא להזין מיקוד');
+                isValid = false;
+            } else if (!isValidZipcode(zipcode)) {
+                showError('customerZipcode', 'zipcodeError', '⚠️ מיקוד לא תקין - הזן 7 ספרות (לדוגמה: 7546800)');
+                isValid = false;
+            }
+            
+            // 7. אישור תשלום Bit - חובה
+            if (!bitPaid) {
+                alert('⚠️ נא לסמן שביצעת תשלום ב-Bit לפני שליחת ההזמנה');
+                isValid = false;
+            }
+            
+            // 8. טלפון Bit - חובה אם סימן שילם, פורמט ישראלי
+            if (bitPaid && !bitPayerPhone) {
+                alert('⚠️ נא להזין את מספר הטלפון ששילמת ממנו');
+                isValid = false;
+            } else if (bitPaid && !isValidPhone(bitPayerPhone)) {
+                alert('⚠️ מספר הטלפון ששילמת ממנו לא תקין - הזן מספר ישראלי (לדוגמה: 052-1234567)');
+                isValid = false;
+            }
+
+            // אם יש שגיאות - גלול לשדה הראשון עם שגיאה
             if (!isValid) {
                 scrollToFirstError();
                 return false;
             }
 
-            if (isValid) {
-                const finalPrice = currentDiscount > 0 
-                    ? Math.round(BASE_PRICE * (1 - currentDiscount/100))
-                    : BASE_PRICE;
+            // ═══════════════════════════════════════════════════════════════
+            // ✅ ALL VALID - PROCESS ORDER
+            // ═══════════════════════════════════════════════════════════════
+            
+            const finalPrice = currentDiscount > 0 
+                ? Math.round(BASE_PRICE * (1 - currentDiscount/100))
+                : BASE_PRICE;
 
                 // Generate unique order ID
                 const orderId = generateOrderId();
