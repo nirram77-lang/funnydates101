@@ -1315,20 +1315,28 @@
         // 🎧 AUDIOBOOK ORDER - NO-ART GALLERY
         // ═══════════════════════════════════════════════════════════════
 
-        // 🔥 Firebase Configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCR3aaXHhMHza1Quar8HhNlvPyTbZyG95I",
-            authDomain: "here4iguana.firebaseapp.com",
-            projectId: "here4iguana",
-            storageBucket: "here4iguana.firebasestorage.app",
-            messagingSenderId: "168718173015",
-            appId: "1:168718173015:web:51d212a5a904297d85b198",
-            measurementId: "G-0XZPRYZ1CN"
-        };
+        console.log('🚀 Script starting...');
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+        // 🔥 Firebase Configuration
+        let db = null;
+        try {
+            const firebaseConfig = {
+                apiKey: "AIzaSyCR3aaXHhMHza1Quar8HhNlvPyTbZyG95I",
+                authDomain: "here4iguana.firebaseapp.com",
+                projectId: "here4iguana",
+                storageBucket: "here4iguana.firebasestorage.app",
+                messagingSenderId: "168718173015",
+                appId: "1:168718173015:web:51d212a5a904297d85b198",
+                measurementId: "G-0XZPRYZ1CN"
+            };
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            db = firebase.firestore();
+            console.log('✅ Firebase initialized successfully!');
+        } catch (error) {
+            console.error('❌ Firebase init error:', error);
+        }
 
         // Generate Order ID
         function generateOrderId() {
@@ -1556,6 +1564,7 @@
 
         // Submit order
         function submitOrder(event) {
+            console.log('📝 submitOrder called!');
             event.preventDefault();
             clearErrors();
 
@@ -1570,6 +1579,8 @@
             // Bit payment
             const bitPaid = document.getElementById('bitPaidCheckbox').checked;
             const bitPayerPhone = document.getElementById('bitPayerPhone')?.value.trim() || '';
+
+            console.log('📋 Form values:', { name, email, phone, address, city, zipcode, bitPaid, bitPayerPhone });
 
             let isValid = true;
             let firstErrorInput = null;
@@ -1668,12 +1679,15 @@
             // ✅ ALL VALID - PROCESS ORDER
             // ═══════════════════════════════════════════════════════════════
             
+            console.log('✅ Validation passed! Processing order...');
+            
             const finalPrice = currentDiscount > 0 
                 ? Math.round(BASE_PRICE * (1 - currentDiscount/100))
                 : BASE_PRICE;
 
-                // Generate unique order ID
-                const orderId = generateOrderId();
+            // Generate unique order ID
+            const orderId = generateOrderId();
+            console.log('🎫 Generated order ID:', orderId);
 
                 // Order data
                 const orderData = {
@@ -1700,10 +1714,33 @@
                 // Show loading
                 document.getElementById('loadingOverlay').classList.add('show');
 
+                console.log('🔥 Attempting to save order:', orderId);
+                console.log('📦 Order data:', JSON.stringify(orderData, null, 2));
+
+                // Check if Firebase is ready
+                if (!db) {
+                    console.error('❌ Firebase db not initialized!');
+                    document.getElementById('loadingOverlay').classList.remove('show');
+                    alert('שגיאה במערכת. נא לרענן את הדף ולנסות שוב.');
+                    return false;
+                }
+
+                // Timeout after 15 seconds
+                const timeoutId = setTimeout(() => {
+                    console.error('⏱️ Firebase timeout after 15 seconds');
+                    document.getElementById('loadingOverlay').classList.remove('show');
+                    alert('הזמנתך נשלחה! אם לא תקבל אישור, צור קשר: 052-265-3170');
+                    // Still show success since order might have been saved
+                    document.getElementById('orderIdDisplay').textContent = '🎫 מספר הזמנה: ' + orderId;
+                    document.getElementById('orderForm').style.display = 'none';
+                    document.getElementById('successScreen').classList.add('show');
+                }, 15000);
+
                 // Save to Firebase
                 db.collection('audiobook_orders').doc(orderId).set(orderData)
                     .then(() => {
-                        console.log('✅ Order saved:', orderId);
+                        clearTimeout(timeoutId);
+                        console.log('✅ Order saved successfully:', orderId);
                         
                         // Hide loading
                         document.getElementById('loadingOverlay').classList.remove('show');
@@ -1716,13 +1753,15 @@
                         document.getElementById('successScreen').classList.add('show');
                     })
                     .catch((error) => {
+                        clearTimeout(timeoutId);
                         console.error('❌ Error saving order:', error);
+                        console.error('Error details:', error.code, error.message);
                         
                         // Hide loading
                         document.getElementById('loadingOverlay').classList.remove('show');
                         
-                        // Show error but still show success (order might have been saved)
-                        alert('שגיאה בשמירת ההזמנה. אנא צור קשר: 052-265-3170');
+                        // Show error
+                        alert('שגיאה בשמירת ההזמנה: ' + error.message + '\nאנא צור קשר: 052-265-3170');
                     });
 
             return false;
@@ -1748,6 +1787,8 @@
         function goBack() {
             window.location.href = 'https://funnydates101.co.il';
         }
+
+        console.log('📜 Script fully loaded!');
     </script>
 </body>
 </html>
