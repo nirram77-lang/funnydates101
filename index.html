@@ -342,304 +342,242 @@
         }
         
         /* ═══════════════════════════════════════════════════════════════════════════ */
-        /* 🎫 COUPON TICKER - HOLLYWOOD MEGA EDITION */
+        /* 🎫 COUPON TICKER - Elegant Red Edition (matching yellow style) */
         /* ═══════════════════════════════════════════════════════════════════════════ */
         
         .coupon-ticker {
             bottom: 25px;
-            left: 25px;
-            background: linear-gradient(145deg, #0d0d0d 0%, #1a0a0a 50%, #0d0d0d 100%);
-            border: 3px solid transparent;
-            border-image: linear-gradient(135deg, #d4af37, #f4d03f, #d4af37) 1;
+            left: 30px;
+            background: linear-gradient(145deg, #dc2626, #b91c1c);
+            border: 3px solid #ef4444;
             box-shadow: 
-                0 15px 50px rgba(220, 38, 38, 0.5),
-                0 0 80px rgba(212, 175, 55, 0.3),
-                inset 0 0 40px rgba(220, 38, 38, 0.1);
-            padding: 0;
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            animation: megaCouponPulse 2s ease-in-out infinite;
-            min-width: 300px;
-        }
-        
-        @keyframes megaCouponPulse {
-            0%, 100% { 
-                box-shadow: 0 15px 50px rgba(220, 38, 38, 0.5), 0 0 80px rgba(212, 175, 55, 0.3), inset 0 0 40px rgba(220, 38, 38, 0.1);
-                transform: scale(1);
-            }
-            50% { 
-                box-shadow: 0 20px 70px rgba(220, 38, 38, 0.7), 0 0 100px rgba(212, 175, 55, 0.5), inset 0 0 50px rgba(220, 38, 38, 0.2);
-                transform: scale(1.02);
-            }
-        }
-        
-        .coupon-ticker:hover {
-            transform: translateY(-8px) scale(1.05) !important;
-            box-shadow: 
-                0 25px 80px rgba(220, 38, 38, 0.6),
-                0 0 120px rgba(212, 175, 55, 0.4);
-            animation: none;
-        }
-        
-        .coupon-ticker .floating-ticker-close {
-            background: rgba(0, 0, 0, 0.6);
-            color: rgba(255, 255, 255, 0.8);
-            top: 10px;
-            left: 10px;
-            width: 24px;
-            height: 24px;
-            font-size: 14px;
-            z-index: 20;
-        }
-        
-        .coupon-ticker .floating-ticker-close:hover {
-            background: #dc2626;
-            color: #fff;
-            transform: scale(1.1);
-        }
-        
-        /* Header Banner */
-        .coupon-header-banner {
-            background: linear-gradient(90deg, #d4af37, #f4d03f, #d4af37);
-            padding: 8px 20px;
+                0 0 0 1px rgba(0,0,0,0.1),
+                0 10px 40px rgba(220, 38, 38, 0.4),
+                0 0 30px rgba(220, 38, 38, 0.2);
+            padding: 20px 25px;
+            min-width: 180px;
             text-align: center;
+            border-radius: 16px;
+            animation: couponGlow 3s ease-in-out infinite;
             position: relative;
             overflow: hidden;
         }
         
-        .coupon-header-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-            animation: bannerShine 2s ease-in-out infinite;
-        }
-        
-        @keyframes bannerShine {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        
-        .coupon-header-text {
-            font-size: 12px;
-            font-weight: 900;
-            color: #1a1a1a;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .coupon-ticker-content {
-            cursor: grab;
-            display: flex;
-            align-items: stretch;
-            gap: 0;
-        }
-        
-        .coupon-ticker-content:active {
-            cursor: grabbing;
-        }
-        
-        /* Left side - BIG Discount */
-        .coupon-left {
-            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-            padding: 20px 22px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-left: 4px dashed rgba(255,255,255,0.4);
-            position: relative;
-            overflow: hidden;
-            min-width: 100px;
-        }
-        
-        .coupon-left::before {
+        /* Subtle sparkle overlay */
+        .coupon-ticker::before {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.25) 50%, transparent 60%);
-            animation: couponShine 3s ease-in-out infinite;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255,255,255,0.1) 50%,
+                transparent 70%
+            );
+            animation: couponSparkle 4s ease-in-out infinite;
+            pointer-events: none;
         }
         
-        @keyframes couponShine {
+        @keyframes couponSparkle {
             0% { transform: translateX(-100%) rotate(45deg); }
-            50%, 100% { transform: translateX(100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
         }
         
-        .coupon-discount-num {
-            font-family: 'Secular One', sans-serif;
-            font-size: 42px;
+        @keyframes couponGlow {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 0 1px rgba(0,0,0,0.1),
+                    0 10px 40px rgba(220, 38, 38, 0.4),
+                    0 0 30px rgba(220, 38, 38, 0.2);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 0 1px rgba(0,0,0,0.1),
+                    0 12px 45px rgba(220, 38, 38, 0.5),
+                    0 0 40px rgba(220, 38, 38, 0.3);
+            }
+        }
+        
+        .coupon-ticker:hover {
+            transform: scale(1.03);
+            box-shadow: 
+                0 0 0 1px rgba(0,0,0,0.1),
+                0 15px 50px rgba(220, 38, 38, 0.5),
+                0 0 45px rgba(220, 38, 38, 0.3);
+            animation: none;
+        }
+        
+        .coupon-ticker .floating-ticker-close {
+            background: rgba(0, 0, 0, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            top: 8px;
+            left: 8px;
+            width: 22px;
+            height: 22px;
+            font-size: 12px;
+        }
+        
+        .coupon-ticker .floating-ticker-close:hover {
+            background: rgba(0, 0, 0, 0.4);
             color: #fff;
-            line-height: 1;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+        
+        .coupon-ticker-content {
+            cursor: grab;
             position: relative;
             z-index: 1;
         }
         
-        .coupon-discount-label {
-            font-size: 14px;
-            font-weight: 900;
-            color: #fef08a;
-            line-height: 1.1;
-            position: relative;
-            z-index: 1;
-            margin-top: 4px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        .coupon-ticker-content:active {
+            cursor: grabbing;
         }
         
-        /* Right side - Info */
-        .coupon-right {
-            padding: 16px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            justify-content: center;
-            flex: 1;
-        }
-        
-        .coupon-code-line {
+        /* Header with fire emoji */
+        .coupon-ticker-header {
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 10px;
         }
         
-        .coupon-source-icon {
-            font-size: 18px;
+        .coupon-ticker-icon {
+            font-size: 20px;
         }
         
-        .coupon-code {
-            font-family: 'Courier New', monospace;
-            font-size: 18px;
+        .coupon-ticker-title {
+            font-weight: 800;
+            font-size: 15px;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        /* Big discount number */
+        .coupon-ticker-discount {
+            font-family: 'Secular One', sans-serif;
+            font-size: 48px;
+            color: #fef08a;
             font-weight: 900;
-            color: #d4af37;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.1));
-            padding: 8px 16px;
-            border-radius: 10px;
-            border: 2px solid #d4af37;
-            letter-spacing: 3px;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            line-height: 1;
+            margin-bottom: 6px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .coupon-ticker-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 12px;
+        }
+        
+        /* Coupon code */
+        .coupon-ticker-code-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .coupon-ticker-code {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            font-weight: 900;
+            color: #1a1a1a;
+            background: linear-gradient(145deg, #fef08a, #fcd34d);
+            padding: 6px 14px;
+            border-radius: 8px;
+            letter-spacing: 2px;
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 2px solid rgba(0,0,0,0.1);
         }
         
-        .coupon-code:hover {
-            background: rgba(212, 175, 55, 0.3);
+        .coupon-ticker-code:hover {
             transform: scale(1.05);
+            background: linear-gradient(145deg, #fcd34d, #fbbf24);
         }
         
         .coupon-copy-btn {
-            background: rgba(74, 222, 128, 0.2);
-            border: 1px solid rgba(74, 222, 128, 0.5);
-            color: #4ade80;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: 700;
+            background: rgba(0,0,0,0.2);
+            border: none;
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 14px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 4px;
+            justify-content: center;
         }
         
         .coupon-copy-btn:hover {
-            background: rgba(74, 222, 128, 0.4);
-            transform: scale(1.05);
+            background: rgba(0,0,0,0.3);
+            transform: scale(1.1);
         }
         
         .coupon-copy-btn.copied {
-            background: #4ade80;
-            color: #000;
+            background: #22c55e;
         }
         
-        /* Products List */
-        .coupon-products {
-            display: flex;
-            flex-direction: column;
+        /* Products mini list */
+        .coupon-ticker-products {
+            font-size: 11px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        
+        /* CTA Button */
+        .coupon-ticker-btn {
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Heebo', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
             gap: 6px;
         }
         
-        .coupon-product {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: #ddd;
-        }
-        
-        .coupon-product-check {
-            color: #4ade80;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        
-        .coupon-product-icon {
-            font-size: 16px;
-        }
-        
-        /* CTA */
-        .coupon-cta-mini {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 13px;
-            color: #4ade80;
-            font-weight: 700;
-            background: rgba(74, 222, 128, 0.1);
-            padding: 8px 16px;
-            border-radius: 25px;
-            margin-top: 6px;
-            transition: all 0.3s ease;
-        }
-        
-        .coupon-cta-mini:hover {
-            background: rgba(74, 222, 128, 0.2);
+        .coupon-ticker-btn:hover {
+            background: #333;
+            transform: scale(1.05);
         }
         
         @media (max-width: 768px) {
             .coupon-ticker {
                 bottom: 15px;
                 left: 10px;
-                right: 10px;
-                min-width: auto;
-                max-width: calc(100% - 20px);
-                transform: none !important;
+                right: auto;
+                transform: scale(0.75);
+                transform-origin: bottom left;
+                padding: 15px 20px;
+                min-width: 150px;
             }
-            .coupon-discount-num {
-                font-size: 32px;
+            .coupon-ticker-discount {
+                font-size: 36px;
             }
-            .coupon-left {
-                padding: 14px 16px;
-                min-width: 80px;
+            .coupon-ticker-title {
+                font-size: 12px;
             }
-            .coupon-right {
-                padding: 12px 14px;
+            .coupon-ticker-btn {
+                padding: 8px 16px;
+                font-size: 11px;
             }
-            .coupon-code {
+            .coupon-ticker-code {
                 font-size: 14px;
-                padding: 6px 10px;
-                letter-spacing: 2px;
-            }
-            .coupon-product {
-                font-size: 11px;
-            }
-            .coupon-header-text {
-                font-size: 10px;
-                letter-spacing: 2px;
-            }
-            .coupon-cta-mini {
-                font-size: 11px;
-                padding: 6px 12px;
+                padding: 5px 10px;
             }
         }
         
@@ -2346,55 +2284,41 @@
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════ -->
-    <!-- 🎫 COUPON TICKER - HOLLYWOOD MEGA EDITION -->
+    <!-- 🎫 COUPON TICKER - Elegant Red Edition -->
     <!-- ═══════════════════════════════════════════════════════════════════════════ -->
     <div class="floating-ticker coupon-ticker" id="socialTicker">
         <button class="floating-ticker-close" onclick="closeTicker('socialTicker')">✕</button>
         
-        <!-- Header Banner -->
-        <div class="coupon-header-banner">
-            <span class="coupon-header-text">🔥 מבצע מיוחד 🔥</span>
-        </div>
-        
         <div class="coupon-ticker-content">
-            <!-- Left - Big Discount -->
-            <div class="coupon-left">
-                <span class="coupon-discount-num">10%</span>
-                <span class="coupon-discount-label">הנחה!</span>
+            <!-- Header -->
+            <div class="coupon-ticker-header">
+                <span class="coupon-ticker-icon">🔥</span>
+                <span class="coupon-ticker-title">מבצע מיוחד</span>
+                <span class="coupon-ticker-icon">🔥</span>
             </div>
             
-            <!-- Right - Info -->
-            <div class="coupon-right">
-                <!-- Coupon Code with Copy -->
-                <div class="coupon-code-line">
-                    <span class="coupon-source-icon">🎬</span>
-                    <span class="coupon-code" onclick="copyCouponCode(event)" title="לחץ להעתקה">10110</span>
-                    <button class="coupon-copy-btn" onclick="copyCouponCode(event)" id="couponCopyBtn">
-                        <span id="copyIcon">📋</span>
-                        <span id="copyText">העתק</span>
-                    </button>
-                </div>
-                
-                <!-- Products List -->
-                <div class="coupon-products">
-                    <div class="coupon-product">
-                        <span class="coupon-product-check">✓</span>
-                        <span class="coupon-product-icon">📚</span>
-                        <span>ספר מודפס (BookPod)</span>
-                    </div>
-                    <div class="coupon-product">
-                        <span class="coupon-product-check">✓</span>
-                        <span class="coupon-product-icon">🎧</span>
-                        <span>אודיובוק</span>
-                    </div>
-                </div>
-                
-                <!-- CTA -->
-                <div class="coupon-cta-mini" onclick="scrollToSection('order')">
-                    <span>👆</span>
-                    <span>לחץ להזמנה</span>
-                </div>
+            <!-- Big Discount -->
+            <div class="coupon-ticker-discount">10%</div>
+            <div class="coupon-ticker-label">הנחה</div>
+            
+            <!-- Coupon Code -->
+            <div class="coupon-ticker-code-row">
+                <span class="coupon-ticker-code" onclick="copyCouponCode(event)" title="לחץ להעתקה">10110</span>
+                <button class="coupon-copy-btn" onclick="copyCouponCode(event)" id="couponCopyBtn" title="העתק קוד">
+                    <span id="copyIcon">📋</span>
+                </button>
             </div>
+            
+            <!-- Products -->
+            <div class="coupon-ticker-products">
+                📚 ספר מודפס &nbsp;|&nbsp; 🎧 אודיובוק
+            </div>
+            
+            <!-- CTA Button -->
+            <button class="coupon-ticker-btn" onclick="scrollToOrder(event)">
+                <span>👆</span>
+                <span>להזמנה</span>
+            </button>
         </div>
     </div>
 
@@ -2914,7 +2838,7 @@
             }
         }
         
-        // 📋 Copy Coupon Code Function
+        // 📋 Copy Coupon Code
         function copyCouponCode(event) {
             event.stopPropagation();
             const couponCode = '10110';
@@ -2922,31 +2846,23 @@
             navigator.clipboard.writeText(couponCode).then(() => {
                 const copyBtn = document.getElementById('couponCopyBtn');
                 const copyIcon = document.getElementById('copyIcon');
-                const copyText = document.getElementById('copyText');
                 
-                // Visual feedback
                 copyBtn.classList.add('copied');
                 copyIcon.textContent = '✓';
-                copyText.textContent = 'הועתק!';
                 
-                // Reset after 2 seconds
                 setTimeout(() => {
                     copyBtn.classList.remove('copied');
                     copyIcon.textContent = '📋';
-                    copyText.textContent = 'העתק';
                 }, 2000);
-            }).catch(err => {
-                console.error('Copy failed:', err);
+            }).catch(() => {
                 alert('קוד הקופון: 10110');
             });
         }
         
-        // Scroll to section
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+        // 📍 Go to Order Page
+        function scrollToOrder(event) {
+            event.stopPropagation();
+            window.location.href = 'order.html';
         }
         
         function makeDraggable(element) {
@@ -2957,15 +2873,17 @@
             element.ontouchstart = dragTouchStart;
             
             function dragMouseDown(e) {
+                // Don't drag if clicking on interactive elements
                 if (e.target.classList.contains('floating-ticker-close')) return;
-                if (e.target.classList.contains('coupon-code')) return;
+                if (e.target.classList.contains('coupon-ticker-code')) return;
                 if (e.target.classList.contains('coupon-copy-btn')) return;
-                if (e.target.classList.contains('coupon-cta-mini')) return;
+                if (e.target.classList.contains('coupon-ticker-btn')) return;
                 if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
                 if (e.target.closest('a') || e.target.closest('button')) return;
-                if (e.target.closest('.coupon-code')) return;
+                if (e.target.closest('.coupon-ticker-code')) return;
                 if (e.target.closest('.coupon-copy-btn')) return;
-                if (e.target.closest('.coupon-cta-mini')) return;
+                if (e.target.closest('.coupon-ticker-btn')) return;
+                
                 e.preventDefault();
                 pos3 = e.clientX;
                 pos4 = e.clientY;
@@ -2975,15 +2893,17 @@
             }
             
             function dragTouchStart(e) {
+                // Don't drag if touching interactive elements
                 if (e.target.classList.contains('floating-ticker-close')) return;
-                if (e.target.classList.contains('coupon-code')) return;
+                if (e.target.classList.contains('coupon-ticker-code')) return;
                 if (e.target.classList.contains('coupon-copy-btn')) return;
-                if (e.target.classList.contains('coupon-cta-mini')) return;
+                if (e.target.classList.contains('coupon-ticker-btn')) return;
                 if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
                 if (e.target.closest('a') || e.target.closest('button')) return;
-                if (e.target.closest('.coupon-code')) return;
+                if (e.target.closest('.coupon-ticker-code')) return;
                 if (e.target.closest('.coupon-copy-btn')) return;
-                if (e.target.closest('.coupon-cta-mini')) return;
+                if (e.target.closest('.coupon-ticker-btn')) return;
+                
                 const touch = e.touches[0];
                 pos3 = touch.clientX;
                 pos4 = touch.clientY;
