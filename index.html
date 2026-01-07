@@ -2742,9 +2742,14 @@
             });
         }
         
-        // 📍 Go to Order Page
+        // 📍 Scroll to Buy Section
         function goToOrder() {
-            window.location.href = 'order.html';
+            const buySection = document.getElementById('buy') || 
+                              document.querySelector('.buy-section') ||
+                              document.querySelector('[id*="buy"]');
+            if (buySection) {
+                buySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
         
         function makeDraggable(element) {
