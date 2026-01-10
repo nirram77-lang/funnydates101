@@ -646,6 +646,11 @@
             50% { box-shadow: 0 0 30px rgba(220, 38, 38, 0.9), 0 0 40px rgba(220, 38, 38, 0.4); }
         }
         
+        @keyframes pulse-discount {
+            0%, 100% { transform: scale(1); box-shadow: 0 3px 10px rgba(220, 38, 38, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 5px 20px rgba(220, 38, 38, 0.6); }
+        }
+        
         .ticker-live-dot {
             width: 8px;
             height: 8px;
@@ -2472,11 +2477,12 @@
             <div class="buy-grid">
                 <div class="buy-card featured">
                     <div class="buy-card-badge">🇮🇱 הכי נמכר</div>
+                    <div class="buy-discount-badge" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); color: white; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 800; margin-bottom: 10px; display: inline-block; box-shadow: 0 3px 10px rgba(220, 38, 38, 0.4); animation: pulse-discount 2s ease-in-out infinite;">⚡ 10% הנחה!</div>
                     <div class="buy-icon">📚</div>
                     <h3 class="buy-title">ספר מודפס</h3>
                     <p class="buy-desc">משלוח עד הבית בישראל</p>
                     <div class="buy-price">₪75</div>
-                    <div class="buy-note">מחיר השקה מיוחד!</div>
+                    <div class="buy-note">🎟️ קוד: 10110 → 10% הנחה</div>
                     <div class="buy-button-wrapper">
                         <a href="https://bookpod.co.il/product/101-%d7%93%d7%99%d7%99%d7%98%d7%99%d7%9d-%d7%95%d7%90%d7%a3-%d7%a0%d7%a9%d7%99%d7%9b%d7%94/" class="buy-button" target="_blank">להזמנה ב-BookPod</a>
                         <p class="buy-delivery">🚚 תוך 5 ימי עסקים</p>
@@ -2495,12 +2501,13 @@
                 </div>
                 <div class="buy-card audiobook-card">
                     <div class="buy-card-badge audiobook-badge">🎧 חדש!</div>
+                    <div class="buy-discount-badge" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); color: white; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 800; margin-bottom: 10px; display: inline-block; box-shadow: 0 3px 10px rgba(220, 38, 38, 0.4); animation: pulse-discount 2s ease-in-out infinite;">⚡ 10% הנחה!</div>
                     <div class="buy-icon">🎧</div>
                     <h3 class="buy-title">AudioBook</h3>
                     <p class="buy-desc">האזנה בכל מקום ובכל זמן</p>
                     <p class="buy-desc-sub">101 דייטים ואף נשיכה</p>
                     <div class="buy-price">₪69</div>
-                    <div class="buy-note">מחיר השקה מיוחד!</div>
+                    <div class="buy-note">🎟️ קוד: 10110 → 10% הנחה</div>
                     <div class="buy-button-wrapper">
                         <button class="buy-button audiobook-btn" onclick="window.location.href='order.html'">לרכישה</button>
                         <p class="buy-delivery">🎧 יותר מ-4 שעות</p>
