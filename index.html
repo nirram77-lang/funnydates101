@@ -2047,6 +2047,12 @@
         .footer-author { color: var(--accent-red); margin-top: 10px; }
         .footer-contact { margin-top: 10px; }
         .footer-contact a { color: var(--accent-gold); text-decoration: none; }
+        
+        /* No Art Gallery - Parent Brand */
+        .noartgallery-link { display: inline-block; margin: 25px 0; opacity: 0.85; transition: all 0.3s ease; }
+        .noartgallery-link:hover { opacity: 1; transform: scale(1.05); }
+        .noartgallery-link:hover .noartgallery-logo { filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.8)) drop-shadow(0 0 25px rgba(201, 162, 39, 0.5)); }
+        .noartgallery-logo { height: 35px; width: auto; filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5)) drop-shadow(0 0 15px rgba(201, 162, 39, 0.3)); transition: filter 0.3s ease; }
 
         /* Accessibility Widget */
         #accessibility-widget {
@@ -2537,6 +2543,12 @@
                 <span class="footer-divider">|</span>
                 <a href="#" onclick="window.location='mai'+'lto:nir'+'@funny'+'dates101.co.il';return false;">צור קשר</a>
             </div>
+            
+            <!-- No Art Gallery - Parent Brand -->
+            <a href="https://noartgallery.com" target="_blank" rel="noopener noreferrer" class="noartgallery-link">
+                <img src="noartgallery-logo.png" alt="No Art Gallery" class="noartgallery-logo">
+            </a>
+            
             <p class="footer-text">Ⓒ כל הזכויות שמורות לניר רם 2025</p>
             <p class="footer-author">📚 101 דייטים ואף נשיכה</p>
             <p class="footer-contact">📧 <span id="contact-email"></span></p>
