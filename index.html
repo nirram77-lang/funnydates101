@@ -2458,7 +2458,8 @@
 
         <!-- Story Form -->
         <section class="story-section" id="share">
-            <div class="story-badge"><span>🎬</span><span>יש לך סיפור?</span></div>
+            <button class="story-badge" id="storyToggle" onclick="toggleStory()" style="cursor:pointer; background:none; border:1px solid var(--accent-gold); padding:10px 20px; border-radius:50px; color:var(--accent-gold); font-family:'Poppins',sans-serif; font-size:14px; display:inline-flex; align-items:center; gap:8px;"><span>🎬</span><span>יש לך סיפור?</span><span id="storyArrow">👀</span></button>
+            <div id="storyContent" style="max-height:0; opacity:0; overflow:hidden; transition: max-height 0.5s ease, opacity 0.5s ease;">
             <h2 class="story-title">הסיפור שלך יכול להפוך לסרטון!</h2>
             <p class="story-subtitle">היה לך דייט מטורף? הזוי? מצחיק עד דמעות?<br>שלח לנו ואולי הסיפור שלך יעלה לערוץ!</p>
             <div class="story-reward"><span>🌟</span><span>הסיפור שלך יפורסם עם אזכור שלך בסרטון</span></div>
@@ -2483,6 +2484,7 @@
             <div class="form-success" id="formSuccess">
                 <h3>✅ תודה רבה!</h3>
                 <p>הסיפור שלך התקבל בהצלחה.<br>אם הוא ייבחר, ניצור איתך קשר!</p>
+            </div>
             </div>
         </section>
 
@@ -2961,6 +2963,18 @@
             const content = document.getElementById('teaserContent');
             toggle.classList.toggle('open');
             content.classList.toggle('open');
+        }
+
+        function toggleStory() {
+            var c = document.getElementById('storyContent');
+            var arrow = document.getElementById('storyArrow');
+            if (c.style.maxHeight === '0px' || c.style.maxHeight === '0' || c.style.maxHeight === '') {
+                c.style.maxHeight = '2000px'; c.style.opacity = '1';
+                if (arrow) arrow.textContent = '🔼';
+            } else {
+                c.style.maxHeight = '0'; c.style.opacity = '0';
+                if (arrow) arrow.textContent = '👀';
+            }
         }
 
         document.getElementById('storyForm').addEventListener('submit', async function(e) {
