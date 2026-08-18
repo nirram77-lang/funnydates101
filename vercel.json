@@ -1,0 +1,6 @@
+﻿{
+  "redirects": [
+    { "source": "/order.html", "destination": "https://funnydates101.com/order-he", "permanent": true },
+    { "source": "/(.*)", "destination": "https://funnydates101.com/he", "permanent": true }
+  ]
+}
